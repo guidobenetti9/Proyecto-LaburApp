@@ -3,11 +3,11 @@ package com.grupo4.LaburApp.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.grupo4.LaburApp.services.UserService;
+import com.grupo4.LaburApp.services.MessageService;
 
 @Controller
-public class UserController {
+public class MessageController {
 
 	@Autowired
-	UserService us;
+	MessageService ms;
 }
