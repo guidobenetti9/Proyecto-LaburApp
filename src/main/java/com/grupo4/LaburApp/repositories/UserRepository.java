@@ -8,4 +8,5 @@ import com.grupo4.LaburApp.models.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
+	User findByEmail(String email);
 }

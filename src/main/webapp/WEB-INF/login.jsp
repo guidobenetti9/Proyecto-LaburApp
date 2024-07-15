@@ -13,7 +13,7 @@
 		<div>
 			<div>
 				<h2>Registrarse</h2>
-				<form:form action="#" method="POST" modelAttribute="#" >
+				<form:form action="/register" method="POST" modelAttribute="newUser" >
 					<div>
 						<form:label path="firstName" >Nombre:</form:label>
 						<form:input path="firstName"/>
@@ -45,7 +45,7 @@
 			<div>
 				<h2>Iniciar Sesion</h2>
 				<p>${errorLogin}</p>
-				<form action="#" method="POST">
+				<form action="/login" method="POST">
 					<div>
 						<label>E-mail:</label>
 						<input type="email" name="email" >
