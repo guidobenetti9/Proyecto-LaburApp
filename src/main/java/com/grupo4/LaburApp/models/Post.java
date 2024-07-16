@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
@@ -30,7 +32,7 @@ public class Post {
 	private String postTittle;
 	
 	@NotEmpty(message="post description is required.")
-	@Size(min=10, message="comment needs at least 10 chars")
+	@Size(min=2, message="comment needs at least 10 chars")
 	private String postDescription;
 	
 	@NotEmpty(message="Available days is required.")
@@ -58,8 +60,13 @@ public class Post {
 	@OneToMany(mappedBy = "postMessage", fetch = FetchType.LAZY)
 	private List<Message> postMessages;
 	
-	/*@OneToOne(mappedBy = "post", fetch = FetchType.LAZY)
-	private User userAssigned;*/
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User creatorPost;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="jobs_id")
+	private Jobs jobsInPost;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
@@ -108,4 +115,70 @@ public class Post {
 	public void setFavoriteUsers(List<User> favoriteUsers) {
 		this.favoriteUsers = favoriteUsers;
 	}
+
+	public String getPostTittle() {
+		return postTittle;
+	}
+
+	public void setPostTittle(String postTittle) {
+		this.postTittle = postTittle;
+	}
+
+	public String getPostDescription() {
+		return postDescription;
+	}
+
+	public void setPostDescription(String postDescription) {
+		this.postDescription = postDescription;
+	}
+
+	public String getAvailableDays() {
+		return availableDays;
+	}
+
+	public void setAvailableDays(String availableDays) {
+		this.availableDays = availableDays;
+	}
+
+	public String getAvailableHours() {
+		return availableHours;
+	}
+
+	public void setAvailableHours(String availableHours) {
+		this.availableHours = availableHours;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public User getCreatorPost() {
+		return creatorPost;
+	}
+
+	public void setCreatorPost(User creatorPost) {
+		this.creatorPost = creatorPost;
+	}
+
+	public Jobs getJobsInPost() {
+		return jobsInPost;
+	}
+
+	public void setJobsInPost(Jobs jobsInPost) {
+		this.jobsInPost = jobsInPost;
+	}
+	
+	
 }

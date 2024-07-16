@@ -27,7 +27,7 @@ public class Message {
 	private Date date;
     
     @NotEmpty(message="Content is required.")
-    @Size(min=10, message="Content needs at least 10 chars")
+    @Size(min=1, message="Content needs at least 1 chars")
 	private String content;
 	
 	@Column(updatable=false)

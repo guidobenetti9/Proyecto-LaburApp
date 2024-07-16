@@ -19,6 +19,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -49,25 +50,28 @@ public class User {
 	@Size(min=8, message="Confirmation needs at least 6 chars")
 	private String confirm;
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private Date birthDate;
 	
-	@NotEmpty(message="nationality is required.")
+	@NotNull(message="nationality is required.")
 	private String nationality;
 	
-	@NotEmpty(message="province is required.")
+	@NotNull
+	private Boolean esAdmin;
+	
+	@NotNull(message="province is required.")
 	private String province;
 	
-	@NotEmpty(message="city is required.")
+	@NotNull(message="city is required.")
 	private String city;
 	
-	@NotEmpty
+	@NotNull
 	private String profilePicture;
 	
-	@NotEmpty(message="phone is required.")
+	@NotNull(message="phone is required.")
 	private String phone;
 	
-	@NotEmpty
+	@NotNull
 	private String alternativePhone;
 	
 	@Column(updatable=false)
@@ -81,18 +85,10 @@ public class User {
 	}
 	
 	@OneToMany(mappedBy = "senderMessage", fetch = FetchType.LAZY)
-	private List<Message> sentMessages;
+	private List<Message> sentMessages;	
 	
-	/*@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-	private Post post;*/
-	
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-			name="user_has_jobs",
-			joinColumns=@JoinColumn(name="user_id"),
-			inverseJoinColumns=@JoinColumn(name="jobs_id")
-			)
-	private List<Jobs> jobsAssigned;
+	@OneToMany(mappedBy = "creatorPost",fetch = FetchType.LAZY)
+	private List<Post> listPost;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
@@ -230,20 +226,28 @@ public class User {
 		this.sentMessages = sentMessages;
 	}
 
-	public List<Jobs> getJobsAssigned() {
-		return jobsAssigned;
-	}
-
-	public void setJobsAssigned(List<Jobs> jobsAssigned) {
-		this.jobsAssigned = jobsAssigned;
-	}
-
 	public List<Post> getFavoritePosts() {
 		return favoritePosts;
 	}
 
 	public void setFavoritePosts(List<Post> favoritePosts) {
 		this.favoritePosts = favoritePosts;
+	}
+
+	public Boolean getEsAdmin() {
+		return esAdmin;
+	}
+
+	public void setEsAdmin(Boolean esAdmin) {
+		this.esAdmin = esAdmin;
+	}
+
+	public List<Post> getListPost() {
+		return listPost;
+	}
+
+	public void setListPost(List<Post> listPost) {
+		this.listPost = listPost;
 	}
 	
 }
