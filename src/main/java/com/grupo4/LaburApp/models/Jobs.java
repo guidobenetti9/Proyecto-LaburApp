@@ -11,9 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -27,6 +25,9 @@ public class Jobs {
 	@NotNull
 	private String jobName;
 	
+	@OneToMany(mappedBy = "jobsInPost",fetch = FetchType.LAZY)
+	private List<Post> listPost;
+	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -36,14 +37,6 @@ public class Jobs {
 
 	public Jobs() {
 	}
-	
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-			name="user_has_jobs",
-			joinColumns=@JoinColumn(name="jobs_id"),
-			inverseJoinColumns=@JoinColumn(name="user_id")
-			)
-	private List<User> assignedUsers;
 
 	public Long getId() {
 		return id;
@@ -77,12 +70,12 @@ public class Jobs {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<User> getAssignedUsers() {
-		return assignedUsers;
+	public List<Post> getListPost() {
+		return listPost;
 	}
 
-	public void setAssignedUsers(List<User> assignedUsers) {
-		this.assignedUsers = assignedUsers;
+	public void setListPost(List<Post> listPost) {
+		this.listPost = listPost;
 	}
 	
 	
