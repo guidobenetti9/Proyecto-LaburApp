@@ -1,5 +1,7 @@
 package com.grupo4.LaburApp.services;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,10 @@ public class UserService {
 
 	@Autowired
 	UserRepository userRepo;
+	
+	public List<User> allUsers(){
+		return userRepo.findAll();
+	}
 	
 	/*Método que registre a un nuevo usuario*/
 	public User register(User newUser, BindingResult result) {
