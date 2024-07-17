@@ -52,7 +52,7 @@
 						<form:input type="date" path="birthDate"/>
 						<form:errors path="birthDate"/>
 					</div>
-                    
+                    <form:hidden path="esAdmin" value="0"/>
 					<div class="cont_boton">
 						<input type="submit" value="Registrarse" class="boton">
 					</div>

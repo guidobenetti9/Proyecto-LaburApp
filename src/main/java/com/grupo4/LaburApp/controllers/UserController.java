@@ -43,6 +43,7 @@ public class UserController {
 		serv.register(newUser, result);
 		
 		if(result.hasErrors()) {
+			System.out.println("estoy con un error");
 			return "index.jsp";
 		} else {
 			//Guardo al nuevo usuario en sesión

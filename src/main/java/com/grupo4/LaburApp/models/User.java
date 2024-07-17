@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+//import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -42,7 +42,7 @@ public class User {
 	private String email;
 	
 	@NotEmpty(message="Password is required.")
-	@Size(min=8, message="Password needs at least 6 chars")
+	@Size(min=8, message="Password needs at least 8 chars")
 	private String password;
 	
 	@Transient//no se guarda en la db
@@ -50,28 +50,26 @@ public class User {
 	@Size(min=8, message="Confirmation needs at least 6 chars")
 	private String confirm;
 	
-	@DateTimeFormat(pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birthDate;
 	
-	@NotNull(message="nationality is required.")
+	//@NotEmpty
 	private String nationality;
-	//a
-	@NotNull
+	
 	private Boolean esAdmin;
 	
-	@NotNull(message="province is required.")
+	//@NotEmpty
 	private String province;
 	
-	@NotNull(message="city is required.")
+	//@NotEmpty
 	private String city;
 	
-	@NotNull
+	//@NotEmpty
 	private String profilePicture;
 	
-	@NotNull(message="phone is required.")
+	//@NotEmpty
 	private String phone;
-	
-	@NotNull
+	//@NotEmpty
 	private String alternativePhone;
 	
 	@Column(updatable=false)
