@@ -26,6 +26,16 @@ public class UserController {
 		return "index.jsp";
 	}
 	
+	@GetMapping("/register")
+	public String registro(@ModelAttribute("newUser") User newUser) {
+		return "register.jsp";
+	}
+	
+	@GetMapping("/login")
+	public String loguearse() {
+		return "login.jsp";
+	}
+	
 	@PostMapping("/register")
 	public String register(@Valid @ModelAttribute("newUser") User newUser,
 						   BindingResult result,

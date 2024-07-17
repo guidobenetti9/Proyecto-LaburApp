@@ -1,0 +1,74 @@
+@charset "ISO-8859-1";
+
+*{
+    margin:0;
+    padding:0;
+    border:0;
+    font-family: "Chakra Petch", sans-serif;
+}
+body{
+    background-color: #bfc5c5;
+}
+.contenedor{
+    background-color: white;
+    margin: 0 auto;
+    width: 450px;
+    border: 2px solid black;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 9px 10px 77px 0px rgba(0,0,0,0.75);
+}
+.cont_loguito{
+    display: flex;
+    justify-content: center;
+}
+.loguito{
+    width: 130px;
+}
+.cont_titulo{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+.cajita{
+    font-size: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.cont_boton{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.boton{
+    width: 300px;
+    background-color: #FAFF00;
+    color: black;
+    padding: 10px;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+.cont_login{
+    background-color: white;
+    margin: 0 auto;
+    width: 450px;
+    border: 2px solid black;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 9px 10px 77px 0px rgba(0,0,0,0.75);
+}
+input{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    width: 300px;
+    font-size: 20px;
+}
