@@ -21,7 +21,7 @@
             </div>
             <div>
                 <ul class="uk-list uk-flex-inline uk-width-1-6">
-                    <li><a class="uk-button uk-button-default" href="/adminusers">Users</a></li>
+                    <li><a class="uk-button uk-button-default" href="/dashboard">Users</a></li>
                     <li><a class="uk-button uk-button-default" href="/adminmessages">Messages</a></li>
                     <li><a class="uk-button uk-button-default" href="/adminjobs">Jobs</a></li>
                     <li><a class="uk-button uk-button-default" href="/adminposts">Posts</a></li>
