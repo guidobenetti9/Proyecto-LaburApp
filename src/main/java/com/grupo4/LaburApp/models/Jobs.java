@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -77,6 +79,16 @@ public class Jobs {
 	public void setListPost(List<Post> listPost) {
 		this.listPost = listPost;
 	}
-	
+	//automatization
+	@PrePersist //Before creating a user
+		protected void onCreate() {
+			this.createdAt = new Date(); //Default current_timestamp
+		}
+		
+		
+	@PreUpdate //before update
+		protected void onUpdate() {
+			this.updatedAt = new Date(); //default current_timestamp on update current_timestamp
+		}
 	
 }

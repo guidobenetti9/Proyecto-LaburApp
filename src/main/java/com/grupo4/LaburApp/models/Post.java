@@ -17,6 +17,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -179,6 +181,16 @@ public class Post {
 	public void setJobsInPost(Jobs jobsInPost) {
 		this.jobsInPost = jobsInPost;
 	}
-	
+	//automatization
+	@PrePersist //Before creating a user
+		protected void onCreate() {
+			this.createdAt = new Date(); //Default current_timestamp
+		}
+		
+		
+	@PreUpdate //before update
+		protected void onUpdate() {
+			this.updatedAt = new Date(); //default current_timestamp on update current_timestamp
+		}
 	
 }

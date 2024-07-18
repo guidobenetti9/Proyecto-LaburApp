@@ -12,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -106,5 +108,17 @@ public class Review {
 	public void setPostReview(Post postReview) {
 		this.postReview = postReview;
 	}
+	
+	//automatization
+	@PrePersist //Before creating a user
+		protected void onCreate() {
+			this.createdAt = new Date(); //Default current_timestamp
+		}
+		
+		
+	@PreUpdate //before update
+		protected void onUpdate() {
+			this.updatedAt = new Date(); //default current_timestamp on update current_timestamp
+		}
 
 }
