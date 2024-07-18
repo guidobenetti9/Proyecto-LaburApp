@@ -9,7 +9,7 @@
 <title>Iniciooooooooo</title>
 </head>
 <body>
-	<div>
+	<div><!-- prueba -->
 		<button type="button"><a href="/register">Registro</a></button>
 		<button type="button"><a href="/login">Login</a></button>
 	</div>
