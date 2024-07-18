@@ -54,14 +54,33 @@ public class UserController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String dashboard(HttpSession session) {
-		//Validación de que el usuario inició sesión
-		User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
-		if(userTemp == null) {
-			return "redirect:/";
-		}
-		
-		return "dashboard.jsp";
+	public String users() {
+		return "userAdmin.jsp";
+	}
+	
+	@GetMapping("/adminmessages")
+	public String admin() {
+		return "messageAdmin.jsp";
+	}
+	
+	@GetMapping("/adminjobs")
+	public String job() {
+		return "jobAdmin.jsp";
+	}
+	
+	@GetMapping("/adminposts")
+	public String post() {
+		return "postAdmin.jsp";
+	}
+	
+	@GetMapping("/adminreviews")
+	public String review() {
+		return "reviewAdmin.jsp";
+	}
+	
+	@GetMapping("/adminworks")
+	public String work() {
+		return "workAdmin.jsp";
 	}
 	
 	@PostMapping("/login")
