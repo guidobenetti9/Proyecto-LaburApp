@@ -20,6 +20,11 @@ public class UserService {
 		return userRepo.findAll();
 	}
 	
+	public User findAdmin(User admin) {
+		return userRepo.findByEsAdmin(admin.getEsAdmin());
+	}
+
+	
 	/*Método que registre a un nuevo usuario*/
 	public User register(User newUser, BindingResult result) {
 		
