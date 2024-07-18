@@ -12,6 +12,7 @@ import com.grupo4.LaburApp.models.Post;
 public interface JobsRepository extends CrudRepository<Jobs, Long>{
 	List <Jobs> findAll();
 	//
-	List<Jobs> findAllByjobName(String job);
+	List<Jobs> findAllByJobName(String job);
+	
 	
 }

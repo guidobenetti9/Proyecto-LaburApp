@@ -11,11 +11,11 @@ import com.grupo4.LaburApp.models.Post;
 public interface PostRepository extends CrudRepository<Post, Long>{
 	List <Post>findAll();
 	// Me trae todos los post filtrando por trabajo. Y en orden ascendente
-	List<Post> findAllByJobsInPostOrderByCreatedAtAsc(String job);
+	List<Post> findAllByJobsInPostOrderByCreatedAtAsc(Long job);
 	// Me trae todos los post filtrando por provincia. Y en orden ascendente
 	List<Post> findAllByProvinceOrderByCreatedAtAsc(String province);
 	// Me trae todos los post filtrando por Creador. Y en orden ascendente
-	List<Post> findAllByCreatorPostOrderByCreatedAtAsc(String creatorPost);
+	List<Post> findAllByCreatorPostOrderByCreatedAtAsc(Long creatorPost);
 	// Me trae todos los post en orden ascendente
 	List<Post> findAllOrderByCreatedAtAsc();
 	// Me trae todos los post en orden descendente

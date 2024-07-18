@@ -77,4 +77,19 @@ public class UserService {
 		
 		
 	}
+	
+	// Borra un usuario
+	public void deleteUser(User user) {
+		userRepo.delete(user);
+	}
+	
+	// Editar un Usuario (Ver el tema de comparar contraseñas antes 
+	// de cambiar. REVISAR
+	public User editUser(User user) {
+		return userRepo.save(user);
+	}
+	// Devuelve un usuario
+	public User user(Long id) {
+		return userRepo.findById(id).orElse(null);
+	}
 }
