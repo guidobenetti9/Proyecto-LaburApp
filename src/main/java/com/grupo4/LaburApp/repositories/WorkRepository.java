@@ -10,4 +10,6 @@ import com.grupo4.LaburApp.models.Work;
 @Repository
 public interface WorkRepository extends CrudRepository<Work, Long>{
 	List <Work> findAll();
+	
+	List<Work> findAllByCompleted(String completed);
 }
