@@ -45,10 +45,10 @@
 				<c:forEach items="${allPosts}" var="post">
 					<tr>
 						<td>${post.id}</td>
-						<td>${post.postTitle}</td>
+						<td>${post.postTittle}</td>
 						<td>${post.province}</td>
 						<td>${post.city}</td>
-						<td>${post.creatorPost}</td>
+						<td>${post.creatorPost.firstName}</td>
 						<td><a class="uk-button uk-button-default">Delete</a></td>
 					</tr>
 				</c:forEach>

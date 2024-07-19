@@ -43,7 +43,7 @@
                 <c:forEach items="${allWorks}" var="work">
                     <tr>
                         <td>${work.id}</td>
-                        <td>${work.user}</td>
+                        <td>${work.user.firstName}</td>
                         <td>${work.post.creatorPost.firstName} ${work.post.creatorPost.lastName}</td>
                         <td>${work.completed}</td>
                     </tr>

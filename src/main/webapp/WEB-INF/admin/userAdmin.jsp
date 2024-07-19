@@ -43,7 +43,7 @@
 					<th>City</th>
 					<th>Phone</th>
 					<th>Alternative phone</th>
-					<th>Jobs assigned</th>
+					<th>Es admin</th>
 					<th>Created at</th>
 					<th>Actions</th>
 				</tr>
@@ -51,18 +51,18 @@
 			<tbody>
 				<c:forEach items="${allUsers}" var="user">
 					<tr>
-						<td>${message.id}</td>
-						<td>${message.firstName}</td>
-						<td>${message.lastName}</td>
-						<td>${message.email}</td>
-						<td>${message.birthDate}</td>
-						<td>${message.nationality}</td>
-						<td>${message.province}</td>
-						<td>${message.city}</td>
-						<td>${message.phone}</td>
-						<td>${message.alternativePhone}</td>
-						<td>${message.jobsAssigned}</td>
-						<td>${message.createdAt}</td>
+						<td>${user.id}</td>
+						<td>${user.firstName}</td>
+						<td>${user.lastName}</td>
+						<td>${user.email}</td>
+						<td>${user.birthDate}</td>
+						<td>${user.nationality}</td>
+						<td>${user.province}</td>
+						<td>${user.city}</td>
+						<td>${user.phone}</td>
+						<td>${user.alternativePhone}</td>
+						<td>${user.esAdmin}</td>
+						<td>${user.createdAt}</td>
 						<td><a class="uk-button uk-button-default">Delete</a></td>
 					</tr>
 				</c:forEach>

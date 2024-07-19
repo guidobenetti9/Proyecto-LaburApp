@@ -47,7 +47,7 @@
 						<td>${review.id}</td>
 						<td>${review.stars}</td>
 						<td>${review.comment}</td>
-						<td>${review.senderReview}</td>
+						<td>${review.senderReview.firstName}</td>
 						<td>${review.createdAt}</td>
 						<td><a class="uk-button uk-button-default">Delete</a></td>
 					</tr>

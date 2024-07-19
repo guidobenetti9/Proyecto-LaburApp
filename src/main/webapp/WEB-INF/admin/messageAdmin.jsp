@@ -37,7 +37,7 @@
 					<th>Date</th>
 					<th>Content</th>
 					<th>Sender message</th>
-					<th>Post message</th>
+					<th>Post Tittle</th>
 					<th>Created at</th>
 					<th>Actions</th>
 				</tr>
@@ -48,8 +48,8 @@
 						<td>${message.id}</td>
 						<td>${message.date}</td>
 						<td>${message.content}</td>
-						<td>${message.senderMessage}</td>
-						<td>${message.postMessage}</td>
+						<td>${message.senderMessage.firstName}</td>
+						<td>${message.postMessage.postTittle}</td>
 						<td>${message.createdAt}</td>
 						<td>
 							<form action="/message/delete/${message.id}" method="post">
