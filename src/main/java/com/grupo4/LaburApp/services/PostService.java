@@ -29,14 +29,14 @@ public class PostService {
 	}
 	
 	// Elimina un post
-	public void deletePost(Post post) {
-		postRepo.delete(post);
+	public void deletePost(Long id) {
+		postRepo.deleteById(id);
 	}
 	
 	// Devuelve todos los posts filtrados por trabajos (jobs). 
 	// Se pasa el Id del trabajo
 	public List <Post> allPostsFilterJob(Long jobId){
-		return postRepo.findAllByJobsInPostOrderByCreatedAtAsc(jobId);
+		return postRepo.findAllByJobsInPostIdOrderByCreatedAtAsc(jobId);
 	}
 	
 	// Devuelve todos los posts filtrados por provincias (province). 
@@ -48,16 +48,16 @@ public class PostService {
 	// Devuelve todos los posts filtrados por Creador (creatorPost). 
 	// Se pasa el Id del creatorPost (User)
 	public List <Post> allPostsFilterProvince(Long creatorPost){
-		return postRepo.findAllByCreatorPostOrderByCreatedAtAsc(creatorPost);
+		return postRepo.findAllByCreatorPostIdOrderByCreatedAtAsc(creatorPost);
 	}
 	
 	// Devuelve todos los posts ordenados de forma ascendente 
 	public List <Post> allPostsFilterAsc(){
-		return postRepo.findAllOrderByCreatedAtAsc();
+		return postRepo.findAllByOrderByCreatedAtAsc();
 	}
 	
 	// Devuelve todos los posts ordenados de forma descendente 
 	public List <Post> allPostsFilterDesc(){
-		return postRepo.findAllOrderByCreatedAtDesc();
+		return postRepo.findAllByOrderByCreatedAtDesc();
 	}
 }

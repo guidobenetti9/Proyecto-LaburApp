@@ -6,12 +6,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Iniciooooooooo</title>
+<title>Inicio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit-icons.min.js"></script>
 </head>
 <body>
-	<div><!-- prueba -->
-		<button type="button"><a href="/register">Registro</a></button>
-		<button type="button"><a href="/login">Login</a></button>
+	<div>
+		<c:if test="${userInSession == null}">
+			<a href="/register" class="uk-button uk-button-default">Registro</a>
+			<a href="/login" class="uk-button uk-button-default">Iniciar sesión</a>
+		</c:if>
+		<c:if test="${userInSession != null}">
+			<a href="/logout" class="uk-button uk-button-default">Cerrar sesión</a>
+		</c:if>
 	</div>
 </body>
 </html>

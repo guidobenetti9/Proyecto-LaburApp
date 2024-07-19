@@ -51,7 +51,12 @@
 						<td>${message.senderMessage}</td>
 						<td>${message.postMessage}</td>
 						<td>${message.createdAt}</td>
-						<td><a class="uk-button uk-button-default">Delete</a></td>
+						<td>
+							<form action="/message/delete/${message.id}" method="post">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="submit" value="Delete" class="uk-button uk-button-default">
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

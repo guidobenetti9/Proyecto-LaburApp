@@ -29,27 +29,27 @@ public class ReviewService {
 	}
 	
 	// Elimina un review
-	public void deleteReview(Review review) {
-		reviewRepo.delete(review);
+	public void deleteReview(Long id) {
+		reviewRepo.deleteById(id);
 	}
 	
 	// Devuelve todos los review de forma ascendente por estrellas
 	public List<Review> allReviewsStarAsc(){
-		return reviewRepo.findAllOrderByStarsAsc();
+		return reviewRepo.findAllByOrderByStarsAsc();
 	}
 	
 	// Devuelve todos los review de forma descendente por estrellas
 	public List<Review> allReviewsStarDesc(){
-		return reviewRepo.findAllOrderByStarsDesc();
+		return reviewRepo.findAllByOrderByStarsDesc();
 	}
 	
 	// Devuelve todos los review de forma ascendente por fecha
 	public List<Review> allReviewsDateAsc(){
-		return reviewRepo.findAllOrderByCreatedAtAsc();
+		return reviewRepo.findAllByOrderByCreatedAtAsc();
 	}
 	
 	// Devuelve todos los review de forma descendente por fecha
 	public List<Review> allReviewsDateDesc(){
-		return reviewRepo.findAllOrderByCreatedAtDesc();
+		return reviewRepo.findAllByOrderByCreatedAtDesc();
 	}
 }

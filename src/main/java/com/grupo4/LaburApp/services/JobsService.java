@@ -27,7 +27,7 @@ public class JobsService {
 		return jobsRepo.save(job);
 	}
 	// Elimina un trabajo
-	public void deleteJob(Jobs job) {
-		jobsRepo.delete(job);
+	public void deleteJob(Long id) {
+		jobsRepo.deleteById(id);
 	}
 }

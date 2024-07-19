@@ -18,34 +18,39 @@ public class AdminController {
 	@Autowired
 	UserService serv;
 	
+	@GetMapping("/dashboard")
+	public String users() {
+		return "/admin/userAdmin.jsp";
+	}
+	
 	@GetMapping("/adminmessages")
 	public String admin() {
-		return "messageAdmin.jsp";
+		return "/admin/messageAdmin.jsp";
 	}
 	
 	@GetMapping("/adminjobs")
 	public String job() {
-		return "jobAdmin.jsp";
+		return "/admin/jobAdmin.jsp";
 	}
 	
 	@GetMapping("/adminposts")
 	public String post() {
-		return "postAdmin.jsp";
+		return "/admin/postAdmin.jsp";
 	}
 	
 	@GetMapping("/adminreviews")
 	public String review() {
-		return "reviewAdmin.jsp";
+		return "/admin/reviewAdmin.jsp";
 	}
 	
 	@GetMapping("/adminworks")
 	public String work() {
-		return "workAdmin.jsp";
+		return "/admin/workAdmin.jsp";
 	}
 	
 	@GetMapping("/loginAdmin")
 	public String loguearAdmin() {
-		return "loginAdmin.jsp";
+		return "/admin/loginAdmin.jsp";
 	}
 	
 	@PostMapping("/loginAdmin")

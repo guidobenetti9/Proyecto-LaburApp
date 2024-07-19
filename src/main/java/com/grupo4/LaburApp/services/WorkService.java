@@ -34,7 +34,7 @@ public class WorkService {
 	}
 	
 	// Devuelve los work si estan completos (0) o no (1). Completed tiene que ser 0 o 1
-	public List<Work> allWorksCompletedOrNot(Long completed){
+	public List<Work> allWorksCompletedOrNot(Boolean completed){
 		return workRepo.findAllByCompleted(completed);
 	}
 }

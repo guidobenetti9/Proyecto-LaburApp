@@ -11,11 +11,11 @@ import com.grupo4.LaburApp.models.Review;
 public interface ReviewRepository extends CrudRepository<Review, Long>{
 	List<Review> findAll();
 	// Me trae todos los reviews en orden ascendente por estrellas
-	List<Review> findAllOrderByStarsAsc();
+	List<Review> findAllByOrderByStarsAsc();
 	// Me trae todos los reviews en orden descendente por estrellas
-	List<Review> findAllOrderByStarsDesc();
+	List<Review> findAllByOrderByStarsDesc();
 	// Me trae todos los reviews en orden ascendente por fecha
-	List<Review> findAllOrderByCreatedAtAsc();
+	List<Review> findAllByOrderByCreatedAtAsc();
 	// Me trae todos los reviews en orden descendente por fecha
-	List<Review> findAllOrderByCreatedAtDesc();
+	List<Review> findAllByOrderByCreatedAtDesc();
 }

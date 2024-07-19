@@ -79,8 +79,8 @@ public class UserService {
 	}
 	
 	// Borra un usuario
-	public void deleteUser(User user) {
-		userRepo.delete(user);
+	public void deleteUser(Long id) {
+		userRepo.deleteById(id);
 	}
 	
 	// Editar un Usuario (Ver el tema de comparar contraseñas antes 
