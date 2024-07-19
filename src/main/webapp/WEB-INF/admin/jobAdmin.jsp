@@ -36,6 +36,7 @@
 					<th>ID</th>
 					<th>Job name</th>
 					<th>Actions</th>
+					<th> <a class="uk-button uk-button-default" href="/newJob">Add job</a></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,7 +44,7 @@
 					<tr>
 						<td>${job.id}</td>
 						<td>${job.jobName}</td>
-						<td><a class="uk-button uk-button-default">Add</a><a class="uk-button uk-button-default">Edit</a></td>
+						<td><a class="uk-button uk-button-default">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

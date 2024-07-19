@@ -3,11 +3,14 @@ package com.grupo4.LaburApp.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.grupo4.LaburApp.models.Jobs;
 import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.services.JobsService;
 import com.grupo4.LaburApp.services.MessageService;
@@ -17,6 +20,7 @@ import com.grupo4.LaburApp.services.UserService;
 import com.grupo4.LaburApp.services.WorkService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class AdminController {
@@ -148,12 +152,43 @@ public class AdminController {
 			//Tiene algo mal
 			redirectAttributes.addFlashAttribute("errorLogin", "Wrong email/password");
 			return "redirect:/";
-		} else if(esAdmin.getEsAdmin()==false) {
+		} else if(esAdmin.getEsAdmin()==false || esAdmin.getEsAdmin()==null) {
 			redirectAttributes.addFlashAttribute("errorLogin", "No sos admin");
 			return "redirect:/";
 		}else {
 			session.setAttribute("userInSession", userAdminTryingLogin); //Guardando en sesión el objeto de User
 			return "redirect:/dashboard";}
 		
+	}
+	@GetMapping("/newJob")
+	public String newJob(@ModelAttribute("job") Jobs job,HttpSession session) {
+		//REVISAMOS SESION
+		User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		//REVISO SI ES ADMIN
+		User esAdmin = serv.findAdmin(userTemp);
+		if(esAdmin.getEsAdmin()==false) {
+			return "redirect:/";
+		}
+		return "/admin/newJob.jsp";
+	}
+	@PostMapping("/createNewJob")
+	public String createJob(@Valid @ModelAttribute("job") Jobs job,
+							BindingResult result,
+							HttpSession session,Model model) {
+		
+		model.addAttribute("job", job);
+        User userTemp = (User) session.getAttribute("userInSession");//obj user o null
+        if(userTemp==null) {
+            return "redirect:/";
+        }
+        if(result.hasErrors()) {
+        	return "newJob.jsp";
+        }else {
+        	JobsServ.newJob(job);
+        	return "redirect:/adminjobs";
+        }
 	}
 }
