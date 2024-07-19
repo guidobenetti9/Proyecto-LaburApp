@@ -17,7 +17,7 @@
 		<nav class="uk-navbar-container">
 			<div class="uk-flex-inline uk-flex-center">
 				<h2>ADMIN | LABURAPP</h2>
-				<a class="uk-button uk-button-default" href="">Cerrar sesión</a>
+				<a class="uk-button uk-button-default" href="/logout">Cerrar sesión</a>
 			</div>
 			<div>
 				<ul class="uk-list uk-flex-inline uk-width-1-6">
@@ -49,7 +49,12 @@
 						<td>${post.province}</td>
 						<td>${post.city}</td>
 						<td>${post.creatorPost.firstName}</td>
-						<td><a class="uk-button uk-button-default">Delete</a></td>
+						<td>
+							<form action="/post/delete/${post.id}" method="post">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="submit" value="Delete" class="uk-button uk-button-default">
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

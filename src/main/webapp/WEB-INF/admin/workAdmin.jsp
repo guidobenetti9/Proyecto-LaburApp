@@ -17,7 +17,7 @@
         <nav class="uk-navbar-container">
             <div class="uk-flex-inline uk-flex-center">
                 <h2>ADMIN | LABURAPP</h2>
-                <a class="uk-button uk-button-default" href="">Cerrar sesión</a>
+                <a class="uk-button uk-button-default" href="/logout">Cerrar sesión</a>
             </div>
             <div>
                 <ul class="uk-list uk-flex-inline uk-width-1-6">
