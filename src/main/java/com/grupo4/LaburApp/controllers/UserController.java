@@ -2,6 +2,7 @@ package com.grupo4.LaburApp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grupo4.LaburApp.models.User;
+import com.grupo4.LaburApp.services.PostService;
 import com.grupo4.LaburApp.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -23,8 +25,14 @@ public class UserController {
 	@Autowired
 	UserService serv;
 	
+	@Autowired
+	PostService ps;
+	
 	@GetMapping("/")
-	public String index(@ModelAttribute("newUser") User newUser) {
+	public String index(Model model) {
+		
+		model.addAttribute("allPosts", ps.allPosts());
+		
 		return "index.jsp";
 	}
 	
