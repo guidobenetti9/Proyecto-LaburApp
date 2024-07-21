@@ -45,6 +45,7 @@
 		        <c:if test="${userInSession != null}">
                     <div class="uk-flex-inline">
                         <div>
+                        	<a href="/newPost" class="uk-button uk-button-default">Crear nueva publicación</a>
                             <p>${userInSession.firstName} ${userInSession.lastName}</p>
                             <a href="#">Ver perfil</a>
                         </div>
