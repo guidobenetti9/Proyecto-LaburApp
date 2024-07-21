@@ -59,6 +59,27 @@
         	<button class="uk-button uk-button-default" type="button">Filtrar</button>
         	<div uk-dropdown="animation: slide-bottom; animate-out: true">
 		    	<ul class="uk-nav uk-dropdown-nav">
+			        <li>
+				        <form action="/filterDataProvince" method="post">
+	          					<button type="submit" name="filter" value="Catamarca">Provincia</button>
+	        			</form>
+        			</li>
+        			<li>
+				        <form action="/filterDataJob" method="post">
+	          					<button type="submit" name="filter" value="3">Rubro</button>
+	        			</form>
+        			</li>
+        			<li>
+				        <form action="/filterDataDateAsc" method="post">
+	          					<button type="submit" name="filter">Mas Antiguos</button>
+	        			</form>
+        			</li>
+        			<li>
+				        <form action="filterDataDateDesc" method="post">
+	          					<button type="submit" name="filter">Mas Recientes</button>
+	        			</form>
+        			</li>
+        			<li class="uk-nav-divider"></li>
 			        <li><a href="#">Rubro <span uk-icon="triangle-right"></span></a></li>
 			        <li class="uk-nav-divider"></li>
 			        <li><a href="#">Zona <span uk-icon="triangle-right"></span></a></li>

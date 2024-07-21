@@ -23,6 +23,10 @@ public class ReviewService {
 		return reviewRepo.findById(id).orElse(null);
 	}
 	
+	// Devuelva una lista de review de un determinado Post
+	public List<Review> reviewsByPost(Long id){
+		return reviewRepo.findAllByPostReviewIdOrderByCreatedAtDesc(id);
+	}
 	// Crea y edita una review
 	public Review newReview(Review review) {
 		return reviewRepo.save(review);

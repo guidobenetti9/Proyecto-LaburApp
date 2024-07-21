@@ -1,5 +1,7 @@
 package com.grupo4.LaburApp.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.grupo4.LaburApp.models.Post;
 import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.services.PostService;
 import com.grupo4.LaburApp.services.UserService;
@@ -28,13 +31,7 @@ public class UserController {
 	@Autowired
 	PostService ps;
 	
-	@GetMapping("/")
-	public String index(Model model) {
-		
-		model.addAttribute("allPosts", ps.allPosts());
-		
-		return "index.jsp";
-	}
+
 	
 	@GetMapping("/register")
 	public String registro(@ModelAttribute("newUser") User newUser) {
@@ -88,6 +85,54 @@ public class UserController {
 		session.removeAttribute("userInSession");
 		return "redirect:/";
 	}
+	
+	@GetMapping("/")
+	public String index(Model model,HttpSession session) {
+		
+		model.addAttribute("allPosts", ps.allPosts());
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+		return "index.jsp";
+	}
+	
+	// Filtra los post por un determinado Job (Rubro)
+    @PostMapping("/filterDataJob")
+    public String filterDataJob(@RequestParam Long filter, Model model,HttpSession session) {
+        // Lógica para obtener los datos filtrados
+        List<Post> filteredData = ps.allPostsFilterJob(filter);
+        model.addAttribute("allPosts", filteredData);
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+        return "index.jsp"; 
+    }
+    
+    // Filtra los post de una determinada provincia
+    @PostMapping("/filterDataProvince")
+    public String filterDataProvince(@RequestParam String filter, Model model,HttpSession session) {
+        // Lógica para obtener los datos filtrados
+        List<Post> filteredData = ps.allPostsFilterProvince(filter);
+        model.addAttribute("allPosts", filteredData);
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+        return "index.jsp"; 
+    }
+    
+    // Filtra los posts por fecha de manera ascendente
+    @PostMapping("/filterDataDateAsc")
+    public String filterDataDateAsc(Model model,HttpSession session) {
+        // Lógica para obtener los datos filtrados
+        List<Post> filteredData = ps.allPostsFilterAsc();
+        model.addAttribute("allPosts", filteredData);
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+        return "index.jsp"; 
+    }
+    
+    // Filtra los posts por fecha de manera descendente
+    @PostMapping("/filterDataDateDesc")
+    public String filterDataDateDesc(Model model,HttpSession session) {
+        // Lógica para obtener los datos filtrados
+        List<Post> filteredData = ps.allPostsFilterDesc();
+        model.addAttribute("allPosts", filteredData);
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+        return "index.jsp"; 
+    }
 	
 	@DeleteMapping("/user/delete/{id}")
 	public String deleteUser(@PathVariable("id") Long id,

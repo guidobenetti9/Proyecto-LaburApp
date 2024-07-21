@@ -18,4 +18,6 @@ public interface ReviewRepository extends CrudRepository<Review, Long>{
 	List<Review> findAllByOrderByCreatedAtAsc();
 	// Me trae todos los reviews en orden descendente por fecha
 	List<Review> findAllByOrderByCreatedAtDesc();
+	// Me trae todos los reviews de un determinado post en orden descendente por fecha
+	List<Review> findAllByPostReviewIdOrderByCreatedAtDesc(Long id);
 }
