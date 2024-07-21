@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grupo4.LaburApp.models.Jobs;
 import com.grupo4.LaburApp.models.Post;
+import com.grupo4.LaburApp.models.Review;
 import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.services.JobsService;
 import com.grupo4.LaburApp.services.PostService;
+import com.grupo4.LaburApp.services.ReviewService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -31,6 +33,8 @@ public class PostController {
 	@Autowired
 	JobsService js;
 	
+	@Autowired
+	ReviewService rs;
 	private List<String> getProvinces() {
 	        return Arrays.asList(
 	            "Buenos Aires","CABA", "Catamarca", "Chaco", "Chubut", "Córdoba", 
@@ -80,6 +84,15 @@ public class PostController {
         	return "redirect:/";
         }
 		
+	}
+	
+	@GetMapping("/post/{id}")
+	public String postDetails(Model model, @PathVariable("id") Long id,@ModelAttribute("newReview") Review newReview) {
+		Post post = ps.post(id);
+		List<Review> reviews = rs.reviewsByPost(id);
+		model.addAttribute("post", post);
+		model.addAttribute("reviews", reviews);
+		return "post.jsp";
 	}
 	
 	@DeleteMapping("/post/delete/{id}")
