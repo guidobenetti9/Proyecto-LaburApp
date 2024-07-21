@@ -2,58 +2,98 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Crear Publicacion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo post</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit-icons.min.js"></script>
+    <script src="uikit/dist/js/uikit-icons.min.js"></script>
+
+    <!--Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
+
+    <!--Css-->
+    <link rel="stylesheet" href="css/new.css">
 </head>
 <body>
-<h2>Nueva Publicacion</h2>
-				<!-- Generar una instancia -->
-				<form:form action="/post/create" method="POST" modelAttribute="newPost" >
-					<div>
-						<form:label path="postTittle" >Titulo de Publicacion:</form:label>
-						<form:input path="postTittle" class="form-control" />
-						<form:errors path="postTittle" class="text-danger" />
-					</div>
-					<div>
-						<form:label path="postDescription" >Descripcion:</form:label>
-						<form:input path="postDescription" class="form-control" />
-						<form:errors path="postDescription" class="text-danger" />
-					</div>
-					<div>
-						<form:label path="availableDays" >Dias Disponibles:</form:label>
-						<form:checkboxes path="availableDays" items="${days}"/><br>
-						<form:errors path="availableDays" class="text-danger" />
-					</div>
-					<div>
-						<form:label path="availableHours" >Horas Disponibles:</form:label>
-						<form:input path="availableHours" class="form-control" />
-						<form:errors path="availableHours" class="text-danger" />
-					</div>
-					<div>
-						<form:label path="province" >Provincia:</form:label>
-				        <form:select path="province">
-          					<form:options items="${provinces}" />
-      					</form:select>
-						<form:errors path="province" class="text-danger" />
-					</div>
-					<div>
-						<form:label path="city" >Localidad:</form:label>
-						<form:input path="city" class="form-control" />
-						<form:errors path="city" class="text-danger" />
-					</div>
-					<div>
-						<form:label path="jobsInPost" >Rubro:</form:label>
-						<form:select path="jobsInPost">
-          					<form:options items="${jobs}" itemValue="id" itemLabel="jobName" />
-      					</form:select>
-						<form:errors path="jobsInPost" class="text-danger" />
-					</div>
-					<form:hidden path="creatorPost" value="${userInSession.id}" />
-					<input type="submit" class="btn btn-primary" value="Register" >
-				</form:form>
+    <header>
+        <div class="cont_header">
+            <div class="cont_loguito">
+                <a href="/"><img src="logonuevo.png"></a>
+            </div>
+            <div>
+                <h2 class="uk-h2">laburApp: agarrá la pala</h2>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="cont_main">
+            <div class="cont_titulo">
+                <h3 class="uk-h3">Crea una nueva publicación</h3>
+            </div>
+            <div>
+                <form:form action="/newPost" method="POST" modelAttribute="newPost">
+                    <div class="cajita">
+                        <form:label path="postTittle" >Titulo:</form:label>
+                        <form:input path="postTittle" class="uk-input"/>
+                        <form:errors path="postTittle" class="uk-text-danger uk-text-small"/>
+                    </div>
+                    <div class="cajita">
+                        <form:label path="postDescription" >Descripción:</form:label>
+                        <form:textarea path="postDescription" class="uk-textarea"></form:textarea>
+                        <form:errors path="postDescription" class="uk-text-danger uk-text-small"/>
+                    </div>
+                    <div class="cajita">
+                        <form:label path="jobsInPost">Servicio:</form:label>
+                        <form:select path="jobsInPost" class="uk-select">
+                            <c:forEach items="${allJobs}" var="job">
+                                <form:option value="${job}">${job.jobName}</form:option>
+                            </c:forEach>
+                        </form:select>
+                    </div>
+                    <div class="cajita">
+                        <form:label path="availableDays" >Dias disponibles:</form:label>
+                        <br>
+                        <form:checkboxes path="availableDays" items="${days}"/>
+                        <form:errors path="availableDays" class="uk-text-danger uk-text-small"/>
+                    </div>
+                    <div class="cajita">
+                        <form:label path="availableHours" >Horarios disponibles:</form:label>
+                        <form:input path="availableHours" class="uk-input"/>
+                        <form:errors path="availableHours" class="uk-text-danger uk-text-small"/>
+                    </div>
+                    <div class="cajita">
+                        <form:label path="province" >Provincia:</form:label>
+                        <form:select path="province" class="uk-select">
+                            <form:options items="${provinces}"/>
+                        </form:select>
+                    </div>
+                    <div class="cajita">
+                        <form:label path="city" >Ciudad:</form:label>
+                        <form:input path="city" class="uk-input"/>
+                        <form:errors path="city" class="uk-text-danger uk-text-small"/>
+                    </div>
+                    <div class="cont_botones">
+                        <form:hidden path="creatorPost" value="${userInSession.id}"/>
+                        <a href="/" class="uk-button uk-button-danger uk-margin-right">Cancelar</a>
+                        <input type="submit" value="Crear" class="uk-button uk-button-secondary">
+                    </div>
+                </form:form>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
