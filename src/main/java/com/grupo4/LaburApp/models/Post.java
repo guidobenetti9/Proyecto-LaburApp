@@ -30,23 +30,23 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message="post tittle is required.")
+	@NotEmpty(message="se necesita un titulo")
 	private String postTittle;
 	
-	@NotEmpty(message="post description is required.")
-	@Size(min=2, message="comment needs at least 10 chars")
+	@NotEmpty(message="se necesita una descripción")
+	@Size(min=2, message="la descripción debe tener al menos 10 caracteres")
 	private String postDescription;
 	
-	@NotEmpty(message="Available days is required.")
+	@NotEmpty(message="debes ingresar tus dias disponibles")
 	private String availableDays;
 	
-	@NotEmpty(message="Available hours is required.")
+	@NotEmpty(message="debes ingresar tu horario disponible")
 	private String availableHours;
 	
 	@NotEmpty(message="province is required.")
 	private String province;
 	
-	@NotEmpty(message="city is required.")
+	@NotEmpty(message="se necesita una ciudad")
 	private String city;
 	
 	@Column(updatable=false)

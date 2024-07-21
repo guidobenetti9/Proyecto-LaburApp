@@ -1,5 +1,6 @@
 package com.grupo4.LaburApp.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,16 @@ public class PostController {
 	@Autowired
 	JobsService js;
 	
+	private List<String> getProvinces() {
+	        return Arrays.asList(
+	            "Buenos Aires","CABA", "Catamarca", "Chaco", "Chubut", "Córdoba", 
+	            "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", 
+	            "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", 
+	            "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", 
+	            "Santiago del Estero", "Tierra del Fuego", "Tucumán"
+	        );
+	}
+	
 	@GetMapping("/newPost")
 	public String newPost(HttpSession session,
 			              @ModelAttribute("newPost") Post newPost,
@@ -43,6 +54,8 @@ public class PostController {
         
         List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
+        model.addAttribute("days", Arrays.asList("Lunes", "Martes", "Miercoles","Jueves","Viernes","Sabado","Domingo"));
+        model.addAttribute("provinces", getProvinces());
 		
 		return "newPost.jsp";
 	}

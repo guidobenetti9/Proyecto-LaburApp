@@ -49,12 +49,12 @@
                     <div class="cajita">
                         <form:label path="postTittle" >Titulo:</form:label>
                         <form:input path="postTittle" class="uk-input"/>
-                        <form:errors path="postTittle"/>
+                        <form:errors path="postTittle" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cajita">
                         <form:label path="postDescription" >Descripción:</form:label>
                         <form:textarea path="postDescription" class="uk-textarea"></form:textarea>
-                        <form:errors path="postDescription"/>
+                        <form:errors path="postDescription" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cajita">
                         <form:label path="jobsInPost">Servicio:</form:label>
@@ -66,47 +66,25 @@
                     </div>
                     <div class="cajita">
                         <form:label path="availableDays" >Dias disponibles:</form:label>
-                        <form:input path="availableDays" class="uk-input"/>
-                        <form:errors path="availableDays"/>
+                        <br>
+                        <form:checkboxes path="availableDays" items="${days}"/>
+                        <form:errors path="availableDays" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cajita">
                         <form:label path="availableHours" >Horarios disponibles:</form:label>
                         <form:input path="availableHours" class="uk-input"/>
-                        <form:errors path="availableHours"/>
+                        <form:errors path="availableHours" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cajita">
                         <form:label path="province" >Provincia:</form:label>
                         <form:select path="province" class="uk-select">
-                            <form:option value="Buenos Aires">Buenos Aires</form:option>
-                            <form:option value="Ciudad Autonoma de Buenos Aires">Ciudad Autonoma de Buenos Aires</form:option>
-                            <form:option value="Catamarca">Catamarca</form:option>
-                            <form:option value="Chaco">Chaco</form:option>
-                            <form:option value="Chubut">Chubut</form:option>
-                            <form:option value="Cordoba">Cordoba</form:option>
-                            <form:option value="Corrientes">Corrientes</form:option>
-                            <form:option value="Entre Rios">Entre Rios</form:option>
-                            <form:option value="Formosa">Formosa</form:option>
-                            <form:option value="Jujuy">Jujuy</form:option>
-                            <form:option value="La Pampa">La Pampa</form:option>
-                            <form:option value="La Rioja">La Rioja</form:option>
-                            <form:option value="Mendoza">Mendoza</form:option>
-                            <form:option value="Misiones">Misiones</form:option>
-                            <form:option value="Neuquen">Neuquen</form:option>
-                            <form:option value="Rio Negro">Rio Negro</form:option>
-                            <form:option value="Salta">Salta</form:option>
-                            <form:option value="San Juan">San Juan</form:option>
-                            <form:option value="San Luis">San Luis</form:option>
-                            <form:option value="Santa Cruz">Santa Cruz</form:option>
-                            <form:option value="Santa Fe">Santa Fe</form:option>
-                            <form:option value="Santiago del Estero">Santiago del Estero</form:option>
-                            <form:option value="Tierra del Fuego">Tierra del Fuego</form:option>
-                            <form:option value="Tucuman">Tucuman</form:option>
+                            <form:options items="${provinces}"/>
                         </form:select>
                     </div>
                     <div class="cajita">
                         <form:label path="city" >Ciudad:</form:label>
                         <form:input path="city" class="uk-input"/>
-                        <form:errors path="city"/>
+                        <form:errors path="city" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cont_botones">
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>
