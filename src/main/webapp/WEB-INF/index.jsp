@@ -82,10 +82,9 @@
                             <img src="logonuevo.png" class="uk-width-1-1 uk-margin-left">
                         </a>
                     </div>
-                    <ul class="uk-navbar-nav">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                        <li><a href="#">Contacto</a></li>
+                    <ul class="uk-navbar-nav">   
+                    	<li><a href="#">Contacto</a></li>                    
+                        <li><a href="#">Ayuda</a></li>                      
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
@@ -108,7 +107,7 @@
                                 <a href="#" class="uk-link-muted">Ver perfil</a>
                             </div>
                             <div>
-                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
+                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesion</a>
                             </div>
                         </div>
                     </c:if>
@@ -149,7 +148,7 @@
                     <h2>Publicaciones</h2>
                     <c:if test="${userInSession != null}">
                     	<div class="cont_publi">
-                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicación</a>
+                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicacion</a>
                     	</div>
                     </c:if>
                 </div>
@@ -183,7 +182,7 @@
         <div class="uk-container">
             <div class="uk-grid-small" uk-grid>
                 <div class="uk-width-expand@s">
-                    <p class="uk-text-small">© 2024 LaburApp. Todos los derechos reservados.</p>
+                    <p class="uk-text-small">� 2024 LaburApp. Todos los derechos reservados.</p>
                 </div>
                 
                 <div class="uk-width-auto@s">
