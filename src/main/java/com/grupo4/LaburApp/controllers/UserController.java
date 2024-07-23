@@ -38,6 +38,7 @@ public class UserController {
 		return "register.jsp";
 	}
 	
+	
 	@GetMapping("/login")
 	public String loguearse() {
 		return "login.jsp";
@@ -95,7 +96,7 @@ public class UserController {
 	}
 	
 	// Filtra los post por un determinado Job (Rubro)
-    @PostMapping("/filterDataJob")
+	@GetMapping("/filterDataJob")
     public String filterDataJob(@RequestParam Long filter, Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
         List<Post> filteredData = ps.allPostsFilterJob(filter);
@@ -105,7 +106,7 @@ public class UserController {
     }
     
     // Filtra los post de una determinada provincia
-    @PostMapping("/filterDataProvince")
+    @GetMapping("/filterDataProvince")
     public String filterDataProvince(@RequestParam String filter, Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
         List<Post> filteredData = ps.allPostsFilterProvince(filter);
@@ -115,7 +116,7 @@ public class UserController {
     }
     
     // Filtra los posts por fecha de manera ascendente
-    @PostMapping("/filterDataDateAsc")
+    @GetMapping("/filterDataDateAsc")
     public String filterDataDateAsc(Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
         List<Post> filteredData = ps.allPostsFilterAsc();
@@ -125,13 +126,20 @@ public class UserController {
     }
     
     // Filtra los posts por fecha de manera descendente
-    @PostMapping("/filterDataDateDesc")
+    @GetMapping("/filterDataDateDesc")
     public String filterDataDateDesc(Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
         List<Post> filteredData = ps.allPostsFilterDesc();
         model.addAttribute("allPosts", filteredData);
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
         return "index.jsp"; 
+    }
+    
+    @GetMapping("/findUsers")
+    public String findUsers(Model model,@RequestParam("username") String username) {
+    	List<User> users = serv.usersContaining(username);
+    	model.addAttribute("users", users);
+    	return "findUsers.jsp";
     }
 	
 	@DeleteMapping("/user/delete/{id}")
@@ -146,6 +154,7 @@ public class UserController {
 		serv.deleteUser(id);
 		return "redirect:/dashboard";
 	}
+	
 	
 	
 }

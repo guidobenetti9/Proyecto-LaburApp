@@ -17,5 +17,7 @@ public interface MessageRepository extends CrudRepository<Message, Long>  {
 	List<Message> findAllByOrderByCreatedAtDesc();
 	// Me trae todos los mensajes en orden descendente
 	List<Message> findAllBySenderMessageId(Long id);
+	// Me trae todos los mensajes de un determinado Post
+	List<Message> findAllBypostMessageIdOrderByCreatedAtDesc(Long id);
 	
 }

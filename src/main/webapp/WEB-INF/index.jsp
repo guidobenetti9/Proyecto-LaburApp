@@ -61,22 +61,22 @@
         	<div uk-dropdown="animation: slide-bottom; animate-out: true">
 		    	<ul class="uk-nav uk-dropdown-nav">
 			        <li>
-				        <form action="/filterDataProvince" method="post">
+				        <form action="/filterDataProvince" method="get">
 	          					<button type="submit" name="filter" value="Catamarca">Provincia</button>
 	        			</form>
         			</li>
         			<li>
-				        <form action="/filterDataJob" method="post">
+				        <form action="/filterDataJob" method="get">
 	          					<button type="submit" name="filter" value="3">Rubro</button>
 	        			</form>
         			</li>
         			<li>
-				        <form action="/filterDataDateAsc" method="post">
+				        <form action="/filterDataDateAsc" method="get">
 	          					<button type="submit" name="filter">Mas Antiguos</button>
 	        			</form>
         			</li>
         			<li>
-				        <form action="filterDataDateDesc" method="post">
+				        <form action="filterDataDateDesc" method="get">
 	          					<button type="submit" name="filter">Mas Recientes</button>
 	        			</form>
         			</li>

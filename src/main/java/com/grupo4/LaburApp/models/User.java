@@ -11,8 +11,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
@@ -39,7 +39,13 @@ public class User {
 	@Size(min=2, message="last name needs at least 2 chars")
 	private String lastName;
 	
+	@NotEmpty(message="username is required.")
+	@Column(unique = true)
+	@Size(min=2, message="last name needs at least 2 chars")
+	private String username;
+	
 	@NotEmpty(message="Email is required.")
+	@Column(unique = true)
 	@Email(message="Email  needs at least 2 chars")
 	private String email;
 	
