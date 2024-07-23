@@ -79,7 +79,7 @@
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
                         <a href="#">
-                            <img src="logonuevo.png" class="uk-width-1-1">
+                            <img src="logonuevo.png" class="uk-width-1-1 uk-margin-left">
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">
@@ -128,7 +128,7 @@
                 </div>
                 <button class="uk-button uk-button-default" type="button">Zona</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav">
+                    <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
                         <c:forEach items="${provinces}" var="province">
                         	<li><a href="#">${province}</a></li>
                         	<li class="uk-nav-divider"></li>
