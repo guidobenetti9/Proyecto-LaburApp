@@ -38,6 +38,22 @@ public class UserController {
 		return "register.jsp";
 	}
 	
+	@GetMapping("/userProfile")
+	public String userProfile(Model model, HttpSession session) {
+		User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+		if(userTemp == null) {
+			return "redirect:/";
+		}
+		model.addAttribute("userInSession",userTemp);
+		return "userProfileLogin.jsp";
+	}
+	
+	@GetMapping("/userProfile/{id}")
+	public String userProfileNotLogin(Model model, @PathVariable("id") Long id) {
+		User user = serv.user(id);
+		model.addAttribute("user",user);
+		return "userProfile.jsp";
+	}
 	
 	@GetMapping("/login")
 	public String loguearse() {
