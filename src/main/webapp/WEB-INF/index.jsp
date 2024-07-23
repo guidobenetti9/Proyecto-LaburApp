@@ -15,108 +15,186 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit-icons.min.js"></script>
     <script src="uikit/dist/js/uikit-icons.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .uk-navbar-container {
+            background: rgb(32,32,32) !important;
+            background: linear-gradient(0deg, rgba(32,32,32,1) 0%, rgba(32,32,32,1) 0%, rgba(40,40,40,1) 50%, rgba(43,43,43,1) 100%) !important; /* Gradiente */
+        }
+        .uk-navbar-nav > li > a {
+            color: #fff !important; /* Color de texto blanco */
+        }
+        .uk-navbar-nav > li > a:hover {
+            color: #ffcc00 !important; /* Color de texto al pasar el mouse */
+        }
+        .uk-width-logo{
+            height: 50px;
+            width: 50px;
+        }
+        .uk-navbar-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .uk-search {
+            position: relative;
+            display: flex;
+            width: 700px; /* Ancho del contenedor de búsqueda */
+        }
+        .uk-search-input {
+            background-color: #fff !important; /* Fondo blanco */
+            width: 100%; /* Ancho del campo de búsqueda */
+            padding-right: 40px; /* Espacio para el ícono de la lupa */
+            color: #000 !important; /* Color del texto */
+        }
+        .uk-search-icon-flip {
+            position: absolute;
+            right: 10px;
+            top: 50%;            
+            color: #000 !important; /* Color del ícono */
+        }
+        .uk-search-input:focus {
+            border-color: #ffcc00 !important; /* Color del borde al hacer clic */
+        }
+    </style>
 </head>
 <body>
-    <header class="uk-section uk-section-secondary uk-padding-small">
-        <div class="uk-container uk-margin-medium-left">
-            <nav class="uk-navbar-container uk-navbar-transparent uk-flex-inline uk-width-1-1">
+    <div class="content">
+        <header>              
+            <!-- Barra de Navegación -->
+            <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
-                    <a href="#">
-                        <img src="logonuevo.png" class="uk-width-1-6">
-                    </a>
+                    <div class="uk-width-logo">
+                        <a href="#">
+                            <img src="logonuevo.png" class="uk-width-1-1">
+                        </a>
+                    </div>
+                    <ul class="uk-navbar-nav">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Ayuda</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-center">
+                    <form class="uk-search uk-search-default">
+                        <input class="uk-search-input" type="search" placeholder="Buscar">
+                        <button class="uk-search-icon-flip" uk-search-icon></button>
+                    </form>
                 </div>
                 <div class="uk-navbar-right uk-margin-medium-right">
-                    <h2>LaburApp: agarrá la pala</h2>
-                </div>
-            </nav>
-        </div>
-        <nav class="uk-navbar-container uk-navbar-transparent uk-flex-inline uk-width-1-1 uk-margin-top">
-            <div class="uk-navbar-left">
-                <form class="uk-search uk-search-default" action="/findUsers" method="get">
-                    <input class="uk-search-input" type="search" placeholder="Buscar" name="search">
-                    <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
-                </form>
-            </div>
-            <div class="uk-navbar-right">
-                <c:if test="${userInSession == null}">
-			        <a href="/register" class="uk-button uk-button-default">Registrarse</a>
-			        <a href="/login" class="uk-button uk-button-default">Iniciar sesión</a>
-		        </c:if>
-		        <c:if test="${userInSession != null}">
-                    <div class="uk-flex-inline">
-                        <div>
-                        	<a href="/newPost" class="uk-button uk-button-default">Crear nueva publicación</a>
-                            <p>${userInSession.firstName} ${userInSession.lastName}</p>
-                            <a href="#">Ver perfil</a>
+                    <c:if test="${userInSession == null}">
+                        <ul class="uk-navbar-nav">
+                            <li><a href="/register">Iniciar Sesión</a></li>
+                            <li><a href="/login">Registrarse</a></li>
+                        </ul>
+                    </c:if>
+                    <c:if test="${userInSession != null}">
+                        <div class="uk-flex-inline">
+                            <div>
+                                <a href="/newPost">Crear nueva publicación</a>
+                                <p>${userInSession.firstName} ${userInSession.lastName}</p>
+                                <a href="#">Ver perfil</a>
+                            </div>
+                            <a href="/logout">Cerrar sesión</a>
                         </div>
-			            <a href="/logout" class="uk-button uk-button-default">Cerrar sesión</a>
-                    </div>
-		        </c:if>
+                    </c:if>
+                </div>                       
+            </nav>
+        </header>
+        <main class="uk-flex-inline uk-width-1-1">
+            <div>
+                <button class="uk-button uk-button-default" type="button">Filtrar</button>
+                <div uk-dropdown="animation: slide-bottom; animate-out: true">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li>
+                            <form action="/filterDataProvince" method="post">
+                                <button type="submit" name="filter" value="Catamarca">Provincia</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/filterDataJob" method="post">
+                                <button type="submit" name="filter" value="3">Rubro</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="/filterDataDateAsc" method="post">
+                                <button type="submit" name="filter">Mas Antiguos</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="filterDataDateDesc" method="post">
+                                <button type="submit" name="filter">Mas Recientes</button>
+                            </form>
+                        </li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Rubro <span uk-icon="triangle-right"></span></a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Zona <span uk-icon="triangle-right"></span></a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#">Fecha <span uk-icon="triangle-right"></span></a></li>
+                    </ul>
+                </div>
             </div>
-        </nav>
-    </header>
-    <main class="uk-flex-inline uk-width-1-1">
-        <div>
-        	<button class="uk-button uk-button-default" type="button">Filtrar</button>
-        	<div uk-dropdown="animation: slide-bottom; animate-out: true">
-		    	<ul class="uk-nav uk-dropdown-nav">
-			        <li>
-				        <form action="/filterDataProvince" method="get">
-	          					<button type="submit" name="filter" value="Catamarca">Provincia</button>
-	        			</form>
-        			</li>
-        			<li>
-				        <form action="/filterDataJob" method="get">
-	          					<button type="submit" name="filter" value="3">Rubro</button>
-	        			</form>
-        			</li>
-        			<li>
-				        <form action="/filterDataDateAsc" method="get">
-	          					<button type="submit" name="filter">Mas Antiguos</button>
-	        			</form>
-        			</li>
-        			<li>
-				        <form action="filterDataDateDesc" method="get">
-	          					<button type="submit" name="filter">Mas Recientes</button>
-	        			</form>
-        			</li>
-        			<li class="uk-nav-divider"></li>
-			        <li><a href="#">Rubro <span uk-icon="triangle-right"></span></a></li>
-			        <li class="uk-nav-divider"></li>
-			        <li><a href="#">Zona <span uk-icon="triangle-right"></span></a></li>
-			        <li class="uk-nav-divider"></li>
-			        <li><a href="#">Fecha <span uk-icon="triangle-right"></span></a></li>
-    			</ul>
-			</div>
+            <div>
+                <div>
+                    <h2>Publicaciones</h2>
+                </div>
+                <div class="uk-width-1-1">
+                    <c:forEach items="${allPosts}" var="post">
+                        <div class="uk-card uk-card-default uk-card-hover uk-margin-top">
+                            <div class="uk-card-header">
+                                <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${post.createdAt}">${post.createdAt}</time></p>
+                                <h3 class="uk-card-title uk-margin-remove-top">${post.postTittle}</h3>
+                            </div>
+                            <div class="uk-card-body">
+                                <p>${post.city}, ${post.province}</p>
+                            </div>
+                            <div class="uk-card-footer">
+                                <div class="uk-flex-inline">
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                </div>
+                                <a href="/post/${post.id}" class="uk-button uk-button-text">Ver</a>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="uk-section uk-section-small uk-section-muted">
+        <div class="uk-container">
+            <div class="uk-grid-small" uk-grid>
+                <div class="uk-width-expand@s">
+                    <p class="uk-text-small">© 2024 LaburApp. Todos los derechos reservados.</p>
+                </div>
+                
+                <div class="uk-width-auto@s">
+                    <ul class="uk-iconnav">
+                        <li><a href="#" uk-icon="icon: facebook"></a></li>
+                        <li><a href="#" uk-icon="icon: twitter"></a></li>
+                        <li><a href="#" uk-icon="icon: instagram"></a></li>
+                        <li><a href="#" uk-icon="icon: linkedin"></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div>
-        	<div>
-        		<h2>Publicaciones</h2>
-        	</div>
-        	<div class="uk-width-1-1">
-	        	<c:forEach items="${allPosts}" var="post">
-	        			<div class="uk-card uk-card-default uk-card-hover uk-margin-top">
-							    <div class="uk-card-header">
-							    	<p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${post.createdAt}">${post.createdAt}</time></p>
-							        <h3 class="uk-card-title uk-margin-remove-top">${post.postTittle}</h3>
-							    </div>
-							    <div class="uk-card-body">
-							    	<p>${post.city}, ${post.province}</p>
-							    </div>
-							    <div class="uk-card-footer">
-							    	<div class="uk-flex-inline">
-							    		<span uk-icon="star"></span>
-							    		<span uk-icon="star"></span>
-							    		<span uk-icon="star"></span>
-							    		<span uk-icon="star"></span>
-							    		<span uk-icon="star"></span>
-							    	</div>
-							    	<a href="/post/${post.id}" class="uk-button uk-button-text">Ver</a>
-							    </div>
-						</div>
-	        	</c:forEach>
-        	</div>
-        </div>
-    </main>
+    </footer>
 </body>
 </html>
