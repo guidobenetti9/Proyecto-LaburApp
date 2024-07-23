@@ -32,9 +32,9 @@
         </div>
         <nav class="uk-navbar-container uk-navbar-transparent uk-flex-inline uk-width-1-1 uk-margin-top">
             <div class="uk-navbar-left">
-                <form class="uk-search uk-search-default">
-                    <input class="uk-search-input" type="search" placeholder="Buscar">
-                    <button class="uk-search-icon-flip" uk-search-icon></button>
+                <form class="uk-search uk-search-default" action="/findUsers" method="get">
+                    <input class="uk-search-input" type="search" placeholder="Buscar" name="search">
+                    <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
                 </form>
             </div>
             <div class="uk-navbar-right">

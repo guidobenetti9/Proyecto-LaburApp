@@ -136,7 +136,7 @@ public class UserController {
     }
     
     @GetMapping("/findUsers")
-    public String findUsers(Model model,@RequestParam("username") String username) {
+    public String findUsers(Model model,@RequestParam("search") String username) {
     	List<User> users = serv.usersContaining(username);
     	model.addAttribute("users", users);
     	return "findUsers.jsp";

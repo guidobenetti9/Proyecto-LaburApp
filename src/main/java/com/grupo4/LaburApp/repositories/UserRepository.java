@@ -14,6 +14,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	List <User>findAll();
 	User findByEmail(String email);
 	User findByEsAdmin(Boolean admin);
-	@Query(value = "SELECT * FROM Usuario u WHERE LOWER(u.username) LIKE LOWER(CONCAT('%', :username, '%'))", nativeQuery = true)
-	List<User>findByUsernameContaining(@Param("username") String username);
+	   @Query(value = "SELECT * FROM User u WHERE LOWER(u.username) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(u.firstName) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(u.lastName) LIKE LOWER(CONCAT('%', :keyword, '%'))", nativeQuery = true)
+	    List<User> findByKeywordContaining(@Param("keyword") String keyword);
 }

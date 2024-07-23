@@ -26,7 +26,7 @@ public class UserService {
 	
 	// Metodo que devuelve una lista de usuarios de acuerdo a su nombre (si hay coincidencias)
 	public List<User> usersContaining(String username){
-		return userRepo.findByUsernameContaining(username);
+		return userRepo.findByKeywordContaining(username);
 	}
 
 	
