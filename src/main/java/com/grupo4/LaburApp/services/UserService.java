@@ -23,6 +23,11 @@ public class UserService {
 	public User findAdmin(User admin) {
 		return userRepo.findByEsAdmin(admin.getEsAdmin());
 	}
+	
+	// Metodo que devuelve una lista de usuarios de acuerdo a su nombre (si hay coincidencias)
+	public List<User> usersContaining(String username){
+		return userRepo.findByKeywordContaining(username);
+	}
 
 	
 	/*Método que registre a un nuevo usuario*/

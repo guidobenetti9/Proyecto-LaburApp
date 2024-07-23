@@ -30,6 +30,10 @@ public class MessageService {
 	public List <Message> allMessagesUser(Long id){
 		return messageRepo.findAllBySenderMessageId(id);
 	}
+	// Trae todos los mensajes de un determinado post
+	public List <Message> allMessagesPost(Long id){
+		return messageRepo.findAllBypostMessageIdOrderByCreatedAtDesc(id);
+	}
 	//Devuelve un message
 		public Message message(Long id) {
 			return messageRepo.findById(id).orElse(null);
