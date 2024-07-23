@@ -33,6 +33,11 @@
 						<form:errors path="lastName"/>
 					</div>
 					<div class="cajita">
+						<form:label path="username" >Nombre de Usuario:</form:label>
+						<form:input path="username"/>
+						<form:errors path="username"/>
+					</div>
+					<div class="cajita">
 						<form:label path="email" >E-mail:</form:label>
 						<form:input path="email"/>
 						<form:errors path="email"/>
