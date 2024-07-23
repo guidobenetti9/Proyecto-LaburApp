@@ -1,5 +1,6 @@
 package com.grupo4.LaburApp.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.grupo4.LaburApp.models.Jobs;
 import com.grupo4.LaburApp.models.Post;
 import com.grupo4.LaburApp.models.User;
+import com.grupo4.LaburApp.services.JobsService;
 import com.grupo4.LaburApp.services.PostService;
 import com.grupo4.LaburApp.services.UserService;
 
@@ -30,6 +33,9 @@ public class UserController {
 	
 	@Autowired
 	PostService ps;
+	
+	@Autowired
+	JobsService js;
 	
 
 	
@@ -103,10 +109,23 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	private List<String> getProvinces() {
+        return Arrays.asList(
+            "Buenos Aires","CABA", "Catamarca", "Chaco", "Chubut", "Córdoba", 
+            "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", 
+            "La Rioja", "Mendoza", "Misiones", "Neuquén", "Río Negro", 
+            "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", 
+            "Santiago del Estero", "Tierra del Fuego", "Tucumán"
+        );
+}
+	
 	@GetMapping("/")
 	public String index(Model model,HttpSession session) {
 		
+		List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
 		model.addAttribute("allPosts", ps.allPosts());
+		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
 		return "index.jsp";
 	}

@@ -11,7 +11,7 @@
     color: #ffcc00 !important; 
 }
 .cont_loguito{
-    width: 80px;
+    width: 50px;
     margin: 20px 0px 20px 20px;
 }
 .cont_main{
@@ -46,5 +46,5 @@
 .cont_boton{
     display: flex;
     justify-content: end;
-    padding: 50px;
+    padding: 50px 0px;
 }

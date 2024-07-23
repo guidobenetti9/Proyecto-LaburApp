@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.grupo4.LaburApp.models.Jobs;
 import com.grupo4.LaburApp.models.Post;
@@ -96,6 +97,54 @@ public class PostController {
 		model.addAttribute("post", post);
 		model.addAttribute("reviews", reviews);
 		return "post.jsp";
+	}
+	
+	@GetMapping("/post/edit/{id}")
+	public String editPost(@PathVariable("id")Long id,
+			               HttpSession session,
+			               @ModelAttribute("newPost") Post newPost,
+			               Model model) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/";
+        }
+        
+        Post postToEdit = ps.post(id);
+        model.addAttribute("post", postToEdit);
+        if(userTemp.getId() != postToEdit.getCreatorPost().getId()) {
+        	return "redirect:/";
+        }
+        
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        model.addAttribute("days", Arrays.asList("Lunes", "Martes", "Miercoles","Jueves","Viernes","Sabado","Domingo"));
+        model.addAttribute("provinces", getProvinces());
+        
+        return "editPost.jsp";
+		
+	}
+	
+	@PutMapping("/editPost")
+	public String updatePost(HttpSession session,
+			                 @Valid @ModelAttribute("newPost") Post newPost,
+			                 BindingResult result,
+			                 Model model) {
+		
+		 User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+	        if(userTemp == null) {
+	            return "redirect:/";
+	        }
+	      if(result.hasErrors()) {
+	    	  List <Jobs> jobs = js.allJobs();
+	          model.addAttribute("allJobs", jobs);
+	          return "editPost.jsp";
+	      }else {
+	    	  ps.newPost(newPost);
+	    	  return "redirect:/";
+	      }
+		
 	}
 	
 	@DeleteMapping("/post/delete/{id}")

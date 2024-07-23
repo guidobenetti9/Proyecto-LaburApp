@@ -25,14 +25,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/post.css">
+    <link rel="stylesheet" href="/css/post.css">
 </head>
 <body>
     <header>
         <nav class="uk-navbar-container" uk-navbar>
             <div class="uk-navbar-left">
                 <div class="cont_loguito">
-                    <a href="/"><img src="logonuevo.png"></a>
+                    <a href="/"><img src="/logonuevo.png"></a>
                 </div>
                 <ul class="uk-navbar-nav">
                     <li><a href="/">Inicio</a></li>
@@ -42,8 +42,8 @@
             </div>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
-                    <li><a href="#">Iniciar Sesión</a></li>
-                    <li><a href="#">Registrarse</a></li>
+                    <li><a href="/login">Iniciar Sesión</a></li>
+                    <li><a href="/register">Registrarse</a></li>
                 </ul>
             </div>
         </nav>
@@ -56,7 +56,7 @@
             </div>
             <div class="cont_info">
                 <p>
-                    <b>Servicio:</b> ${post.jobsInPost}
+                    <b>Servicio:</b> ${post.jobsInPost.jobName}
                 </p>
                 <p>
                     <b>Descripción:</b>
@@ -73,6 +73,11 @@
                 <p>
                     <b>Disponibilidad:</b> ${post.availableDays} - ${post.availableHours}
                 </p>
+                <c:if test="${userInSession.id == post.creatorPost.id}">
+	                <div>
+	                	<a href="/post/edit/${post.id}" class="uk-button uk-button-danger">Editar Post</a>
+	                </div>
+                </c:if>
             </div>
             <hr class="uk-divider-icon">
             <div class="cont_reviews">
@@ -95,15 +100,15 @@
             <div class="cont_creareview">
                 <form:form action="/review/create/${post.id}" method="POST" modelAttribute="newReview" >
                     <div class="cajita">
-                        <form:textarea path="comment" class="uk-textarea" placholder="Deja tu reseña"/>
+                        <form:textarea path="comment" class="uk-textarea" placeholder="Deja tu reseña"/>
                     </div>
                     <div class="cajita">
                         <form:label path="stars" >Estrellas:</form:label>
                         <form:input path="stars" type="number" class="uk-input" />
                     </div>
-                    <form:hidden path="postReview" value="${post.id}" />
-					<form:hidden path="senderReview" value="${userInSession.id}" />
                     <div class="cont_boton">
+                    	<form:hidden path="postReview" value="${post.id}" />
+						<form:hidden path="senderReview" value="${userInSession.id}" />
 					    <input type="submit" class="uk-button uk-button-secondary" value="Enviar" >
                     </div>
                 </form:form>
@@ -127,5 +132,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
 </body>
 </html>

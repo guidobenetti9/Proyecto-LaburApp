@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="css/index.css">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
 
@@ -15,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit-icons.min.js"></script>
     <script src="uikit/dist/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
     <style>
         html, body {
             height: 100%;
@@ -52,19 +52,19 @@
         .uk-search {
             position: relative;
             display: flex;
-            width: 700px; /* Ancho del contenedor de búsqueda */
+            width: 700px; /* Ancho del contenedor de busqueda */
         }
         .uk-search-input {
             background-color: #fff !important; /* Fondo blanco */
-            width: 100%; /* Ancho del campo de búsqueda */
-            padding-right: 40px; /* Espacio para el ícono de la lupa */
+            width: 100%; /* Ancho del campo de bï¿½squeda */
+            padding-right: 40px; /* Espacio para el icono de la lupa */
             color: #000 !important; /* Color del texto */
         }
         .uk-search-icon-flip {
             position: absolute;
             right: 10px;
             top: 50%;            
-            color: #000 !important; /* Color del ícono */
+            color: #000 !important; /* Color del icono */
         }
         .uk-search-input:focus {
             border-color: #ffcc00 !important; /* Color del borde al hacer clic */
@@ -74,7 +74,7 @@
 <body>
     <div class="content">
         <header>              
-            <!-- Barra de Navegación -->
+            <!-- Barra de Navegacion-->
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
@@ -97,67 +97,68 @@
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/register">Iniciar Sesión</a></li>
-                            <li><a href="/login">Registrarse</a></li>
+                            <li><a href="/login">Iniciar Sesion</a></li>
+                            <li><a href="/register">Registrarse</a></li>
                         </ul>
                     </c:if>
                     <c:if test="${userInSession != null}">
                         <div class="uk-flex-inline">
-                            <div>
-                                <a href="/newPost">Crear nueva publicación</a>
+                            <div class="cont_botones">
                                 <p>${userInSession.firstName} ${userInSession.lastName}</p>
-                                <a href="#">Ver perfil</a>
+                                <a href="#" class="uk-link-muted">Ver perfil</a>
                             </div>
-                            <a href="/logout">Cerrar sesión</a>
+                            <div>
+                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesiÃ³n</a>
+                            </div>
                         </div>
                     </c:if>
                 </div>                       
             </nav>
         </header>
         <main class="uk-flex-inline uk-width-1-1">
-            <div>
-                <button class="uk-button uk-button-default" type="button">Filtrar</button>
-                <div uk-dropdown="animation: slide-bottom; animate-out: true">
+            <div class="cont_filtros">
+                <button class="uk-button uk-button-default" type="button">Rubro</button>
+                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
-                        <li>
-                            <form action="/filterDataProvince" method="post">
-                                <button type="submit" name="filter" value="Catamarca">Provincia</button>
-                            </form>
-                        </li>
-                        <li>
-                            <form action="/filterDataJob" method="post">
-                                <button type="submit" name="filter" value="3">Rubro</button>
-                            </form>
-                        </li>
-                        <li>
-                            <form action="/filterDataDateAsc" method="post">
-                                <button type="submit" name="filter">Mas Antiguos</button>
-                            </form>
-                        </li>
-                        <li>
-                            <form action="filterDataDateDesc" method="post">
-                                <button type="submit" name="filter">Mas Recientes</button>
-                            </form>
-                        </li>
+                        <c:forEach items="${allJobs}" var="job">
+                        	<li><a href="#">${job.jobName}</a></li>
+                        	<li class="uk-nav-divider"></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <button class="uk-button uk-button-default" type="button">Zona</button>
+                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <c:forEach items="${provinces}" var="province">
+                        	<li><a href="#">${province}</a></li>
+                        	<li class="uk-nav-divider"></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <button class="uk-button uk-button-default" type="button">Fecha</button>
+                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li><a href="#">Mas antiguos</span></a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Rubro <span uk-icon="triangle-right"></span></a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#">Zona <span uk-icon="triangle-right"></span></a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="#">Fecha <span uk-icon="triangle-right"></span></a></li>
+                        <li><a href="#">Mas recientes</a></li>
                     </ul>
                 </div>
             </div>
             <div>
-                <div>
+                <div class="cont_titulo">
                     <h2>Publicaciones</h2>
+                    <c:if test="${userInSession != null}">
+                    	<div class="cont_publi">
+                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicaciÃ³n</a>
+                    	</div>
+                    </c:if>
                 </div>
                 <div class="uk-width-1-1">
                     <c:forEach items="${allPosts}" var="post">
                         <div class="uk-card uk-card-default uk-card-hover uk-margin-top">
                             <div class="uk-card-header">
                                 <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${post.createdAt}">${post.createdAt}</time></p>
-                                <h3 class="uk-card-title uk-margin-remove-top">${post.postTittle}</h3>
+                                <h3 class="uk-card-title uk-margin-remove-top">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
                             </div>
                             <div class="uk-card-body">
                                 <p>${post.city}, ${post.province}</p>
@@ -182,7 +183,7 @@
         <div class="uk-container">
             <div class="uk-grid-small" uk-grid>
                 <div class="uk-width-expand@s">
-                    <p class="uk-text-small">© 2024 LaburApp. Todos los derechos reservados.</p>
+                    <p class="uk-text-small">Â© 2024 LaburApp. Todos los derechos reservados.</p>
                 </div>
                 
                 <div class="uk-width-auto@s">
@@ -196,5 +197,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
 </body>
 </html>

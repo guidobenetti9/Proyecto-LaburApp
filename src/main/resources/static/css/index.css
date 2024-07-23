@@ -1,1 +1,14 @@
 @charset "ISO-8859-1";
+
+.cont_filtros{
+	width: 200px;
+	padding: 30px;
+}
+.uk-button-default{
+	width: 200px;
+}
+.cont_titulo{
+	width: 700px;
+	display: flex;
+	justify-content: center;
+}

@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+.cont_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222222;
+    padding: 20px 50px;
+}
+.cont_loguito{
+    width: 80px;
+}
+.uk-h2{
+    color: white;
+    margin: 0;
+    font-family: "Patua One", serif;
+}
+main{
+    display: flex;
+}
+.cont_titulo{
+    display: flex;
+    justify-content: center;
+}
+.uk-h3{
+    font-size: 50px;
+    font-family: "Zain", sans-serif;
+}
+.cont_main{
+    margin: 0 auto;
+    border: 2px solid rgba(0, 0, 0, .08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);;
+    width: 70%;
+    font-size: 30px;
+    font-family: "Zain", sans-serif;
+}
+.cajita{
+    padding: 15px;
+    display: block;
+}
+.cont_botones{
+    display: flex;
+    justify-content: end;
+    padding: 15px;
+}
