@@ -41,7 +41,7 @@ public class User {
 	
 	@NotEmpty(message="username is required.")
 	@Column(unique = true)
-	@Size(min=2, message="last name needs at least 2 chars")
+	@Size(min=2, message="username needs at least 2 chars")
 	private String username;
 	
 	@NotEmpty(message="Email is required.")

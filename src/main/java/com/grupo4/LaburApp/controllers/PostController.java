@@ -35,6 +35,7 @@ public class PostController {
 	
 	@Autowired
 	ReviewService rs;
+	
 	private List<String> getProvinces() {
 	        return Arrays.asList(
 	            "Buenos Aires","CABA", "Catamarca", "Chaco", "Chubut", "Córdoba", 
@@ -87,7 +88,9 @@ public class PostController {
 	}
 	
 	@GetMapping("/post/{id}")
-	public String postDetails(Model model, @PathVariable("id") Long id,@ModelAttribute("newReview") Review newReview) {
+	public String postDetails(Model model, 
+			                  @PathVariable("id") Long id,
+			                  @ModelAttribute("newReview") Review newReview) {
 		Post post = ps.post(id);
 		List<Review> reviews = rs.reviewsByPost(id);
 		model.addAttribute("post", post);

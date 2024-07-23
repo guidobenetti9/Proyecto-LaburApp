@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+.uk-navbar-container {
+    background: rgb(32,32,32) !important;
+    background: linear-gradient(0deg, rgba(32,32,32,1) 0%, rgba(32,32,32,1) 0%, rgba(40,40,40,1) 50%, rgba(43,43,43,1) 100%) !important; 
+}
+.uk-navbar-nav > li > a {
+    color: #fff !important; 
+}
+.uk-navbar-nav > li > a:hover {
+    color: #ffcc00 !important; 
+}
+.cont_loguito{
+    width: 80px;
+    margin: 20px 0px 20px 20px;
+}
+.cont_main{
+    margin: 0 auto;
+    border: 2px solid rgba(0, 0, 0, .08);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);;
+    width: 70%;
+    font-size: 30px;
+    font-family: "Zain", sans-serif;
+}
+.cont_titulo{
+    padding-top: 50px;
+    padding-left: 50px;
+    margin-bottom: 30px;
+}
+.uk-h2{
+    margin: 0;
+}
+.uk-h3{
+    margin: 0;
+}
+.cont_info{
+    padding-left: 50px;
+}
+.cont_reviews{
+    padding-left: 50px;
+    width: 700px;
+}
+.cont_creareview{
+    padding: 50px;
+}
+.cont_boton{
+    display: flex;
+    justify-content: end;
+    padding: 50px;
+}
