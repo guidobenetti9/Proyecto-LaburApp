@@ -147,17 +147,20 @@ public class AdminController {
 							 RedirectAttributes redirectAttributes, /*usar mensajes de Flash*/   
 							 HttpSession session) {
 		User userAdminTryingLogin = serv.login(email, password); //Obj User o null
-		User esAdmin = serv.findAdmin(userAdminTryingLogin);
+		
 		if(userAdminTryingLogin == null) {
 			//Tiene algo mal
 			redirectAttributes.addFlashAttribute("errorLogin", "Wrong email/password");
 			return "redirect:/";
-		} else if(esAdmin.getEsAdmin()==false || esAdmin.getEsAdmin()==null) {
-			redirectAttributes.addFlashAttribute("errorLogin", "No sos admin");
-			return "redirect:/";
-		}else {
-			session.setAttribute("userInSession", userAdminTryingLogin); //Guardando en sesión el objeto de User
-			return "redirect:/dashboard";}
+		} else {
+			User esAdmin = serv.findAdmin(userAdminTryingLogin);
+			if(esAdmin.getEsAdmin()==false || esAdmin.getEsAdmin()==null) {
+				redirectAttributes.addFlashAttribute("errorLogin", "No sos admin");
+				return "redirect:/"; 
+			}else {
+				session.setAttribute("userInSession", userAdminTryingLogin); //Guardando en sesión el objeto de User
+				return "redirect:/dashboard";}
+		} 
 		
 	}
 	@GetMapping("/newJob")

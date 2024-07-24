@@ -21,6 +21,7 @@ import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.services.JobsService;
 import com.grupo4.LaburApp.services.PostService;
 import com.grupo4.LaburApp.services.ReviewService;
+import com.grupo4.LaburApp.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -36,6 +37,9 @@ public class PostController {
 	
 	@Autowired
 	ReviewService rs;
+	
+	@Autowired
+	UserService us;
 	
 	private List<String> getProvinces() {
 	        return Arrays.asList(
@@ -158,5 +162,43 @@ public class PostController {
 				
 		ps.deletePost(id);
 		return "redirect:/adminposts";
+	}
+	
+    @GetMapping("/favoritePosts/{id}")
+    public String favoritePostsView(@PathVariable("id") Long id,
+    						Model model,
+    						HttpSession session) {
+        User userTemp = (User) session.getAttribute("userInSession");//obj user o null
+        if(userTemp==null) {
+            return "redirect:/";
+        }
+        
+        Post favoritePosts= ps.post(id);
+        User UserWithFavoritePosts = us.user(id);
+        
+        model.addAttribute("UserInFavorites", UserWithFavoritePosts);
+        model.addAttribute("allFavorites", favoritePosts);
+
+    	return "favorites.jsp";
+    }
+    
+	@PostMapping("/favoritePost/create")
+	public String addFavorite(@Valid @ModelAttribute("postFav") Post postFav,
+								BindingResult result,
+								HttpSession session,
+								Model model) {
+        User userTemp = (User) session.getAttribute("userInSession");//obj user o null
+        if(userTemp==null) {
+            return "redirect:/";
+        }
+        if(result.hasErrors()) {
+        	return "redirect:/";
+        }else {
+        	ps.newPost(postFav);
+        	User myUser = us.user(userTemp.getId());
+        	myUser.getFavoritePosts().add(postFav);
+        	us.saveUser(myUser);
+        	return "redirect:/";
+        }	
 	}
 }
