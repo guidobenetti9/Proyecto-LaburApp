@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Usuarios</title>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
 
@@ -83,9 +83,9 @@
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/help">Ayuda</a></li>
+                        <li><a href="/contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
@@ -117,19 +117,6 @@
         </header>
         <main class="uk-flex-inline uk-width-1-1">
             <div class="cont_filtros">
-                <button class="uk-button uk-button-default" type="button">Cotizacion Dolar</button>
-                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav">
-                        <c:forEach items="${dolares}" var="dolar">
-                        	<li>${dolar.nombre}</li>
-                        	<li>Compra: $${dolar.compra}</li>
-                        	<li>Venta: $${dolar.venta}</li>
-                        	<li class="uk-nav-divider"></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-                
-                
                 <button class="uk-button uk-button-default" type="button">Rubro</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
