@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Favoritos</title>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
 
@@ -82,9 +82,9 @@
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/help">Ayuda</a></li>
+                        <li><a href="/contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
@@ -115,7 +115,7 @@
             </nav>
         </header>
         <main class="uk-flex-inline uk-width-1-1">
-            <div class="cont_filtros">
+            <!--  <div class="cont_filtros">
                 <button class="uk-button uk-button-default" type="button">Rubro</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
@@ -142,17 +142,17 @@
                         <li><a href="#">Mas recientes</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
             <div>
                 <div class="cont_titulo">
                     <h2>Tus publicaciones favoritas</h2>
                 </div>
                 <div class="uk-width-1-1">
-                    <c:forEach items="${allFavorites}" var="favPost">
+                    <c:forEach items="${UserInFavorites.favoritePosts}" var="favPost">
                         <div class="uk-card uk-card-default uk-card-hover uk-margin-top">
                             <div class="uk-card-header">
                                 <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${favPost.createdAt}">${favPost.createdAt}</time></p>
-                                <h3 class="uk-card-title uk-margin-remove-top">${favPost.creatorPost.firstName} ${favPost.creatorPost.lastName} - ${favPost.jobsInPost.jobName}</h3>
+                                <h3 class="uk-card-title uk-margin-remove-top"> ${favPost.postTittle}</h3>
                             </div>
                             <div class="uk-card-body">
                                 <p>${favPost.city}, ${favPost.province}</p>

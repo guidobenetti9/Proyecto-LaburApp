@@ -36,8 +36,8 @@
                 </div>
                 <ul class="uk-navbar-nav">
                     <li><a href="/">Inicio</a></li>
-                    <li><a href="#">Cómo Funciona</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="/help">Cómo Funciona</a></li>
+                    <li><a href="/contact">Contacto</a></li>
                 </ul>
             </div>
             <div class="uk-navbar-right">
@@ -86,6 +86,7 @@
                     <div class="uk-card uk-card-default uk-margin-top">
                         <div class="uk-card-header">
                             <p>${review.senderReview.firstName} ${review.senderReview.lastName}</p>
+                            
                             <p>${review.createdAt}</p>
                         </div>
                         <div class="uk-card-body">
