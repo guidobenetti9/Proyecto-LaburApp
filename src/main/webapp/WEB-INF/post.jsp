@@ -56,6 +56,7 @@
         		</c:if>
         	</div>
             <div class="cont_titulo">
+            	<a href="/favoritePost/add/${post.id}">Add favorites</a>
                 <h2 class="uk-h2">${post.creatorPost.firstName} ${post.creatorPost.lastName}</h2>
                 <h3 class="uk-h3">${post.city}, ${post.province}</h3>
             </div>

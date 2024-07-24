@@ -182,22 +182,15 @@ public class PostController {
     	return "favorites.jsp";
     }
     
-	@PostMapping("/favoritePost/create")
-	public String addFavorite(@Valid @ModelAttribute("postFav") Post postFav,
-								BindingResult result,
-								HttpSession session,
-								Model model) {
+	@GetMapping("/favoritePost/add/{id}")
+	public String addFavorite(@PathVariable("id") Long id,
+								HttpSession session
+								) {
         User userTemp = (User) session.getAttribute("userInSession");//obj user o null
         if(userTemp==null) {
             return "redirect:/";
-        }
-        if(result.hasErrors()) {
-        	return "redirect:/";
         }else {
-        	ps.newPost(postFav);
-        	User myUser = us.user(userTemp.getId());
-        	myUser.getFavoritePosts().add(postFav);
-        	us.saveUser(myUser);
+        	ps.addFavorite(userTemp.getId(), id);
         	return "redirect:/";
         }	
 	}
