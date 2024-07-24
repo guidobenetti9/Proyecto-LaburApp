@@ -80,6 +80,13 @@ public class User {
 	//@NotEmpty
 	private String alternativePhone;
 	
+	private String facebook;
+	
+	private String twitter;
+	
+	private String instagram;
+	
+	private String linkedin;
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;

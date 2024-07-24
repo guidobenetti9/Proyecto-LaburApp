@@ -11,6 +11,7 @@ public class HelpController {
 		return "help.jsp";
 	}
 	
+	// Vista de contacto
 	@GetMapping("/contact")
 	public String contact() {
 		return "contact.jsp";
