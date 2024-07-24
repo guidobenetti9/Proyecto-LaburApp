@@ -29,12 +29,12 @@
         }
         .uk-navbar-container {
             background: rgb(33,33,33) !important;
-			background: linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important; /* Gradiente */
+			background: linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important; /* Gradiente */			
         }
-        .uk-navbar-nav > li > a {
+        .uk-navbar-nav> li > a {
             color: #fff !important; /* Color de texto blanco */
         }
-        .uk-navbar-nav > li > a:hover {
+        .uk-navbar-nav> li > a:hover {
             color: #ffcc00 !important; /* Color de texto al pasar el mouse */
         }
         .uk-width-logo {
@@ -67,6 +67,30 @@
         .uk-search-input:focus {
             border-color: #ffcc00 !important; /* Color del borde al hacer clic */
         }
+          	
+    	.register-button{  	
+    	list-style-type: none;  	
+    	}
+	    .btn-registrarse {
+        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
+        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
+        text-decoration: none;/* Elimina el subrayado */
+        border-radius: 4px; /* Bordes redondeados*/
+        display: inline-block;
+        box-sizing: border-box;
+        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
+        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
+        text-align: center; /* Centra el texto horizontalmente */
+        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
+    	}
+	
+	    .btn-registrarse:hover {
+	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+	        color: #000000 !important; /* Color del texto cuando el ursor pasa sobre el boton */
+	        text-decoration: none;
+	        font-weight: bold; /* Texto en negrita*/
+	    }
+	    
         .main-title {
             text-align: center;
             margin-top: 20px;
@@ -108,7 +132,7 @@
         }
         
         /*AQUI COMIENZA EL FOOTER*/
-       footer {
+       	footer {
             background: rgb(33,33,33);
 			background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%);
             padding: 20px 0;
@@ -202,6 +226,18 @@
         .footer-container + .separator {
             display: block;
         }
+         .uk-button-default {
+        border: 2px solid #dfb550; /* Color del borde*/
+        color: #000000; /* Color del texto*/
+        transition: background-color 0.3s, color 0.3s;
+    	}
+
+    	.uk-button-default:hover {
+    	border: 2px solid #000000;
+        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
+        font-weight: bold; /* Texto en negrita*/
+    	}
     </style>
 </head>
 <body>
@@ -229,8 +265,11 @@
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesión</a></li>
-                            <li><a href="/register">Registrarse</a></li>
+                            <li><a href="/login">Iniciar Sesión</a></li>                           
+                            
+                        </ul>
+                        <ul class="register-button">
+                        	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
                         </ul>
                     </c:if>
                     <c:if test="${userInSession != null}">
