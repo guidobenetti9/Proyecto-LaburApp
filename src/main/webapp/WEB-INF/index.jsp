@@ -227,7 +227,7 @@
             display: block;
         }
          .uk-button-default {
-        border: 2px solid #dfb550; /* Color del borde*/
+        border: 2px solid #ffffff; /* Color del borde*/
         color: #000000; /* Color del texto*/
         transition: background-color 0.3s, color 0.3s;
     	}

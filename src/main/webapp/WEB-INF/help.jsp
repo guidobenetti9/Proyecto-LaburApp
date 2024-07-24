@@ -124,6 +124,18 @@
         .footer-container + .separator {
             display: block;
         }
+         .uk-button-default {
+        border: 2px solid #ffffff; /* Color del borde*/
+        color: #000000; /* Color del texto*/
+        transition: background-color 0.3s, color 0.3s;
+    	}
+
+    	.uk-button-default:hover {
+    	border: 2px solid #000000;
+        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
+        font-weight: bold; /* Texto en negrita*/
+    	}
     </style>
 </head>
 <body>
