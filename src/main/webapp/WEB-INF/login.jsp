@@ -290,7 +290,7 @@
             <div class="footer-column">
                 <h5>SOPORTE</h5>
                 <ul>
-                    <li><a th:href="">Contacto</a></li>
+                    <li><a th:href="@{/contact}">Contacto</a></li>
                     <li><a th:href="@{/help}">Ayuda</a></li>
                 </ul>
             </div>

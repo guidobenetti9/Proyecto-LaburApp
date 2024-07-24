@@ -35,7 +35,7 @@
                 <a href="/"><img src="logonuevo.png"></a>
             </div>
             <div>
-                <h2 class="uk-h2">laburApp: agarrá la pala</h2>
+                <h2 class="uk-h2">laburApp</h2>
             </div>
         </div>
     </header>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Principal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
@@ -216,7 +216,7 @@
         }
 
         .social-icons a:hover {
-            color: #ddd;
+            color: #dfb550;
         }
 
         .footer-container > .footer-column {
@@ -252,8 +252,8 @@
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">   
-                        <li><a href="#">Contacto</a></li>                    
-                        <li><a href="#">Ayuda</a></li>                      
+                        <li><a href="/contact">Contacto</a></li>                    
+                        <li><a href="/help">Ayuda</a></li>                      
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
