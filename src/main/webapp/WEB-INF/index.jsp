@@ -78,25 +78,14 @@
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
-<<<<<<< HEAD
+
                         <a href="/">
-                            <img src="logonuevo.png" class="uk-width-1-1">
-=======
-                        <a href="#">
-                            <img src="logonuevo.png" class="uk-width-1-1 uk-margin-left">
->>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
-                        </a>
+                            <img src="logonuevo.png" class="uk-width-1-1 uk-margin-left">                        </a>
                     </div>
-<<<<<<< HEAD
-                    <ul class="uk-navbar-nav">
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="#">Ayuda</a></li>
-                        <li><a href="#">Contacto</a></li>
-=======
+
                     <ul class="uk-navbar-nav">   
                     	<li><a href="#">Contacto</a></li>                    
                         <li><a href="#">Ayuda</a></li>                      
->>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
@@ -119,11 +108,8 @@
                                 <a href="#" class="uk-link-muted">Ver perfil</a>
                             </div>
                             <div>
-<<<<<<< HEAD
-                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
-=======
-                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesion</a>
->>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
+
+                 	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesion</a>
                             </div>
                         </div>
                     </c:if>
@@ -134,7 +120,7 @@
             <div class="cont_filtros">
                 <button class="uk-button uk-button-default" type="button">Rubro</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav">
+                    <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
                         <c:forEach items="${allJobs}" var="job">
                         	<li><a href="/filterDataJob?job=${job.id}">${job.jobName}</a></li>
                         	<li class="uk-nav-divider"></li>
@@ -172,11 +158,7 @@
                     <h2>Publicaciones</h2>
                     <c:if test="${userInSession != null}">
                     	<div class="cont_publi">
-<<<<<<< HEAD
                     		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicación</a>
-=======
-                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicacion</a>
->>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
                     	</div>
                     </c:if>
                 </div>
