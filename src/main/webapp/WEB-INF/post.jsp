@@ -50,6 +50,11 @@
     </header>
     <main>
         <div class="cont_main">
+        	<div class="cont_fav">
+        		<c:if test="${userInSession.id != post.creatorPost.id}">
+        			
+        		</c:if>
+        	</div>
             <div class="cont_titulo">
                 <h2 class="uk-h2">${post.creatorPost.firstName} ${post.creatorPost.lastName}</h2>
                 <h3 class="uk-h3">${post.city}, ${post.province}</h3>
