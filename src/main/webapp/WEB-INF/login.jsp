@@ -259,7 +259,7 @@
                 <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
                 
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit">Ingresar</button>
                 <div class="register-links">
                     <a th:href="@{/forgot-password}">¿Olvidaste tu contraseña?</a>
                     <a th:href="@{/register}">Crear una cuenta nueva</a>
