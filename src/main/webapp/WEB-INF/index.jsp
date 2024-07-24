@@ -49,11 +49,11 @@
         .uk-search {
             position: relative;
             display: flex;
-            width: 700px; /* Ancho del contenedor de búsqueda */
+            width: 700px; /* Ancho del contenedor de bï¿½squeda */
         }
         .uk-search-input {
             background-color: #fff !important; /* Fondo blanco */
-            width: 100%; /* Ancho del campo de búsqueda */
+            width: 100%; /* Ancho del campo de bï¿½squeda */
             padding-right: 40px; /* Espacio para el icono de la lupa */
             color: #000 !important; /* Color del texto */
         }
@@ -80,7 +80,6 @@
             margin-top: 20px;
         }
         .button-container div {
-            width: 45%;
             text-align: center;
         }
         .filter-container {
@@ -94,7 +93,7 @@
         .divider {
             border-top: 1px solid #ccc;
             margin: 20px auto;
-            width: 80%; /* Reducir el ancho de las líneas horizontales */
+            width: 80%; /* Reducir el ancho de las lï¿½neas horizontales */
         }
         .vertical-divider {
             border-left: 1px solid #ccc;
@@ -111,7 +110,7 @@
 <body>
     <div class="content">
         <header>              
-            <!-- Barra de Navegación -->
+            <!-- Barra de Navegaciï¿½n -->
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
@@ -133,7 +132,7 @@
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesión</a></li>
+                            <li><a href="/login">Iniciar Sesiï¿½n</a></li>
                             <li><a href="/register">Registrarse</a></li>
                         </ul>
                     </c:if>
@@ -144,7 +143,7 @@
                                 <a href="#" class="uk-link-muted">Ver perfil</a>
                             </div>
                             <div>
-                                <a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
+                                <a href="/logout" class="uk-button uk-button-danger">Cerrar sesiï¿½n</a>
                             </div>
                         </div>
                     </c:if>
@@ -154,7 +153,7 @@
         
         <div class="main-title">
             <h1>LaburApp</h1>
-            <p class="description">Encuentra y publica servicios fácilmente. Conéctate con profesionales y clientes en un solo lugar.</p>
+            <p class="description">Encuentra y publica servicios fï¿½cilmente. Conï¿½ctate con profesionales y clientes en un solo lugar.</p>
         </div>
 
         <div class="divider"></div>
@@ -183,9 +182,9 @@
                 <button class="uk-button uk-button-default" type="button">Fecha</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
-                        <li><a href="#">Más antiguos</a></li>
+                        <li><a href="#">Mï¿½s antiguos</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Más recientes</a></li>
+                        <li><a href="#">Mï¿½s recientes</a></li>
                     </ul>
                 </div>
             </div>
@@ -260,7 +259,7 @@
         <div class="uk-container">
             <div class="uk-grid-small" uk-grid>
                 <div class="uk-width-expand@s">
-                    <p class="uk-text-small">© 2024 LaburApp. Todos los derechos reservados.</p>
+                    <p class="uk-text-small">ï¿½ 2024 LaburApp. Todos los derechos reservados.</p>
                 </div>
                 
                 <div class="uk-width-auto@s">

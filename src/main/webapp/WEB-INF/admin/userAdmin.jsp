@@ -11,22 +11,26 @@
 <!-- UIkit JS -->
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit-icons.min.js"></script>
+
+<link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 	<div class="uk-container">
 		<nav class="uk-navbar-container">
 			<div class="uk-flex-inline uk-flex-center">
 				<h2>ADMIN | LABURAPP</h2>
-				<a class="uk-button uk-button-default" href="/logout">Cerrar sesión</a>
+				<div>
+					<a class="uk-button uk-button-default" href="/logout">Cerrar sesión</a>
+				</div>
 			</div>
 			<div>
-				<ul class="uk-list uk-flex-inline uk-width-1-6">
-					<li><a class="uk-button uk-button-default" href="/dashboard">Users</a></li>
-					<li><a class="uk-button uk-button-default" href="/adminmessages">Messages</a></li>
-					<li><a class="uk-button uk-button-default" href="/adminjobs">Jobs</a></li>
-					<li><a class="uk-button uk-button-default" href="/adminposts">Posts</a></li>
-					<li><a class="uk-button uk-button-default" href="/adminreviews">Reviews</a></li>
-					<li><a class="uk-button uk-button-default" href="/adminworks">Works</a></li>
+				<ul class="uk-list uk-flex-inline uk-width-1-1">
+					<li class="width-1-1"><a class="uk-button uk-button-default " href="/dashboard">Users</a></li>
+					<li class="width-1-6"><a class="uk-button uk-button-default " href="/adminmessages">Messages</a></li>
+					<li class="width-1-6"><a class="uk-button uk-button-default " href="/adminjobs">Jobs</a></li>
+					<li class="width-1-6"><a class="uk-button uk-button-default " href="/adminposts">Posts</a></li>
+					<li class="width-1-6"><a class="uk-button uk-button-default " href="/adminreviews">Reviews</a></li>
+					<li class="width-1-6"><a class="uk-button uk-button-default " href="/adminworks">Works</a></li>
 				</ul>
 			</div>
 		</nav>
