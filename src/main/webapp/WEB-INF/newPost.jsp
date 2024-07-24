@@ -86,6 +86,13 @@
                         <form:input path="city" class="uk-input"/>
                         <form:errors path="city" class="uk-text-danger uk-text-small"/>
                     </div>
+                    <div class="cajita">
+                        <form:label path="typePost" >Tipo:</form:label>
+                        <form:select path="typePost" class="uk-select">
+                             <form:option value="Pedido">Pedido</form:option>
+           					 <form:option value="Ofrecido">Ofrecido</form:option>
+                        </form:select>
+                    </div>
                     <div class="cont_botones">
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>
                         <a href="/" class="uk-button uk-button-danger uk-margin-right">Cancelar</a>

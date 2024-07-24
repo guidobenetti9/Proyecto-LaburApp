@@ -60,4 +60,11 @@ public class PostService {
 	public List <Post> allPostsFilterDesc(){
 		return postRepo.findAllByOrderByCreatedAtDesc();
 	}
+	
+	// Devuelve todos los posts de acuerdo a su tipo ordenados de forma descendente 
+	public List <Post> allPostsFilterType(String typePost){
+		return postRepo.findAllByTypePostOrderByCreatedAtAsc(typePost);
+	}
+	
+	
 }

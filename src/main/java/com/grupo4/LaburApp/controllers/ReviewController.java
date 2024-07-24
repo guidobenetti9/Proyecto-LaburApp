@@ -40,7 +40,11 @@ public class ReviewController {
 	}*/
 	
 	@PostMapping("/review/create/{postId}")
-	public String newPost(@PathVariable("postId") Long postId, Model model,@Valid @ModelAttribute("newReview") Review newReview, BindingResult result) {
+	public String newPost(HttpSession session,@PathVariable("postId") Long postId, Model model,@Valid @ModelAttribute("newReview") Review newReview, BindingResult result) {
+		User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+		if(userTemp == null) {
+			return "redirect:/login";
+		}
 		if(result.hasErrors()) {
 			Post post = ps.post(postId);
 			List<Review> reviews = rs.reviewsByPost(postId);

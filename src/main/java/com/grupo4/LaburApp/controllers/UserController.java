@@ -2,6 +2,7 @@ package com.grupo4.LaburApp.controllers;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grupo4.LaburApp.models.Jobs;
@@ -20,6 +22,7 @@ import com.grupo4.LaburApp.models.Post;
 import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.services.JobsService;
 import com.grupo4.LaburApp.services.PostService;
+import com.grupo4.LaburApp.services.ReviewService;
 import com.grupo4.LaburApp.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -36,6 +39,9 @@ public class UserController {
 	
 	@Autowired
 	JobsService js;
+	
+	@Autowired
+	ReviewService rs;
 	
 
 	
@@ -124,6 +130,8 @@ public class UserController {
 		
 		List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
+        Map<Long, Double> reviews = rs.getAverageRatingByPost();;
+        model.addAttribute("allReviews",reviews);
 		model.addAttribute("allPosts", ps.allPosts());
 		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
@@ -132,20 +140,45 @@ public class UserController {
 	
 	// Filtra los post por un determinado Job (Rubro)
 	@GetMapping("/filterDataJob")
-    public String filterDataJob(@RequestParam Long filter, Model model,HttpSession session) {
+    public String filterDataJob(@RequestParam("job") Long job, Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
-        List<Post> filteredData = ps.allPostsFilterJob(filter);
+        List<Post> filteredData = ps.allPostsFilterJob(job);
         model.addAttribute("allPosts", filteredData);
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        Map<Long, Double> reviews = rs.getAverageRatingByPost();;
+        model.addAttribute("allReviews",reviews);
+		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
         return "index.jsp"; 
     }
     
     // Filtra los post de una determinada provincia
     @GetMapping("/filterDataProvince")
-    public String filterDataProvince(@RequestParam String filter, Model model,HttpSession session) {
+    public String filterDataProvince(@RequestParam("province") String province, Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
-        List<Post> filteredData = ps.allPostsFilterProvince(filter);
+        List<Post> filteredData = ps.allPostsFilterProvince(province);
         model.addAttribute("allPosts", filteredData);
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        Map<Long, Double> reviews = rs.getAverageRatingByPost();;
+        model.addAttribute("allReviews",reviews);
+		model.addAttribute("provinces", getProvinces());
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+        return "index.jsp"; 
+    }
+    
+    // Filtra los post de un determinado tipo
+    @GetMapping("/filterTypePost")
+    public String filterTypePost(@RequestParam("typePost") String typePost, Model model,HttpSession session) {
+        // Lógica para obtener los datos filtrados
+        List<Post> filteredData = ps.allPostsFilterType(typePost);
+        model.addAttribute("allPosts", filteredData);
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        Map<Long, Double> reviews = rs.getAverageRatingByPost();;
+        model.addAttribute("allReviews",reviews);
+		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
         return "index.jsp"; 
     }
@@ -156,6 +189,11 @@ public class UserController {
         // Lógica para obtener los datos filtrados
         List<Post> filteredData = ps.allPostsFilterAsc();
         model.addAttribute("allPosts", filteredData);
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        Map<Long, Double> reviews = rs.getAverageRatingByPost();;
+        model.addAttribute("allReviews",reviews);
+		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
         return "index.jsp"; 
     }
@@ -166,14 +204,30 @@ public class UserController {
         // Lógica para obtener los datos filtrados
         List<Post> filteredData = ps.allPostsFilterDesc();
         model.addAttribute("allPosts", filteredData);
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        Map<Long, Double> reviews = rs.getAverageRatingByPost();;
+        model.addAttribute("allReviews",reviews);
+		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
         return "index.jsp"; 
     }
     
     @GetMapping("/findUsers")
-    public String findUsers(Model model,@RequestParam("search") String username) {
+    public String findUsers(HttpSession session,Model model,@RequestParam("search") String username) {
     	List<User> users = serv.usersContaining(username);
     	model.addAttribute("users", users);
+
+		String url2 = "https://dolarapi.com/v1/dolares";
+		RestTemplate restTemplate2 = new RestTemplate();
+		Object dolares = restTemplate2.getForObject(url2, Object.class);
+		
+		model.addAttribute("dolares", dolares);
+		List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+		model.addAttribute("allPosts", ps.allPosts());
+		model.addAttribute("provinces", getProvinces());
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
     	return "findUsers.jsp";
     }
 	
@@ -190,6 +244,25 @@ public class UserController {
 		return "redirect:/dashboard";
 	}
 	
+	@GetMapping("/newsArgentina")
+	public String newsArgentina(Model model,HttpSession session) {
+		String url = "https://newsapi.org/v2/top-headlines?sources=google-news-ar&apiKey=996e01e65e814f1d80cfa219f6340eb9";
+		RestTemplate restTemplate = new RestTemplate();
+		Object news = restTemplate.getForObject(url, Object.class);
+		
+		String url2 = "https://dolarapi.com/v1/dolares";
+		RestTemplate restTemplate2 = new RestTemplate();
+		Object dolares = restTemplate2.getForObject(url2, Object.class);
+		
+		model.addAttribute("news", news);
+		model.addAttribute("dolares", dolares);
+		List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+		model.addAttribute("allPosts", ps.allPosts());
+		model.addAttribute("provinces", getProvinces());
+		model.addAttribute("userInSession",session.getAttribute("userInSession"));
+		return "newsArgentina.jsp";
+	}
 	
 	
 }

@@ -1,6 +1,10 @@
 package com.grupo4.LaburApp.services;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,4 +60,30 @@ public class ReviewService {
 	public List<Review> allReviewsDateDesc(){
 		return reviewRepo.findAllByOrderByCreatedAtDesc();
 	}
+	
+    public Double getAverageStarsByPostId(Long postId) {
+        return reviewRepo.findAverageStarsByPostId(postId);
+    }
+    
+    public Map<Long, Double> getAverageRatingByPost() {
+        List<Object[]> results = reviewRepo.findAverageRatingByPost();
+        Map<Long, Double> averageRatings = new HashMap<>();
+
+        // Define el número de decimales a los que quieres redondear
+        int decimalPlaces = 2;
+
+        for (Object[] result : results) {
+            Long postId = ((Number) result[0]).longValue(); // Convertir Object a Long
+            Double averageRating = ((Number) result[1]).doubleValue(); // Convertir Object a Double
+
+            // Redondear el promedio a decimalPlaces decimales
+            BigDecimal bd = new BigDecimal(averageRating);
+            bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP); // Redondeo
+
+            // Convertir a Double y agregar al mapa
+            averageRatings.put(postId, bd.doubleValue());
+        }
+
+        return averageRatings;
+    }
 }

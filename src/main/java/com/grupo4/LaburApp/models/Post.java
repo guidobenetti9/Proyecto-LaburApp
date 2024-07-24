@@ -49,6 +49,10 @@ public class Post {
 	@NotEmpty(message="se necesita una ciudad")
 	private String city;
 	
+	@NotEmpty(message="se necesita un tipo")
+	private String typePost
+	;
+	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -164,6 +168,14 @@ public class Post {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+	
+	public String getTypePost() {
+		return typePost;
+	}
+
+	public void setTypePost(String typePost) {
+		this.typePost = typePost;
 	}
 
 	public User getCreatorPost() {
