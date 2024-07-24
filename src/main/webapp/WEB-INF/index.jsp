@@ -216,7 +216,7 @@
         }
 
         .social-icons a:hover {
-            color: #ddd;
+            color: #dfb550;
         }
 
         .footer-container > .footer-column {
