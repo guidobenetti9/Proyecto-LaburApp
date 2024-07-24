@@ -11,9 +11,9 @@
         body {
             font-family: 'Arial', sans-serif;
         }
-        .uk-navbar-container {
-            background: rgb(32,32,32) !important;
-            background: linear-gradient(0deg, rgba(32,32,32,1) 0%, rgba(32,32,32,1) 0%, rgba(40,40,40,1) 50%, rgba(43,43,43,1) 100%) !important;
+        .uk-navbar-container {      
+            background: rgb(33,33,33) !important;
+			background: linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
         }
         .uk-navbar-nav > li > a {
             color: white;
