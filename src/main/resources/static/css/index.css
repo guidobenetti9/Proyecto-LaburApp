@@ -1,4 +1,60 @@
-@charset "ISO-8859-1";
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+   	flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.uk-navbar-container {
+    background: rgb(32,32,32) !important;
+    background: linear-gradient(0deg, rgba(32,32,32,1) 0%, rgba(32,32,32,1) 0%, rgba(40,40,40,1) 50%, rgba(43,43,43,1) 100%) !important; /* Gradiente */
+}
+.uk-navbar-nav > li > a {
+    color: #fff !important; /* Color de texto blanco */
+}
+.uk-navbar-nav > li > a:hover {
+    color: #ffcc00 !important; /* Color de texto al pasar el mouse */
+}
+.uk-width-logo{
+    height: 50px;
+    width: 50px;
+}
+.uk-navbar-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.uk-search {
+    position: relative;
+    display: flex;
+    width: 700px; /* Ancho del contenedor de busqueda */
+}
+.uk-search-input {
+    background-color: #fff !important; /* Fondo blanco */
+    width: 100%; /* Ancho del campo de b�squeda */
+    padding-right: 40px; /* Espacio para el icono de la lupa */
+    color: #000 !important; /* Color del texto */
+}
+.uk-search-icon-flip {
+    position: absolute;
+    right: 10px;
+    top: 50%;            
+   	color: #000 !important; /* Color del icono */
+}
+.uk-search-input:focus {
+    border-color: #ffcc00 !important; /* Color del borde al hacer clic */
+}
 
 .cont_filtros{
 	width: 200px;

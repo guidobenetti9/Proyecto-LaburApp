@@ -78,20 +78,31 @@
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
+<<<<<<< HEAD
                         <a href="/">
                             <img src="logonuevo.png" class="uk-width-1-1">
+=======
+                        <a href="#">
+                            <img src="logonuevo.png" class="uk-width-1-1 uk-margin-left">
+>>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
                         </a>
                     </div>
+<<<<<<< HEAD
                     <ul class="uk-navbar-nav">
                         <li><a href="/">Inicio</a></li>
                         <li><a href="#">Ayuda</a></li>
                         <li><a href="#">Contacto</a></li>
+=======
+                    <ul class="uk-navbar-nav">   
+                    	<li><a href="#">Contacto</a></li>                    
+                        <li><a href="#">Ayuda</a></li>                      
+>>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
-                    <form class="uk-search uk-search-default" action="/findUsers" method="get">
-                        <input class="uk-search-input" type="search" placeholder="Buscar Usuario" name="search">
-                        <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
+                    <form class="uk-search uk-search-default">
+                        <input class="uk-search-input" type="search" placeholder="Buscar">
+                        <button class="uk-search-icon-flip" uk-search-icon></button>
                     </form>
                 </div>
                 <div class="uk-navbar-right uk-margin-medium-right">
@@ -108,7 +119,11 @@
                                 <a href="#" class="uk-link-muted">Ver perfil</a>
                             </div>
                             <div>
+<<<<<<< HEAD
                             	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
+=======
+                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesion</a>
+>>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
                             </div>
                         </div>
                     </c:if>
@@ -128,7 +143,7 @@
                 </div>
                 <button class="uk-button uk-button-default" type="button">Zona</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav">
+                    <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
                         <c:forEach items="${provinces}" var="province">
                         	<li><a href="/filterDataProvince?province=${province}">${province}</a></li>
                         	<li class="uk-nav-divider"></li>
@@ -157,7 +172,11 @@
                     <h2>Publicaciones</h2>
                     <c:if test="${userInSession != null}">
                     	<div class="cont_publi">
+<<<<<<< HEAD
                     		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicación</a>
+=======
+                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicacion</a>
+>>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
                     	</div>
                     </c:if>
                 </div>
@@ -220,7 +239,7 @@
         <div class="uk-container">
             <div class="uk-grid-small" uk-grid>
                 <div class="uk-width-expand@s">
-                    <p class="uk-text-small">Â© 2024 LaburApp. Todos los derechos reservados.</p>
+                    <p class="uk-text-small">© 2024 LaburApp. Todos los derechos reservados.</p>
                 </div>
                 
                 <div class="uk-width-auto@s">
