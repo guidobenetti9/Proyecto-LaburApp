@@ -86,6 +86,7 @@
                     <div class="uk-card uk-card-default uk-margin-top">
                         <div class="uk-card-header">
                             <p>${review.senderReview.firstName} ${review.senderReview.lastName}</p>
+                            
                             <p>${review.createdAt}</p>
                         </div>
                         <div class="uk-card-body">
