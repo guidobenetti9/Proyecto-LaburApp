@@ -89,9 +89,9 @@
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
-                    <form class="uk-search uk-search-default" action="/findUsers" method="get">
-                        <input class="uk-search-input" type="search" placeholder="Buscar" name="search">
-                        <button class="uk-search-icon-flip" uk-search-icon type="submit" ></button>
+                    <form class="uk-search uk-search-default">
+                        <input class="uk-search-input" type="search" placeholder="Buscar">
+                        <button class="uk-search-icon-flip" uk-search-icon></button>
                     </form>
                 </div>
                 <div class="uk-navbar-right uk-margin-medium-right">
@@ -168,25 +168,20 @@
                     </c:if>
                 </div>
                 <div class="uk-width-1-1">
-				<div>
-        			<h2>Usuarios encontrados</h2>
-        		</div>
-	        	<c:forEach items="${users}" var="user">
-	        			<div class="uk-card uk-card-default uk-card-hover uk-margin-top">
-							    <div class="uk-card-header">
-							    	<p class="uk-text-meta uk-margin-remove-bottom">Miembro desde: <time datetime="${user.createdAt}">${user.createdAt}</time></p>
-							        <h3 class="uk-card-title uk-margin-remove-top">${user.firstName} ${user.lastName}</h3>
-							        <h5 class="uk-card-title uk-margin-remove-top">@${user.username}</h5>
-							        
-							    </div>
-							    <div class="uk-card-body">
-							    	<p>${user.city}, ${user.province}</p>
-							    </div>
-							    <div class="uk-card-footer">
-							    	<a href="#" class="uk-button uk-button-text">Ver</a>
-							    </div>
-						</div>
-	        	</c:forEach>
+                    <c:forEach items="${news.articles}" var="newArticle">
+                        <div class="uk-card uk-card-default uk-card-hover uk-margin-top">
+                            <div class="uk-card-header">
+                                <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${newArticle.publishedAt}">${newArticle.publishedAt}</time></p>
+                                <h3 class="uk-card-title uk-margin-remove-top">${newArticle.author}</h3>
+                            </div>
+                            <div class="uk-card-body">
+                                <p>${newArticle.title}</p>
+                            </div>
+                            <div class="uk-card-footer">
+                                <a href="${newArticle.url}" class="uk-button uk-button-text" target="_BLANK">Ver</a>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </main>

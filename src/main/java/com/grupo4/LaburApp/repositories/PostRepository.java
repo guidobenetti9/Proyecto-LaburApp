@@ -16,6 +16,8 @@ public interface PostRepository extends CrudRepository<Post, Long>{
 	List<Post> findAllByProvinceOrderByCreatedAtAsc(String province);
 	// Me trae todos los post filtrando por Creador. Y en orden ascendente
 	List<Post> findAllByCreatorPostIdOrderByCreatedAtAsc(Long creatorPost);
+	// Me trae todos los post filtrando por tipo. Y en orden ascendente
+		List<Post> findAllByTypePostOrderByCreatedAtAsc(String typePost);
 	// Me trae todos los post en orden ascendente
 	List<Post> findAllByOrderByCreatedAtAsc();
 	// Me trae todos los post en orden descendente

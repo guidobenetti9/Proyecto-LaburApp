@@ -78,20 +78,20 @@
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
-                        <a href="#">
+                        <a href="/">
                             <img src="logonuevo.png" class="uk-width-1-1">
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">
-                        <li><a href="#">Inicio</a></li>
+                        <li><a href="/">Inicio</a></li>
                         <li><a href="#">Ayuda</a></li>
                         <li><a href="#">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
-                    <form class="uk-search uk-search-default">
-                        <input class="uk-search-input" type="search" placeholder="Buscar">
-                        <button class="uk-search-icon-flip" uk-search-icon></button>
+                    <form class="uk-search uk-search-default" action="/findUsers" method="get">
+                        <input class="uk-search-input" type="search" placeholder="Buscar Usuario" name="search">
+                        <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
                     </form>
                 </div>
                 <div class="uk-navbar-right uk-margin-medium-right">
@@ -108,7 +108,7 @@
                                 <a href="#" class="uk-link-muted">Ver perfil</a>
                             </div>
                             <div>
-                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesiÃ³n</a>
+                            	<a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
                             </div>
                         </div>
                     </c:if>
@@ -121,7 +121,7 @@
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
                         <c:forEach items="${allJobs}" var="job">
-                        	<li><a href="#">${job.jobName}</a></li>
+                        	<li><a href="/filterDataJob?job=${job.id}">${job.jobName}</a></li>
                         	<li class="uk-nav-divider"></li>
                         </c:forEach>
                     </ul>
@@ -130,7 +130,7 @@
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
                         <c:forEach items="${provinces}" var="province">
-                        	<li><a href="#">${province}</a></li>
+                        	<li><a href="/filterDataProvince?province=${province}">${province}</a></li>
                         	<li class="uk-nav-divider"></li>
                         </c:forEach>
                     </ul>
@@ -138,9 +138,17 @@
                 <button class="uk-button uk-button-default" type="button">Fecha</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
-                        <li><a href="#">Mas antiguos</span></a></li>
+                        <li><a href="/filterDataDateAsc">Mas antiguos</span></a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Mas recientes</a></li>
+                        <li><a href="/filterDataDateDesc">Mas recientes</a></li>
+                    </ul>
+                </div>
+                <button class="uk-button uk-button-default" type="button">Tipo</button>
+                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li><a href="/filterTypePost?typePost=Pedido">Pedidos</span></a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="/filterTypePost?typePost=Ofrecido">Ofrecidos</a></li>
                     </ul>
                 </div>
             </div>
@@ -149,7 +157,7 @@
                     <h2>Publicaciones</h2>
                     <c:if test="${userInSession != null}">
                     	<div class="cont_publi">
-                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicaciÃ³n</a>
+                    		<a href="/newPost" class="uk-button uk-button-secondary">Crear nueva publicación</a>
                     	</div>
                     </c:if>
                 </div>
@@ -165,11 +173,40 @@
                             </div>
                             <div class="uk-card-footer">
                                 <div class="uk-flex-inline">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
+                                <c:forEach items="${allReviews}" var="review">
+                                	<c:if test="${review.key == post.id}">
+                                	    <c:choose>
+									        <c:when test="${review.value > 1 && review.value < 2}">
+									            <span uk-icon="star"></span>
+									        </c:when>
+											<c:when test="${review.value > 2 && review.value < 3}">
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									        </c:when>
+											<c:when test="${review.value > 3 && review.value < 4}">
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									        </c:when>
+									        <c:when test="${review.value > 4 && review.value < 5}">
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									        </c:when>
+									         <c:when test="${review.value >= 5}">
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									            <span uk-icon="star"></span>
+									        </c:when>
+									        <c:otherwise>
+									            <p>Sin puntuaciones</p>
+									        </c:otherwise>
+								    </c:choose>
+								   </c:if>
+                                </c:forEach>
                                 </div>
                                 <a href="/post/${post.id}" class="uk-button uk-button-text">Ver</a>
                             </div>

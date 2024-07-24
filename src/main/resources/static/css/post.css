@@ -48,3 +48,7 @@
     justify-content: end;
     padding: 50px 0px;
 }
+#map {
+    height: 500px; /* Ajusta la altura del mapa según sea necesario */
+    width: 100%;
+}

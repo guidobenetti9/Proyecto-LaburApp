@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post</title>
+    <title>${post.jobsInPost.jobName}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
 
@@ -92,7 +92,36 @@
                             <p>${review.comment}</p>
                         </div>
                         <div class="uk-card-footer">
-                            <p>${review.stars}</p>
+                        <c:choose>
+					        <c:when test="${review.stars == 1}">
+					            <span uk-icon="star"></span>
+					        </c:when>
+							<c:when test="${review.stars == 2}">
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					        </c:when>
+							<c:when test="${review.stars == 3}">
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					        </c:when>
+					        <c:when test="${review.stars == 4}">
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					        </c:when>
+					         <c:when test="${review.stars == 5}">
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					            <span uk-icon="star"></span>
+					        </c:when>
+					        <c:otherwise>
+					            <p>Sin puntuaciones</p>
+					        </c:otherwise>
+					      </c:choose>
                         </div>
                     </div>
                 </c:forEach>
@@ -104,8 +133,20 @@
                     </div>
                     <div class="cajita">
                         <form:label path="stars" >Estrellas:</form:label>
-                        <form:input path="stars" type="number" class="uk-input" />
-                    </div>
+						     <div class="star-rating">
+				                    <input type="radio" id="5-stars" name="stars" value="1"/>
+				                    <label for="5-stars" uk-icon="icon: star">1</label>
+				                    <input type="radio" id="4-stars" name="stars" value="2"/>
+				                    <label for="4-stars" uk-icon="icon: star">2</label>
+				                    <input type="radio" id="3-stars" name="stars" value="3"/>
+				                    <label for="3-stars" uk-icon="icon: star">3</label>
+				                    <input type="radio" id="2-stars" name="stars" value="4"/>
+				                    <label for="2-stars" uk-icon="icon: star">4</label>
+				                    <input type="radio" id="1-star" name="stars" value="5"/>
+				                    <label for="1-star" uk-icon="icon: star">5</label>
+                			</div>           
+                	</div>
+              </div>
                     <div class="cont_boton">
                     	<form:hidden path="postReview" value="${post.id}" />
 						<form:hidden path="senderReview" value="${userInSession.id}" />
