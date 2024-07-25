@@ -257,9 +257,9 @@
                     </ul>
                 </div>
                 <div class="uk-navbar-center">
-                    <form class="uk-search uk-search-default">
-                        <input class="uk-search-input" type="search" placeholder="Buscar">
-                        <button class="uk-search-icon-flip" uk-search-icon></button>
+                    <form class="uk-search uk-search-default" action="/findUsers" method="get">
+                        <input class="uk-search-input" type="search" placeholder="Buscar Usuarios">
+                        <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
                     </form>
                 </div>
                 <div class="uk-navbar-right uk-margin-medium-right">
@@ -301,7 +301,7 @@
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
                         <c:forEach items="${allJobs}" var="job">
-                            <li><a href="#">${job.jobName}</a></li>
+                            <li><a href="/filterDataJob?job=${job.id}">${job.jobName}</a></li>
                             <li class="uk-nav-divider"></li>
                         </c:forEach>
                     </ul>
@@ -310,7 +310,7 @@
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
                         <c:forEach items="${provinces}" var="province">
-                            <li><a href="#">${province}</a></li>
+                            <li><a href="/filterDataProvince?province=${province}">${province}</a></li>
                             <li class="uk-nav-divider"></li>
                         </c:forEach>
                     </ul>
@@ -318,9 +318,18 @@
                 <button class="uk-button uk-button-default" type="button">Fecha</button>
                 <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
                     <ul class="uk-nav uk-dropdown-nav">
-                        <li><a href="#">Más antiguos</a></li>
+                        <li><a href="/filterDataDateAsc">Más antiguos</a></li>
                         <li class="uk-nav-divider"></li>
-                        <li><a href="#">Más recientes</a></li>
+                        <li><a href="/filterDataDateDesc">Más recientes</a></li>
+                    </ul>
+                </div>
+                
+                <button class="uk-button uk-button-default" type="button">Tipo</button>
+                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li><a href="/filterTypePost?typePost=Pedido">Pedidos</a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="/filterTypePost?typePost=Ofrecido">Ofrecidos</a></li>
                     </ul>
                 </div>
             </div>
