@@ -6,13 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grupo4.LaburApp.models.Post;
+import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.repositories.PostRepository;
+import com.grupo4.LaburApp.repositories.UserRepository;
 
 @Service
 public class PostService {
 
 	@Autowired
 	PostRepository postRepo;
+	@Autowired
+	UserRepository userRepo;
+	
 	// Devuelve todos los posts
 	public List <Post> allPosts(){
 		return postRepo.findAll();
@@ -64,6 +69,13 @@ public class PostService {
 	// Devuelve todos los posts de acuerdo a su tipo ordenados de forma descendente 
 	public List <Post> allPostsFilterType(String typePost){
 		return postRepo.findAllByTypePostOrderByCreatedAtAsc(typePost);
+	}
+	
+	public void addFavorite(Long userId,Long postId) {
+		User myUser = userRepo.findById(userId).orElse(null);
+		Post projectToAdd = post(postId);
+		projectToAdd.getFavoriteUsers().add(myUser);
+		postRepo.save(projectToAdd);
 	}
 	
 	

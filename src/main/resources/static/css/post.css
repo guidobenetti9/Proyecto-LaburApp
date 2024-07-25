@@ -22,6 +22,12 @@
     font-size: 30px;
     font-family: "Zain", sans-serif;
 }
+.cont_favs{
+	display: flex;
+    justify-content: end;
+    padding-right: 50px;
+    padding-top: 20px;
+}
 .cont_titulo{
     padding-top: 50px;
     padding-left: 50px;
@@ -48,6 +54,7 @@
     justify-content: end;
     padding: 50px 0px;
 }
+
 #map {
     height: 500px; /* Ajusta la altura del mapa según sea necesario */
     width: 100%;
