@@ -52,7 +52,8 @@
 		}		
 		
 		.icon-logout:hover i {
-		    color: red; /* Color al pasar el cursor sobre el ícono de cerrar sesión */
+		    color: rgb(255,122,122);
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%); /* Color al pasar el cursor sobre el ícono de cerrar sesión */		 
 		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
 		}
 		
@@ -91,16 +92,16 @@
     	list-style-type: none;  	
     	}
 	    .btn-registrarse {
-        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
-        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
-        text-decoration: none;/* Elimina el subrayado */
-        border-radius: 4px; /* Bordes redondeados*/
-        display: inline-block;
-        box-sizing: border-box;
-        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
-        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
-        text-align: center; /* Centra el texto horizontalmente */
-        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
+	        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
+	        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
+	        text-decoration: none;/* Elimina el subrayado */
+	        border-radius: 4px; /* Bordes redondeados*/
+	        display: inline-block;
+	        box-sizing: border-box;
+	        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
+	        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
+	        text-align: center; /* Centra el texto horizontalmente */
+	        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
     	}
 	
 	    .btn-registrarse:hover {
@@ -266,7 +267,7 @@
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
-                        <a href="#">
+                        <a href="/">
                             <img src="logonuevo.png" class="uk-width-1-1 uk-margin-small-left">
                         </a>
                     </div>
@@ -284,8 +285,7 @@
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesión</a></li>                           
-                            
+                            <li><a href="/login">Iniciar Sesión</a></li>                                                      
                         </ul>
                         <ul class="register-button">
                         	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
@@ -432,8 +432,8 @@
             <div class="footer-column">
                 <h5>SOPORTE</h5>
                 <ul>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                    <li><a href="/help">Ayuda</a></li>
                 </ul>
             </div>
             <div class="footer-column1">
