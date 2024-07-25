@@ -54,12 +54,8 @@
     justify-content: end;
     padding: 50px 0px;
 }
-<<<<<<< HEAD
-#map { height: 500px; }
-=======
 
 #map {
     height: 500px; /* Ajusta la altura del mapa según sea necesario */
     width: 100%;
 }
->>>>>>> branch 'main' of https://github.com/guidobenetti9/Proyecto-LaburApp.git
