@@ -274,16 +274,14 @@
                         </ul>
                     </c:if>
                     <c:if test="${userInSession != null}">
-                        <div class="uk-flex-inline">
-                            <div class="cont_botones">
-                                <p>${userInSession.firstName} ${userInSession.lastName}</p>
-                                <a href="#" class="uk-link-muted">Ver perfil</a>
-                            </div>
-                            <div>
-                                <a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
-                            </div>
-                        </div>
-                    </c:if>
+                        <div class="uk-navbar-right">
+				            <ul class="uk-navbar-nav">
+				                <li><a href="/verPerfil">${userInSession.firstName} ${userInSession.lastName}</a></li>
+				                <li><a href="/verPerfil" uk-icon="icon: cog"></a></li>
+				                <li><a href="/logout"><i class="fa fa-sign-out-alt"></i></a></li>
+				            </ul>
+			        	</div>
+                    </c:if>                  
                 </div>                       
             </nav>
         </header>
