@@ -37,6 +37,25 @@
         .uk-navbar-nav> li > a:hover {
             color: #ffcc00 !important; /* Color de texto al pasar el mouse */
         }
+        
+        /* Estilo para el icono de cofiguracion */
+		.icon-config {	    
+		    transition: color 0.3s ease, transform 0.3s ease !important;
+		}	
+		.icon-config:hover {
+		    transform: scale(1.3);
+		}
+
+		/* Estilo para el ícono de cerrar sesión */
+		.icon-logout i {
+			transition: color 0.3s ease, transform 0.3s ease;
+		}		
+		
+		.icon-logout:hover i {
+		    color: red; /* Color al pasar el cursor sobre el ícono de cerrar sesión */
+		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
+		}
+		
         .uk-width-logo {
             height: 50px;
             width: 50px;
@@ -274,11 +293,13 @@
                     </c:if>
                     <c:if test="${userInSession != null}">
                         <div class="uk-navbar-right">
-				            <ul class="uk-navbar-nav">
-				                <li><a href="/verPerfil">${userInSession.firstName} ${userInSession.lastName}</a></li>
-				                <li><a href="/verPerfil" uk-icon="icon: cog"></a></li>
-				                <li><a href="/logout"><i class="fa fa-sign-out-alt"></i></a></li>
-				            </ul>
+				            <div class="uk-navbar-right">
+							    <ul class="uk-navbar-nav">
+							        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
+							        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
+							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+							    </ul>
+							</div>          
 			        	</div>
                     </c:if>                  
                 </div>                       
