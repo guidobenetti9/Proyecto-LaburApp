@@ -98,6 +98,8 @@ public class PostController {
 			                  @ModelAttribute("newReview") Review newReview) {
 		Post post = ps.post(id);
 		List<Review> reviews = rs.reviewsByPost(id);
+		System.out.print(post.getLatitud());
+		System.out.print(post.getLongitud());
 		model.addAttribute("post", post);
 		model.addAttribute("reviews", reviews);
 		return "post.jsp";

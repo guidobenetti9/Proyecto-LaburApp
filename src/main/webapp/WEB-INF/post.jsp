@@ -26,6 +26,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/post.css">
+    
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+
 </head>
 <body>
     <header>
@@ -53,8 +59,12 @@
             <div class="cont_titulo">
             	<a href="/favoritePost/add/${post.id}">Add favorites</a>
                 <h2 class="uk-h2">${post.creatorPost.firstName} ${post.creatorPost.lastName}</h2>
-                <h3 class="uk-h3">${post.city}, ${post.province}</h3>
+                <h3 class="uk-h3">${post.municipio}, ${post.localidad} (${post.province})</h3>
+                
             </div>
+            <div class="cont_info">
+            	<div id="map"></div>
+             </div>
             <div class="cont_info">
                 <p>
                     <b>Servicio:</b> ${post.jobsInPost.jobName}
@@ -177,5 +187,22 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
-</body>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+<script type="text/javascript">
+    var longitud = parseFloat("${post.longitud}");
+    var latitud = parseFloat("${post.latitud}");
+    
+    if (!isNaN(latitud) && !isNaN(longitud)) {
+        var map = L.map('map').setView([latitud, longitud], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+    } else {
+        console.error("Error: Coordenadas no válidas.");
+    }
+</script>
 </html>

@@ -341,7 +341,7 @@
                                 <h3 class="uk-card-title uk-margin-remove-top">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
                             </div>
                             <div class="uk-card-body">
-                                <p>${post.city}, ${post.province}</p>
+                                <p>${post.municipio}, ${post.localidad} (${post.province})</p>
                             </div>
                             <div class="uk-card-footer">
                                 <div class="uk-flex-inline">

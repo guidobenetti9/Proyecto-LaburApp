@@ -46,9 +46,18 @@ public class Post {
 	@NotEmpty(message="province is required.")
 	private String province;
 	
-	@NotEmpty(message="se necesita una ciudad")
-	private String city;
+	@NotEmpty(message="municipio is required.")
+	private String municipio;
 	
+	@NotEmpty(message="localidad is required.")
+	private String localidad;
+	
+	@NotEmpty(message="longitud is required.")
+	private String longitud;
+	
+	@NotEmpty(message="longitud is required.")
+	private String latitud;
+
 	@NotEmpty(message="se necesita un tipo")
 	private String typePost
 	;
@@ -161,15 +170,40 @@ public class Post {
 	public void setProvince(String province) {
 		this.province = province;
 	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
 	
+	
+	public String getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(String longitud) {
+		this.longitud = longitud;
+	}
+
+	public String getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(String latitud) {
+		this.latitud = latitud;
+	}
+
 	public String getTypePost() {
 		return typePost;
 	}

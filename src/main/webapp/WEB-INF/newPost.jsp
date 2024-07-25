@@ -77,15 +77,21 @@
                     </div>
                     <div class="cajita">
                         <form:label path="province" >Provincia:</form:label>
-                        <form:select path="province" class="uk-select">
-                            <form:options items="${provinces}"/>
+                        <form:select path="province" class="uk-select" id="selectProvincias">
                         </form:select>
                     </div>
-                    <div class="cajita">
-                        <form:label path="city" >Ciudad:</form:label>
-                        <form:input path="city" class="uk-input"/>
-                        <form:errors path="city" class="uk-text-danger uk-text-small"/>
-                    </div>
+                    
+                      <div class="cajita">
+					        <label for="municipio">Municipio:</label>
+					        <select id="selectMunicipios" name="municipio" class="uk-select">
+					        </select>
+					  </div>
+					  <div class="cajita">
+					        <label for="localidad">Localidad:</label>
+					        <select id="selectLocalidades" name="localidad" class="uk-select">
+					        </select>
+					  </div>
+					  
                     <div class="cajita">
                         <form:label path="typePost" >Tipo:</form:label>
                         <form:select path="typePost" class="uk-select">
@@ -95,6 +101,10 @@
                     </div>
                     <div class="cont_botones">
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>
+                        <form:input type="hidden" path="latitud" id="latitud"/>
+        |				<form:input type="hidden" path="longitud" id="longitud"/>
+        				        <input type="hidden" name="nombreLocalidad" id="nombreLocalidad"/>
+        <input type="hidden" name="nombreMunicipio" id="nombreMunicipio"/>
                         <a href="/" class="uk-button uk-button-danger uk-margin-right">Cancelar</a>
                         <input type="submit" value="Crear" class="uk-button uk-button-secondary">
                     </div>
@@ -121,5 +131,6 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
+    <script src="/js/post.js"></script>
 </body>
 </html>
