@@ -294,7 +294,7 @@
                 <h5>SOPORTE</h5>
                 <ul>
                     <li><a th:href="/contact">Contacto</a></li>
-                    <li><a th:href="/help">Ayuda</a></li>
+                    <li><a th:href="<c:url value='/help' />">Ayuda</a></li>
                 </ul>
             </div>
             <div class="footer-column1">
