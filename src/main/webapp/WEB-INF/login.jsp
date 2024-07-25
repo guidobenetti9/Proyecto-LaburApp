@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -210,7 +213,7 @@
                 <ul class="uk-navbar-nav">
                     <li><a th:href="@{/}">Inicio</a></li>
                     <li><a th:href="@{/contacto}">Contacto</a></li>
-                    <li><a th:href="@{/ayuda}">Ayuda</a></li>              
+                    <li><a th:href="/help">Ayuda</a></li>              
                 </ul>
             </div>
         </nav>
@@ -253,7 +256,7 @@
         </div>
         
         <div class="login-container">
-            <form th:action="@{/login}" method="post">
+            <form th:action="/login" method="post">
                 <h3>INICIAR SESIÓN</h3>
                 
                 <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
@@ -261,8 +264,8 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
                 <button type="submit">Ingresar</button>
                 <div class="register-links">
-                    <a th:href="@{/forgot-password}">¿Olvidaste tu contraseña?</a>
-                    <a th:href="@{/register}">Crear una cuenta nueva</a>
+                    <a th:href="">¿Olvidaste tu contraseña?</a>
+                    <a th:href="/register">Crear una cuenta nueva</a>
                 </div>
             </form>
         </div>
@@ -290,8 +293,8 @@
             <div class="footer-column">
                 <h5>SOPORTE</h5>
                 <ul>
-                    <li><a th:href="@{/contact}">Contacto</a></li>
-                    <li><a th:href="@{/help}">Ayuda</a></li>
+                    <li><a th:href="/contact">Contacto</a></li>
+                    <li><a th:href="/help">Ayuda</a></li>
                 </ul>
             </div>
             <div class="footer-column1">

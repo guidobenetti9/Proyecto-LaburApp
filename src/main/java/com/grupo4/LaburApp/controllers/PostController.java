@@ -95,7 +95,15 @@ public class PostController {
 	@GetMapping("/post/{id}")
 	public String postDetails(Model model, 
 			                  @PathVariable("id") Long id,
-			                  @ModelAttribute("newReview") Review newReview) {
+			                  @ModelAttribute("newReview") Review newReview,
+			                  HttpSession session) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/login";
+        }
+		
 		Post post = ps.post(id);
 		List<Review> reviews = rs.reviewsByPost(id);
 		System.out.print(post.getLatitud());

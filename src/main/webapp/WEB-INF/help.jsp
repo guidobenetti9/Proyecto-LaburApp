@@ -1,16 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cómo Funciona - Intercambio de Servicios</title>
+    <title>Cómo Funciona - LaburApp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/css/uikit.min.css" />
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
+        
         /*Navegador*/
         .uk-navbar-container {      
             background: rgb(33,33,33) !important;
@@ -22,6 +22,29 @@
         .uk-navbar-nav > li > a:hover {
             color: #ffcc00 !important; /* Color de texto al pasar el mouse */
         }
+        
+        .uk-width-logo {
+            height: 50px;
+            width: 50px;
+        }
+        /* Estilo para el icono de cofiguracion */
+		.icon-config {	    
+		    transition: color 0.3s ease, transform 0.3s ease !important;
+		}	
+		.icon-config:hover {
+		    transform: scale(1.3);
+		}
+
+		/* Estilo para el ícono de cerrar sesión */
+		.icon-logout i {
+			transition: color 0.3s ease, transform 0.3s ease;
+		}		
+		
+		.icon-logout:hover i {
+		    color: rgb(255,122,122);
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ícono de cerrar sesión */
+		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
+		}
         .uk-section-default {
             background-color: #ffffff;
         }
@@ -31,8 +54,32 @@
         .uk-card {
             background-color: #ffffff;
         }
+        
+        .register-button{  	
+    		list-style-type: none;  	
+    	}
+	    .btn-registrarse {
+	        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
+	        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
+	        text-decoration: none;/* Elimina el subrayado */
+	        border-radius: 4px; /* Bordes redondeados*/
+	        display: inline-block;
+	        box-sizing: border-box;
+	        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
+	        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
+	        text-align: center; /* Centra el texto horizontalmente */
+	        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
+    	}
+	
+	    .btn-registrarse:hover {
+	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+	        color: #000000 !important; /* Color del texto cuando el ursor pasa sobre el boton */
+	        text-decoration: none;
+	        font-weight: bold; /* Texto en negrita*/
+	    }
+        
          /*AQUI COMIENZA EL FOOTER*/
-       footer {
+        footer {
             background: rgb(33,33,33);
 			background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%);
             padding: 20px 0;           
@@ -140,31 +187,41 @@
     </style>
 </head>
 <body>
-
-    <!-- Barra de Navegación -->
-    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+	<!-- Barra de Navegaciï¿½n -->
+    <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="#">LaburaApp</a>
-        </div>
-        <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Contacto</a></li>
-                <c:choose>
-                    <c:when test="${not empty sessionScope.usuario}">
-                        <li><a href="#">${sessionScope.usuario.nombre}</a></li>
-                        <li><a href="configuracionPerfil.jsp" uk-icon="icon: cog"></a></li>
-                        <li><a href="cerrarSesion.jsp">Cerrar Sesión</a></li>
-                    </c:when>
-                    <c:otherwise>
-                        <li><a href="iniciarSesion.jsp">Iniciar Sesión</a></li>
-                        <li><a href="registrarse.jsp">Registrarse</a></li>
-                    </c:otherwise>
-                </c:choose>
+        	<div class="uk-width-logo">
+                <a href="/">
+                    <img src="logonuevo.png" class="uk-width-1-1 uk-margin-small-left">
+                </a>
+            </div>
+            <ul class="uk-navbar-nav uk-margin-small-left">   
+                <li><a href="/">Inicio</a></li>                    
+                <li><a href="/contact">Contacto</a></li>                      
             </ul>
-        </div>
+        </div>        
+         <div class="uk-navbar-right uk-margin-medium-right">
+             <c:if test="${userInSession == null}">
+                 <ul class="uk-navbar-nav">
+                     <li><a href="/login">Iniciar Sesión</a></li>                                                      
+                 </ul>
+                 <ul class="register-button">
+                 	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
+                 </ul>
+             </c:if>
+             <c:if test="${userInSession != null}">
+                 <div class="uk-navbar-right">
+			         <div class="uk-navbar-right">
+					    <ul class="uk-navbar-nav">
+					        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
+					        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
+					        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+					    </ul>
+					</div>          
+		    	</div>
+             </c:if>                  
+ 		</div>                       
     </nav>
-
     <!-- Sección "Cómo Funciona" -->
     <div class="uk-section uk-section-default">
         <div class="uk-container">
@@ -294,7 +351,7 @@
             <div class="footer-column">
                 <h5>SOPORTE</h5>
                 <ul>
-                    <li><a href="#">Contacto</a></li>                 
+                    <li><a href="/contact">Contacto</a></li>                 
                 </ul>
             </div>
             <div class="footer-column1">
