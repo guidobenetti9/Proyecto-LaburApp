@@ -50,13 +50,12 @@
     </header>
     <main>
         <div class="cont_main">
-        	<div class="cont_fav">
         		<c:if test="${userInSession.id != post.creatorPost.id}">
-        			
+        			<div class="cont_favs">
+        				<a href="/favoritePost/add/${post.id}" class="uk-button uk-button-default">Agregar a favoritos</a>
+        			</div>
         		</c:if>
-        	</div>
             <div class="cont_titulo">
-            	<a href="/favoritePost/add/${post.id}">Add favorites</a>
                 <h2 class="uk-h2">${post.creatorPost.firstName} ${post.creatorPost.lastName}</h2>
                 <h3 class="uk-h3">${post.city}, ${post.province}</h3>
             </div>
@@ -140,18 +139,18 @@
                     </div>
                     <div class="cajita">
                         <form:label path="stars" >Estrellas:</form:label>
-						     <div class="star-rating">
-				                    <input type="radio" id="5-stars" name="stars" value="1"/>
-				                    <label for="5-stars" uk-icon="icon: star">1</label>
-				                    <input type="radio" id="4-stars" name="stars" value="2"/>
-				                    <label for="4-stars" uk-icon="icon: star">2</label>
-				                    <input type="radio" id="3-stars" name="stars" value="3"/>
-				                    <label for="3-stars" uk-icon="icon: star">3</label>
-				                    <input type="radio" id="2-stars" name="stars" value="4"/>
-				                    <label for="2-stars" uk-icon="icon: star">4</label>
-				                    <input type="radio" id="1-star" name="stars" value="5"/>
-				                    <label for="1-star" uk-icon="icon: star">5</label>
-                			</div>           
+						<div class="star-rating">
+				          <input type="radio" id="5-stars" name="stars" value="1"/>
+				          <label for="5-stars" uk-icon="icon: star">1</label>
+				          <input type="radio" id="4-stars" name="stars" value="2"/>
+				          <label for="4-stars" uk-icon="icon: star">2</label>
+				          <input type="radio" id="3-stars" name="stars" value="3"/>
+				          <label for="3-stars" uk-icon="icon: star">3</label>
+				          <input type="radio" id="2-stars" name="stars" value="4"/>
+				          <label for="2-stars" uk-icon="icon: star">4</label>
+				          <input type="radio" id="1-star" name="stars" value="5"/>
+				          <label for="1-star" uk-icon="icon: star">5</label>
+                		</div>           
                 	</div>
               </div>
                     <div class="cont_boton">
@@ -159,8 +158,8 @@
 						<form:hidden path="senderReview" value="${userInSession.id}" />
 					    <input type="submit" class="uk-button uk-button-secondary" value="Enviar" >
                     </div>
-                </form:form>
-            </div>
+          		</form:form>
+        	</div>
         </div>
     </main>
     <footer class="uk-section uk-section-small uk-section-muted">
