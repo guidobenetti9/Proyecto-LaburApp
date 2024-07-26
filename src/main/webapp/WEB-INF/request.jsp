@@ -83,10 +83,10 @@
                     <p>${post.postDescription}</p>
                 </div>
                 <p>
-                    <b>Telefono:</b> ${user.phone}
+                    <b>Telefono:</b> ${post.creatorPost.phone}
                 </p>
                 <p>
-                    <b>E-mail:</b> ${user.email}
+                    <b>E-mail:</b> ${post.creatorPost.email}
                 </p>
                 
                 <c:if test="${userInSession.id == post.creatorPost.id}">
