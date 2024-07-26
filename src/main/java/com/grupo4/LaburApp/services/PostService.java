@@ -40,30 +40,30 @@ public class PostService {
 	
 	// Devuelve todos los posts filtrados por trabajos (jobs). 
 	// Se pasa el Id del trabajo
-	public List <Post> allPostsFilterJob(Long jobId){
-		return postRepo.findAllByJobsInPostIdOrderByCreatedAtAsc(jobId);
+	public List <Post> allPostsFilterJob(String typePost, Long jobId){
+		return postRepo.findAllByTypePostAndJobsInPostIdOrderByCreatedAtAsc(typePost,jobId);
 	}
 	
 	// Devuelve todos los posts filtrados por provincias (province). 
 	// Se pasa el nombre de la provincia
-	public List <Post> allPostsFilterProvince(String province){
-		return postRepo.findAllByProvinceOrderByCreatedAtAsc(province);
+	public List <Post> allPostsFilterProvince(String typePost,String province){
+		return postRepo.findAllByTypePostAndProvinceOrderByCreatedAtAsc(typePost,province);
 	}
 	
 	// Devuelve todos los posts filtrados por Creador (creatorPost). 
 	// Se pasa el Id del creatorPost (User)
-	public List <Post> allPostsFilterProvince(Long creatorPost){
+	public List <Post> allPostsFilterCreator(Long creatorPost){
 		return postRepo.findAllByCreatorPostIdOrderByCreatedAtAsc(creatorPost);
 	}
 	
 	// Devuelve todos los posts ordenados de forma ascendente 
-	public List <Post> allPostsFilterAsc(){
-		return postRepo.findAllByOrderByCreatedAtAsc();
+	public List <Post> allPostsFilterAsc(String typePost){
+		return postRepo.findAllByTypePostOrderByCreatedAtAsc(typePost);
 	}
 	
 	// Devuelve todos los posts ordenados de forma descendente 
-	public List <Post> allPostsFilterDesc(){
-		return postRepo.findAllByOrderByCreatedAtDesc();
+	public List <Post> allPostsFilterDesc(String typePost){
+		return postRepo.findAllByTypePostOrderByCreatedAtDesc(typePost);
 	}
 	
 	// Devuelve todos los posts de acuerdo a su tipo ordenados de forma descendente 

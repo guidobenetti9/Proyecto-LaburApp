@@ -144,8 +144,11 @@ public class UserController {
 	@GetMapping("/filterDataJob")
     public String filterDataJob(@RequestParam("job") Long job, Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
-        List<Post> filteredData = ps.allPostsFilterJob(job);
-        model.addAttribute("allPosts", filteredData);
+        List<Post> ofrecidos = ps.allPostsFilterJob("Ofrecido",job);
+        List<Post> solicitados = ps.allPostsFilterJob("Solicitado",job);
+        model.addAttribute("allOffered", ofrecidos);
+		model.addAttribute("allRequests", solicitados);
+        //model.addAttribute("allPosts", filteredData);
         List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
        // Map<Long, Double> reviews = rs.getAverageRatingByPost();;
@@ -159,8 +162,12 @@ public class UserController {
     @GetMapping("/filterDataProvince")
     public String filterDataProvince(@RequestParam("province") String province, Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
-        List<Post> filteredData = ps.allPostsFilterProvince(province);
-        model.addAttribute("allPosts", filteredData);
+        //List<Post> filteredData = ps.allPostsFilterProvince(province);
+        //model.addAttribute("allPosts", filteredData);
+        List<Post> ofrecidos = ps.allPostsFilterProvince("Ofrecido",province);
+        List<Post> solicitados = ps.allPostsFilterProvince("Solicitado",province);
+        model.addAttribute("allOffered", ofrecidos);
+		model.addAttribute("allRequests", solicitados);
         List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
        // Map<Long, Double> reviews = rs.getAverageRatingByPost();;
@@ -189,8 +196,12 @@ public class UserController {
     @GetMapping("/filterDataDateAsc")
     public String filterDataDateAsc(Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
-        List<Post> filteredData = ps.allPostsFilterAsc();
-        model.addAttribute("allPosts", filteredData);
+        //List<Post> filteredData = ps.allPostsFilterAsc();
+        //model.addAttribute("allPosts", filteredData);
+        List<Post> ofrecidos = ps.allPostsFilterAsc("Ofrecido");
+        List<Post> solicitados = ps.allPostsFilterAsc("Solicitado");
+        model.addAttribute("allOffered", ofrecidos);
+		model.addAttribute("allRequests", solicitados);
         List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
         //Map<Long, Double> reviews = rs.getAverageRatingByPost();;
@@ -204,8 +215,12 @@ public class UserController {
     @GetMapping("/filterDataDateDesc")
     public String filterDataDateDesc(Model model,HttpSession session) {
         // Lógica para obtener los datos filtrados
-        List<Post> filteredData = ps.allPostsFilterDesc();
-        model.addAttribute("allPosts", filteredData);
+        //List<Post> filteredData = ps.allPostsFilterDesc();
+        //model.addAttribute("allPosts", filteredData);
+    	List<Post> ofrecidos = ps.allPostsFilterDesc("Ofrecido");
+        List<Post> solicitados = ps.allPostsFilterDesc("Solicitado");
+        model.addAttribute("allOffered", ofrecidos);
+		model.addAttribute("allRequests", solicitados);
         List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
         //Map<Long, Double> reviews = rs.getAverageRatingByPost();;

@@ -326,7 +326,7 @@
         
         <div class="main-title">
             <h1>LaburApp</h1>
-            <p class="description">Encuentra y publica servicios facilmente. Conï¿½ctate con profesionales y clientes en un solo lugar.</p>
+            <p class="description">Encuentra y publica servicios facilmente. Conectate con profesionales y clientes en un solo lugar.</p>
         </div>
 
         <div class="divider"></div>
@@ -352,20 +352,12 @@
 	        <button class="uk-button uk-button-default" type="button">Fecha</button>
 	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
 	            <ul class="uk-nav uk-dropdown-nav">
-	                <li><a href="/filterDataDateAsc">Mï¿½s antiguos</a></li>
+	                <li><a href="/filterDataDateAsc">Mas antiguos</a></li>
 	                <li class="uk-nav-divider"></li>
-	                <li><a href="/filterDataDateDesc">Mï¿½s recientes</a></li>
+	                <li><a href="/filterDataDateDesc">Mas recientes</a></li>
 	            </ul>
 	        </div>
-	        
-	        <button class="uk-button uk-button-default" type="button">Tipo</button>
-	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-	            <ul class="uk-nav uk-dropdown-nav">
-	                <li><a href="/filterTypePost?typePost=Pedido">Pedidos</a></li>
-	                <li class="uk-nav-divider"></li>
-	                <li><a href="/filterTypePost?typePost=Ofrecido">Ofrecidos</a></li>
-	            </ul>
-	        </div>          
+	                
         </div>
         <div class="divider"></div>
 
