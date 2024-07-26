@@ -88,12 +88,10 @@
                 <p>
                     <b>E-mail:</b> ${user.email}
                 </p>
-                <p>
-                    <b>Disponibilidad:</b> ${post.availableDays} - ${post.availableHours}
-                </p>
+                
                 <c:if test="${userInSession.id == post.creatorPost.id}">
 	                <div class="uk-flex-inline">
-	                	<a href="/post/edit/${post.id}" class="uk-button uk-button-danger">Editar Post</a>
+	                	<a href="/request/edit/${post.id}" class="uk-button uk-button-danger">Editar Post</a>
 	                	<form action="/post/delete/${post.id}" method="post">
 							<input type="hidden" name="_method" value="DELETE">
 							<input type="submit" value="Borrar Post" class="uk-button uk-button-default uk-margin-left">
@@ -101,83 +99,7 @@
 	                </div>
                 </c:if>
             </div>
-            <hr class="uk-divider-icon">
-            <div class="cont_reviews">
-                <h3>Reseñas</h3>
-                <c:forEach items="${reviews}" var="review">
-                    <div class="uk-card uk-card-default uk-margin-top">
-                        <div class="uk-card-header">
-                            <p>${review.senderReview.firstName} ${review.senderReview.lastName}</p>
-                            
-                            <p>${review.createdAt}</p>
-                        </div>
-                        <div class="uk-card-body">
-                            <p>${review.comment}</p>
-                        </div>
-                        <div class="uk-card-footer">
-                        <c:choose>
-					        <c:when test="${review.stars == 1}">
-					            <span uk-icon="star"></span>
-					        </c:when>
-							<c:when test="${review.stars == 2}">
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					        </c:when>
-							<c:when test="${review.stars == 3}">
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					        </c:when>
-					        <c:when test="${review.stars == 4}">
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					        </c:when>
-					         <c:when test="${review.stars == 5}">
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					            <span uk-icon="star"></span>
-					        </c:when>
-					        <c:otherwise>
-					            <p>Sin puntuaciones</p>
-					        </c:otherwise>
-					      </c:choose>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="cont_creareview">
-                <form:form action="/review/create/${post.id}" method="POST" modelAttribute="newReview" >
-                    <div class="cajita">
-                        <form:textarea path="comment" class="uk-textarea" placeholder="Deja tu reseña"/>
-                    </div>
-                    <div class="cajita">
-                        <form:label path="stars" >Estrellas:</form:label>
-						<div class="star-rating">
-				          <input type="radio" id="5-stars" name="stars" value="1"/>
-				          <label for="5-stars" uk-icon="icon: star">1</label>
-				          <input type="radio" id="4-stars" name="stars" value="2"/>
-				          <label for="4-stars" uk-icon="icon: star">2</label>
-				          <input type="radio" id="3-stars" name="stars" value="3"/>
-				          <label for="3-stars" uk-icon="icon: star">3</label>
-				          <input type="radio" id="2-stars" name="stars" value="4"/>
-				          <label for="2-stars" uk-icon="icon: star">4</label>
-				          <input type="radio" id="1-star" name="stars" value="5"/>
-				          <label for="1-star" uk-icon="icon: star">5</label>
-                		</div>           
-                	</div>
-              </div>
-                    <div class="cont_boton">
-                    	<form:hidden path="postReview" value="${post.id}" />
-						<form:hidden path="senderReview" value="${userInSession.id}" />
-					    <input type="submit" class="uk-button uk-button-secondary" value="Enviar" >
-                    </div>
-          		</form:form>
-        	</div>
-        </div>
+           </div>
     </main>
     <footer class="uk-section uk-section-small uk-section-muted">
         <div class="uk-container">

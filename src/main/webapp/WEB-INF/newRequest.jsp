@@ -42,10 +42,10 @@
     <main>
         <div class="cont_main">
             <div class="cont_titulo">
-                <h3 class="uk-h3">Crea una nueva publicación</h3>
+                <h3 class="uk-h3">Crea una nueva solicitud</h3>
             </div>
             <div>
-                <form:form action="/newPost" method="POST" modelAttribute="newPost">
+                <form:form action="/newRequest" method="POST" modelAttribute="newPost">
                     <div class="cajita">
                         <form:label path="postTittle" >Titulo:</form:label>
                         <form:input path="postTittle" class="uk-input"/>
@@ -63,17 +63,6 @@
                                 <form:option value="${job}">${job.jobName}</form:option>
                             </c:forEach>
                         </form:select>
-                    </div>
-                    <div class="cajita">
-                        <form:label path="availableDays" >Dias disponibles:</form:label>
-                        <br>
-                        <form:checkboxes path="availableDays" items="${days}"/>
-                        <form:errors path="availableDays" class="uk-text-danger uk-text-small"/>
-                    </div>
-                    <div class="cajita">
-                        <form:label path="availableHours" >Horarios disponibles:</form:label>
-                        <form:input path="availableHours" class="uk-input"/>
-                        <form:errors path="availableHours" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cajita">
                         <form:label path="province" >Provincia:</form:label>
@@ -94,7 +83,9 @@
 					  
                     
                     <div class="cont_botones">
-                    	<form:hidden path="typePost" value="Ofrecido"/>
+                    	<form:hidden path="typePost" value="Solicitado"/>
+                    	<form:hidden path="availableDays" value="sinEspec"/>
+                    	<form:hidden path="availableHours" value="sinEspec"/>
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>
                         <form:input type="hidden" path="latitud" id="latitud"/>
         |				<form:input type="hidden" path="longitud" id="longitud"/>

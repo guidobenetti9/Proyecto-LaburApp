@@ -92,6 +92,47 @@ public class PostController {
 		
 	}
 	
+	@GetMapping("/newRequest")
+	public String newRequest(HttpSession session,
+			              	@ModelAttribute("newPost") Post newPost,
+			              	Model model) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/";
+        }
+        
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        model.addAttribute("provinces", getProvinces());
+		
+		return "newRequest.jsp";
+	}
+	
+	@PostMapping("/newRequest")
+	public String createRequest(@Valid @ModelAttribute("newPost") Post newPost,
+							 	BindingResult result,
+							 	HttpSession session,
+							 	Model model) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/";
+        }
+        if(result.hasErrors()) {
+        	System.out.print("Tenes un error che");
+        	List <Jobs> jobs = js.allJobs();
+            model.addAttribute("allJobs", jobs);
+            return "newRequest.jsp";
+        }else {
+        	ps.newPost(newPost);
+        	return "redirect:/";
+        }
+		
+	}
+	
 	@GetMapping("/post/{id}")
 	public String postDetails(Model model, 
 			                  @PathVariable("id") Long id,
@@ -203,5 +244,70 @@ public class PostController {
         	ps.addFavorite(userTemp.getId(), id);
         	return "redirect:/";
         }	
+	}
+	
+	@GetMapping("/request/{id}")
+	public String requestDetails(Model model, 
+			                  	@PathVariable("id") Long id,
+			                  	HttpSession session) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/login";
+        }
+		
+		Post post = ps.post(id);
+		System.out.print(post.getLatitud());
+		System.out.print(post.getLongitud());
+		model.addAttribute("post", post);
+		return "request.jsp";
+	}
+	
+	@GetMapping("/request/edit/{id}")
+	public String editRequest(@PathVariable("id")Long id,
+			               	HttpSession session,
+			               	@ModelAttribute("newPost") Post newPost,
+			               	Model model) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/";
+        }
+        
+        Post postToEdit = ps.post(id);
+        model.addAttribute("post", postToEdit);
+        if(userTemp.getId() != postToEdit.getCreatorPost().getId()) {
+        	return "redirect:/";
+        }
+        
+        List <Jobs> jobs = js.allJobs();
+        model.addAttribute("allJobs", jobs);
+        model.addAttribute("provinces", getProvinces());
+        
+        return "editRequest.jsp";
+		
+	}
+	
+	@PutMapping("/editRequest")
+	public String updateRequest(HttpSession session,
+			                 	@Valid @ModelAttribute("newPost") Post newPost,
+			                 	BindingResult result,
+			                 	Model model) {
+		
+		 User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+	        if(userTemp == null) {
+	            return "redirect:/";
+	        }
+	      if(result.hasErrors()) {
+	    	  List <Jobs> jobs = js.allJobs();
+	          model.addAttribute("allJobs", jobs);
+	          return "editRequest.jsp";
+	      }else {
+	    	  ps.newPost(newPost);
+	    	  return "redirect:/";
+	      }
+		
 	}
 }

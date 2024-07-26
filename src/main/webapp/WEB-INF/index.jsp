@@ -39,7 +39,7 @@
         }
         .uk-width-logo {
             height: 50px;
-            width: 110px;
+            width: 50px;
         }
         
         /*Barra de busqueda*/
@@ -56,7 +56,7 @@
             transition: all 0.3s ease;
         }           
 		.uk-search:hover {
-		    width: 600px; /* Ajusta este valor según sea necesario */
+		    width: 600px; /* Ajusta este valor segï¿½n sea necesario */
 		}
 		
         .uk-search-input {
@@ -85,10 +85,10 @@
 	        border-radius: 4px; /* Bordes redondeados*/
 	        display: inline-block;
 	        box-sizing: border-box;
-	        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
-	        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
+	        min-width: 150px; /* Establece un ancho mï¿½nimo para el botï¿½n*/        
+	        line-height: 1.5; /* Ajusta la altura de lï¿½nea para centrar el texto verticalmente */
 	        text-align: center; /* Centra el texto horizontalmente */
-	        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
+	        transition: background-color 0.3s, color 0.3s; /* Aï¿½ade transiciï¿½n suave para hover */
     	}
 	
 	    .btn-registrarse:hover {
@@ -107,15 +107,15 @@
 		    transform: scale(1.3);
 		}
 
-		/* Estilo para el ícono de cerrar sesión */
+		/* Estilo para el ï¿½cono de cerrar sesiï¿½n */
 		.icon-logout i {
 			transition: color 0.3s ease, transform 0.3s ease;
 		}		
 		
 		.icon-logout:hover i {
 		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ícono de cerrar sesión */
-		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ï¿½cono de cerrar sesiï¿½n */
+		    transform: scale(1.5); /* Agrandar el ï¿½cono de cerrar sesiï¿½n */
 		}
 	    
         .main-title {
@@ -165,8 +165,8 @@
 		}
 		
 		.uk-card-hover:hover {
-		    transform: scale(1.09); /* Ajusta el valor para controlar el tamaño del agrandamiento */
-		    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Añade sombra para dar efecto de elevación */
+		    transform: scale(1.09); /* Ajusta el valor para controlar el tamaï¿½o del agrandamiento */
+		    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Aï¿½ade sombra para dar efecto de elevaciï¿½n */
 		}
         
         /*AQUI COMIENZA EL FOOTER*/
@@ -303,7 +303,7 @@
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesión</a></li>                                                      
+                            <li><a href="/login">Iniciar Sesiï¿½n</a></li>                                                      
                         </ul>
                         <ul class="register-button">
                         	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
@@ -326,7 +326,7 @@
         
         <div class="main-title">
             <h1>LaburApp</h1>
-            <p class="description">Encuentra y publica servicios fácilmente. Conéctate con profesionales y clientes en un solo lugar.</p>
+            <p class="description">Encuentra y publica servicios fï¿½cilmente. Conï¿½ctate con profesionales y clientes en un solo lugar.</p>
         </div>
 
         <div class="divider"></div>
@@ -352,9 +352,9 @@
 	        <button class="uk-button uk-button-default" type="button">Fecha</button>
 	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
 	            <ul class="uk-nav uk-dropdown-nav">
-	                <li><a href="/filterDataDateAsc">Más antiguos</a></li>
+	                <li><a href="/filterDataDateAsc">Mï¿½s antiguos</a></li>
 	                <li class="uk-nav-divider"></li>
-	                <li><a href="/filterDataDateDesc">Más recientes</a></li>
+	                <li><a href="/filterDataDateDesc">Mï¿½s recientes</a></li>
 	            </ul>
 	        </div>
 	        
@@ -375,7 +375,7 @@
                 <p>Publica tu servicio para que otros puedan encontrarlo y contratarte.</p>
                 <a href="/newPost" class="uk-button uk-button-secondary">Publicar servicio</a>
                 <div class="uk-width-1-1">
-                    <c:forEach items="${allPosts}" var="post">
+                    <c:forEach items="${allOffered}" var="post">
                         <div class="uk-card uk-card-default uk-card-hover">
                             <div class="uk-card-header">
                                 <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${post.createdAt}">${post.createdAt}</time></p>
@@ -410,18 +410,18 @@
                         <div class="uk-card uk-card-default uk-card-hover">
                             <div class="uk-card-header">
                                 <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${request.createdAt}">${request.createdAt}</time></p>
-                                <h3 class="uk-card-title uk-margin-remove-top">Solicitud de Servicio - Detalle</h3>
+                                <h3 class="uk-card-title uk-margin-remove-top">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</h3>
                             </div>
                             <div class="uk-card-body">
-                                <p>${request.city}, ${request.province}</p>
+                                <p>${request.municipio}, ${request.localidad} (${request.province})</p>
                             </div>
                             <div class="uk-card-footer">
                                 <div class="uk-flex-inline">
-                                    <span uk-icon="clock"></span>
-                                    <span uk-icon="clock"></span>
-                                    <span uk-icon="clock"></span>
-                                    <span uk-icon="clock"></span>
-                                    <span uk-icon="clock"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
+                                    <span uk-icon="star"></span>
                                 </div>
                                 <a href="/request/${request.id}" class="uk-button uk-button-text">Ver</a>
                             </div>
@@ -435,7 +435,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h5>INFORMACIÓN</h5>
+                <h5>INFORMACIï¿½N</h5>
                 <ul>
                     <li><a href="#">Sobre nosotros</a></li>
                     <li><a href="#">Oportunidades de empleo</a></li>

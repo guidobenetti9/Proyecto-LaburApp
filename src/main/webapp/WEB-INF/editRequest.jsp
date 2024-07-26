@@ -26,13 +26,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Zain:wght@200;300;400;700;800;900&display=swap" rel="stylesheet">
 
     <!--Css-->
-    <link rel="stylesheet" href="css/new.css">
+    <link rel="stylesheet" href="/css/new.css">
 </head>
 <body>
     <header>
         <div class="cont_header">
             <div class="cont_loguito">
-                <a href="/"><img src="logo.png"></a>
+                <a href="/"><img src="/logo.png"></a>
             </div>
             <div>
                 <h2 class="uk-h2">LaburApp</h2>
@@ -42,10 +42,10 @@
     <main>
         <div class="cont_main">
             <div class="cont_titulo">
-                <h3 class="uk-h3">Crea una nueva publicación</h3>
+                <h3 class="uk-h3">Edita tu solicitud</h3>
             </div>
             <div>
-                <form:form action="/newPost" method="POST" modelAttribute="newPost">
+                <form:form action="/editRequest" method="PUT" modelAttribute="newPost">
                     <div class="cajita">
                         <form:label path="postTittle" >Titulo:</form:label>
                         <form:input path="postTittle" class="uk-input"/>
@@ -63,17 +63,6 @@
                                 <form:option value="${job}">${job.jobName}</form:option>
                             </c:forEach>
                         </form:select>
-                    </div>
-                    <div class="cajita">
-                        <form:label path="availableDays" >Dias disponibles:</form:label>
-                        <br>
-                        <form:checkboxes path="availableDays" items="${days}"/>
-                        <form:errors path="availableDays" class="uk-text-danger uk-text-small"/>
-                    </div>
-                    <div class="cajita">
-                        <form:label path="availableHours" >Horarios disponibles:</form:label>
-                        <form:input path="availableHours" class="uk-input"/>
-                        <form:errors path="availableHours" class="uk-text-danger uk-text-small"/>
                     </div>
                     <div class="cajita">
                         <form:label path="province" >Provincia:</form:label>
@@ -94,13 +83,17 @@
 					  
                     
                     <div class="cont_botones">
-                    	<form:hidden path="typePost" value="Ofrecido"/>
+                    	<form:hidden path="typePost" value="Solicitado"/>
+                    	<form:hidden path="availableDays" value="sinEspec"/>
+                    	<form:hidden path="availableHours" value="sinEspec"/>
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>
                         <form:input type="hidden" path="latitud" id="latitud"/>
         |				<form:input type="hidden" path="longitud" id="longitud"/>
         				<input type="hidden" name="nombreLocalidad" id="nombreLocalidad"/>
         				<input type="hidden" name="nombreMunicipio" id="nombreMunicipio"/>
                         <a href="/" class="uk-button uk-button-danger uk-margin-right">Cancelar</a>
+                        <form:hidden path="id" value="${post.id}"/>
+                        <input type="hidden" value="put" name="_method">
                         <input type="submit" value="Crear" class="uk-button uk-button-secondary">
                     </div>
                 </form:form>

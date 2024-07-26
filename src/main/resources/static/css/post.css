@@ -42,6 +42,7 @@
 .cont_info{
     padding-left: 50px;
 }
+
 .cont_reviews{
     padding-left: 50px;
     width: 700px;
@@ -52,10 +53,34 @@
 .cont_boton{
     display: flex;
     justify-content: end;
-    padding: 50px 0px;
+    padding: 50px 50px;
+}
+.cont_mapa{
+	width: 800px;
+    margin: 0 auto;
+}
+
+/* Estilo para el icono de cofiguracion */
+.icon-config {	    
+	transition: color 0.3s ease, transform 0.3s ease !important;
+}
+        
+.icon-config:hover {
+	transform: scale(1.3);
+}
+
+/* Estilo para el icono de cerrar sesion */
+.icon-logout i {
+	transition: color 0.3s ease, transform 0.3s ease;
+}		
+		
+.icon-logout:hover i {
+	color: rgb(255,122,122);
+    color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el icono de cerrar sesion */
+	transform: scale(1.5); /* Agrandar el icono de cerrar sesion */
 }
 
 #map {
-    height: 500px; /* Ajusta la altura del mapa según sea necesario */
+    height: 500px; /*Ajusta la altura del mapa según sea necesario */
     width: 100%;
 }

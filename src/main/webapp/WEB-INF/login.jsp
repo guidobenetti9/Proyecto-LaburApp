@@ -207,7 +207,7 @@
     <header>
         <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
             <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo" th:href="@{/}">LaburaApp</a>
+                <a class="uk-navbar-item uk-logo" th:href="@{/}">LaburApp</a>
             </div>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">

@@ -133,6 +133,8 @@ public class UserController {
         Map<Long, Double> reviews = rs.getAverageRatingByPost();;
         model.addAttribute("allReviews",reviews);
 		model.addAttribute("allPosts", ps.allPosts());
+		model.addAttribute("allOffered", ps.allPostsFilterType("Ofrecido"));
+		model.addAttribute("allRequests", ps.allPostsFilterType("Solicitado"));
 		model.addAttribute("provinces", getProvinces());
 		model.addAttribute("userInSession",session.getAttribute("userInSession"));
 		return "index.jsp";
