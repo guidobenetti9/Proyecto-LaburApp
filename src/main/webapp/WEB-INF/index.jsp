@@ -39,8 +39,10 @@
         }
         .uk-width-logo {
             height: 50px;
-            width: 50px;
+            width: 110px;
         }
+        
+        /*Barra de busqueda*/
         .uk-navbar-center {
             display: flex;
             justify-content: center;
@@ -50,11 +52,16 @@
         .uk-search {
             position: relative;
             display: flex;
-            width: 700px; /* Ancho del contenedor de bï¿½squeda */
-        }
+            width: 400px; /* Ancho del contenedor de busqueda */
+            transition: all 0.3s ease;
+        }           
+		.uk-search:hover {
+		    width: 600px; /* Ajusta este valor según sea necesario */
+		}
+		
         .uk-search-input {
             background-color: #fff !important; /* Fondo blanco */
-            width: 100%; /* Ancho del campo de bï¿½squeda */
+            width: 700px; /* Ancho del campo de bï¿½squeda */
             padding-right: 40px; /* Espacio para el icono de la lupa */
             color: #000 !important; /* Color del texto */
         }
@@ -69,19 +76,19 @@
         }
           	
     	.register-button{  	
-    	list-style-type: none;  	
+    		list-style-type: none;  	
     	}
 	    .btn-registrarse {
-        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
-        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
-        text-decoration: none;/* Elimina el subrayado */
-        border-radius: 4px; /* Bordes redondeados*/
-        display: inline-block;
-        box-sizing: border-box;
-        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
-        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
-        text-align: center; /* Centra el texto horizontalmente */
-        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
+	        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
+	        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
+	        text-decoration: none;/* Elimina el subrayado */
+	        border-radius: 4px; /* Bordes redondeados*/
+	        display: inline-block;
+	        box-sizing: border-box;
+	        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
+	        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
+	        text-align: center; /* Centra el texto horizontalmente */
+	        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
     	}
 	
 	    .btn-registrarse:hover {
@@ -90,6 +97,26 @@
 	        text-decoration: none;
 	        font-weight: bold; /* Texto en negrita*/
 	    }
+	    
+	     /* Estilo para el icono de cofiguracion */
+		.icon-config {	    
+		    transition: color 0.3s ease, transform 0.3s ease !important;
+		}
+        
+        .icon-config:hover {
+		    transform: scale(1.3);
+		}
+
+		/* Estilo para el ícono de cerrar sesión */
+		.icon-logout i {
+			transition: color 0.3s ease, transform 0.3s ease;
+		}		
+		
+		.icon-logout:hover i {
+		    color: rgb(255,122,122);
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ícono de cerrar sesión */
+		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
+		}
 	    
         .main-title {
             text-align: center;
@@ -130,6 +157,17 @@
         .button-container {
             position: relative;
         }
+        
+        /* Estilo para la tarjeta de post */
+		.uk-card-hover {
+		    transition: all 0.3s ease;
+		    transform: scale(1); /* Escala inicial */
+		}
+		
+		.uk-card-hover:hover {
+		    transform: scale(1.09); /* Ajusta el valor para controlar el tamaño del agrandamiento */
+		    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Añade sombra para dar efecto de elevación */
+		}
         
         /*AQUI COMIENZA EL FOOTER*/
        	footer {
@@ -226,17 +264,17 @@
         .footer-container + .separator {
             display: block;
         }
-         .uk-button-default {
-        border: 2px solid #ffffff; /* Color del borde*/
-        color: #000000; /* Color del texto*/
-        transition: background-color 0.3s, color 0.3s;
+        .uk-button-default {
+	        border: 2px solid #ffffff; /* Color del borde*/
+	        color: #000000; /* Color del texto*/
+	        transition: background-color 0.3s, color 0.3s;
     	}
 
     	.uk-button-default:hover {
-    	border: 2px solid #000000;
-        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
-        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
-        font-weight: bold; /* Texto en negrita*/
+	    	border: 2px solid #000000;
+	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+	        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
+	        font-weight: bold; /* Texto en negrita*/
     	}
     </style>
 </head>
@@ -248,7 +286,7 @@
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
                         <a href="#">
-                            <img src="logonuevo.png" class="uk-width-1-1 uk-margin-small-left">
+                            <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">   
@@ -265,25 +303,24 @@
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesión</a></li>                           
-                            
+                            <li><a href="/login">Iniciar Sesión</a></li>                                                      
                         </ul>
                         <ul class="register-button">
                         	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
                         </ul>
                     </c:if>
                     <c:if test="${userInSession != null}">
-                        <div class="uk-flex-inline">
-                            <div class="cont_botones">
-                                <p>${userInSession.firstName} ${userInSession.lastName}</p>
-                                <a href="#" class="uk-link-muted">Ver perfil</a>
-                            </div>
-                            <div>
-                                <a href="/logout" class="uk-button uk-button-danger">Cerrar sesión</a>
-                            </div>
-                        </div>
-                    </c:if>
-                </div>                       
+                        <div class="uk-navbar-right">
+				            <div class="uk-navbar-right">
+							    <ul class="uk-navbar-nav">
+							        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
+							        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
+							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+							    </ul>
+							</div>          
+			        	</div>
+                    </c:if>                  
+                </div>      
             </nav>
         </header>
         
@@ -293,48 +330,43 @@
         </div>
 
         <div class="divider"></div>
-
-        <div class="filter-container">
-            <button class="uk-button uk-button-primary" type="button">Filtros</button>
-            <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                <button class="uk-button uk-button-default" type="button">Rubro</button>
-                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
-                        <c:forEach items="${allJobs}" var="job">
-                            <li><a href="/filterDataJob?job=${job.id}">${job.jobName}</a></li>
-                            <li class="uk-nav-divider"></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-                <button class="uk-button uk-button-default" type="button">Zona</button>
-                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
-                        <c:forEach items="${provinces}" var="province">
-                            <li><a href="/filterDataProvince?province=${province}">${province}</a></li>
-                            <li class="uk-nav-divider"></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-                <button class="uk-button uk-button-default" type="button">Fecha</button>
-                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav">
-                        <li><a href="/filterDataDateAsc">Más antiguos</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="/filterDataDateDesc">Más recientes</a></li>
-                    </ul>
-                </div>
-                
-                <button class="uk-button uk-button-default" type="button">Tipo</button>
-                <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
-                    <ul class="uk-nav uk-dropdown-nav">
-                        <li><a href="/filterTypePost?typePost=Pedido">Pedidos</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href="/filterTypePost?typePost=Ofrecido">Ofrecidos</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="filter-container">            
+	        <button class="uk-button uk-button-default" type="button">Rubro</button>
+	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+	            <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
+	                <c:forEach items="${allJobs}" var="job">
+	                    <li><a href="/filterDataJob?job=${job.id}">${job.jobName}</a></li>
+	                    <li class="uk-nav-divider"></li>
+	                </c:forEach>
+	            </ul>
+	        </div>
+	        <button class="uk-button uk-button-default" type="button">Zona</button>
+	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+	            <ul class="uk-nav uk-dropdown-nav uk-panel-scrollable">
+	                <c:forEach items="${provinces}" var="province">
+	                    <li><a href="/filterDataProvince?province=${province}">${province}</a></li>
+	                    <li class="uk-nav-divider"></li>
+	                </c:forEach>
+	            </ul>
+	        </div>
+	        <button class="uk-button uk-button-default" type="button">Fecha</button>
+	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+	            <ul class="uk-nav uk-dropdown-nav">
+	                <li><a href="/filterDataDateAsc">Más antiguos</a></li>
+	                <li class="uk-nav-divider"></li>
+	                <li><a href="/filterDataDateDesc">Más recientes</a></li>
+	            </ul>
+	        </div>
+	        
+	        <button class="uk-button uk-button-default" type="button">Tipo</button>
+	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
+	            <ul class="uk-nav uk-dropdown-nav">
+	                <li><a href="/filterTypePost?typePost=Pedido">Pedidos</a></li>
+	                <li class="uk-nav-divider"></li>
+	                <li><a href="/filterTypePost?typePost=Ofrecido">Ofrecidos</a></li>
+	            </ul>
+	        </div>          
         </div>
-
         <div class="divider"></div>
 
         <div class="button-container">
