@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,12 +56,12 @@
             transition: all 0.3s ease;
         }           
 		.uk-search:hover {
-		    width: 600px; /* Ajusta este valor seg�n sea necesario */
+		    width: 600px; /* Ajusta este valor segï¿½n sea necesario */
 		}
 		
         .uk-search-input {
             background-color: #fff !important; /* Fondo blanco */
-            width: 700px; /* Ancho del campo de b�squeda */
+            width: 700px; /* Ancho del campo de bï¿½squeda */
             padding-right: 40px; /* Espacio para el icono de la lupa */
             color: #000 !important; /* Color del texto */
         }
@@ -85,10 +85,10 @@
 	        border-radius: 4px; /* Bordes redondeados*/
 	        display: inline-block;
 	        box-sizing: border-box;
-	        min-width: 150px; /* Establece un ancho m�nimo para el bot�n*/        
-	        line-height: 1.5; /* Ajusta la altura de l�nea para centrar el texto verticalmente */
+	        min-width: 150px; /* Establece un ancho mï¿½nimo para el botï¿½n*/        
+	        line-height: 1.5; /* Ajusta la altura de lï¿½nea para centrar el texto verticalmente */
 	        text-align: center; /* Centra el texto horizontalmente */
-	        transition: background-color 0.3s, color 0.3s; /* A�ade transici�n suave para hover */
+	        transition: background-color 0.3s, color 0.3s; /* Aï¿½ade transiciï¿½n suave para hover */
     	}
 	
 	    .btn-registrarse:hover {
@@ -107,15 +107,15 @@
 		    transform: scale(1.3);
 		}
 
-		/* Estilo para el �cono de cerrar sesi�n */
+		/* Estilo para el ï¿½cono de cerrar sesiï¿½n */
 		.icon-logout i {
 			transition: color 0.3s ease, transform 0.3s ease;
 		}		
 		
 		.icon-logout:hover i {
 		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el �cono de cerrar sesi�n */
-		    transform: scale(1.5); /* Agrandar el �cono de cerrar sesi�n */
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ï¿½cono de cerrar sesiï¿½n */
+		    transform: scale(1.5); /* Agrandar el ï¿½cono de cerrar sesiï¿½n */
 		}
 	    
         .main-title {
@@ -145,7 +145,7 @@
         .divider {
             border-top: 1px solid #ccc;
             margin: 20px auto;
-            width: 80%; /* Reducir el ancho de las l�neas horizontales */
+            width: 80%; /* Reducir el ancho de las lï¿½neas horizontales */
         }
         .vertical-divider {
             border-left: 1px solid #ccc;
@@ -165,8 +165,8 @@
 		}
 		
 		.uk-card-hover:hover {
-		    transform: scale(1.09); /* Ajusta el valor para controlar el tama�o del agrandamiento */
-		    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* A�ade sombra para dar efecto de elevaci�n */
+		    transform: scale(1.09); /* Ajusta el valor para controlar el tamaï¿½o del agrandamiento */
+		    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Aï¿½ade sombra para dar efecto de elevaciï¿½n */
 		}
         
         /*AQUI COMIENZA EL FOOTER*/
@@ -281,7 +281,7 @@
 <body>
     <div class="content">
         <header>              
-            <!-- Barra de Navegaci�n -->
+            <!-- Barra de Navegaciï¿½n -->
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
@@ -296,14 +296,14 @@
                 </div>
                 <div class="uk-navbar-center">
                     <form class="uk-search uk-search-default" action="/findUsers" method="get">
-                        <input class="uk-search-input" type="search" placeholder="Buscar Usuarios">
+                        <input class="uk-search-input" type="search" placeholder="Buscar Usuarios" name="search">
                         <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
                     </form>
                 </div>
                 <div class="uk-navbar-right uk-margin-medium-right">
                     <c:if test="${userInSession == null}">
                         <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesi�n</a></li>                                                      
+                            <li><a href="/login">Iniciar Sesión</a></li>                                                      
                         </ul>
                         <ul class="register-button">
                         	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
@@ -326,7 +326,7 @@
         
         <div class="main-title">
             <h1>LaburApp</h1>
-            <p class="description">Encuentra y publica servicios f�cilmente. Con�ctate con profesionales y clientes en un solo lugar.</p>
+            <p class="description">Encuentra y publica servicios facilmente. Conï¿½ctate con profesionales y clientes en un solo lugar.</p>
         </div>
 
         <div class="divider"></div>
@@ -352,9 +352,9 @@
 	        <button class="uk-button uk-button-default" type="button">Fecha</button>
 	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
 	            <ul class="uk-nav uk-dropdown-nav">
-	                <li><a href="/filterDataDateAsc">M�s antiguos</a></li>
+	                <li><a href="/filterDataDateAsc">Mï¿½s antiguos</a></li>
 	                <li class="uk-nav-divider"></li>
-	                <li><a href="/filterDataDateDesc">M�s recientes</a></li>
+	                <li><a href="/filterDataDateDesc">Mï¿½s recientes</a></li>
 	            </ul>
 	        </div>
 	        
@@ -435,7 +435,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h5>INFORMACI�N</h5>
+                <h5>INFORMACIï¿½N</h5>
                 <ul>
                     <li><a href="#">Sobre nosotros</a></li>
                     <li><a href="#">Oportunidades de empleo</a></li>

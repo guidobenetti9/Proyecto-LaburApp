@@ -265,7 +265,7 @@
                 <button type="submit">Ingresar</button>
                 <div class="register-links">
                     <a th:href="">¿Olvidaste tu contraseña?</a>
-                    <a th:href="/register">Crear una cuenta nueva</a>
+                    <a href="/register">Crear una cuenta nueva</a>
                 </div>
             </form>
         </div>
