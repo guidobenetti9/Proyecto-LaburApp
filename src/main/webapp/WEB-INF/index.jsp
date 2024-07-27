@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/css/uikit.min.css" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.7/dist/js/uikit.min.js"></script>
@@ -140,7 +143,7 @@
         }
         .uk-card {
             margin-top: 20px;
-            width: auto; /* Ajustable al contenido */
+            
         }
         .divider {
             border-top: 1px solid #ccc;
@@ -165,7 +168,7 @@
 		}
 		
 		.uk-card-hover:hover {
-		    transform: scale(1.09); /* Ajusta el valor para controlar el tamaï¿½o del agrandamiento */
+		    transform: scale(1.06); /* Ajusta el valor para controlar el tamaï¿½o del agrandamiento */
 		    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Aï¿½ade sombra para dar efecto de elevaciï¿½n */
 		}
         
@@ -276,6 +279,67 @@
 	        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
 	        font-weight: bold; /* Texto en negrita*/
     	}
+    	
+    	/*Estilo de listas*/
+    	.uk-card{
+    		border:1px solid #dfb550 ;
+    	}
+    	
+        .uk-card-title {
+            width: 100%;
+        }
+        
+        .service-description {
+            width: 400px;
+        }
+
+        .description-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+        }
+
+        .service-image img {
+            max-width: 200px;
+            max-height: 200px;
+            width: 100%;
+            height: auto;
+            border: solid 1px #000000;
+            margin-left: 10px;
+        }   
+        
+        .uk-card-footer{
+        	height:60px;
+        }
+        
+        /*boton de favoritos*/
+        
+		.uk-icon-button.uk-icon-thumbs-up.uk-no-toggle:hover {
+		    background: rgb(115,115,115);
+		background: radial-gradient(circle, rgba(115,115,115,1) 0%, rgba(87,87,87,1) 30%, rgba(69,69,69,1) 50%, rgba(57,57,57,1) 70%, rgba(34,34,34,1) 100%);
+		    color: #dfb550;
+		}
+		
+		.uk-icon-button.uk-icon-thumbs-up.uk-no-toggle:active {
+		    	background-color: ; /* Verde oscuro */
+		     	 /* Azul claro */
+		}
+		
+		.uk-animation-spin:active {
+		    animation: spin 0.2s ease-in-out;
+		}
+		
+		@keyframes spin {
+		    0% {
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        transform: rotate(360deg);
+		    }
+		}
+                  
     </style>
 </head>
 <body>
@@ -365,30 +429,52 @@
             <div>
                 <h3>Publicar un nuevo servicio</h3>
                 <p>Publica tu servicio para que otros puedan encontrarlo y contratarte.</p>
-                <a href="/newPost" class="uk-button uk-button-secondary">Publicar servicio</a>
-                <div class="uk-width-1-1">
-                    <c:forEach items="${allOffered}" var="post">
-                        <div class="uk-card uk-card-default uk-card-hover">
-                            <div class="uk-card-header">
-                                <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${post.createdAt}">${post.createdAt}</time></p>
-                                <h3 class="uk-card-title uk-margin-remove-top">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
-                            </div>
-                            <div class="uk-card-body">
-                                <p>${post.municipio}, ${post.localidad} (${post.province})</p>
-                            </div>
-                            <div class="uk-card-footer">
-                                <div class="uk-flex-inline">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                </div>
-                                <a href="/post/${post.id}" class="uk-button uk-button-text">Ver</a>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
+                <a href="/newPost" class="uk-button uk-button-secondary">Publicar servicio</a>               
+                <div class="service-card ">
+				    <c:forEach items="${allOffered}" var="post">
+				        <div class="uk-card uk-card-default uk-card-hover">
+				            <div class="uk-card-body">
+				                <h3 class="uk-card-title">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
+				                <div class="uk-flex uk-flex-between">
+				                    <div class="service-description">
+				                        <p class="description-text uk-text-left">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
+				                        <p class="uk-text-left">${post.municipio}, ${post.localidad} (${post.province})</p>                       
+				                         <div class="uk-flex uk-flex-between uk-align-left">
+					                    	<div class="rating">
+						                        <span uk-icon="star" class="uk-text-warning"></span>
+						                        <span uk-icon="star" class="uk-text-warning"></span>
+						                        <span uk-icon="star" class="uk-text-warning"></span>
+						                        <span uk-icon="star" class="uk-text-warning"></span>
+						                        <span uk-icon="star" class="uk-text-muted"></span>
+						                        <span class="uk-text-meta">(4.0)</span>
+								            </div>
+						                    <div>
+						                        <a href="/service/1" class="uk-button uk-button-text uk-margin-small-left uk-text-capitalize">Opiniones</a>
+						                    </div>
+					                	</div>                     
+				                    </div>
+				                    <div class="service-image">
+				                        <img src="https://via.placeholder.com/1200" alt="Servicio">
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="uk-card-footer">
+				                <div class="uk-flex uk-flex-between">
+				                    <div>
+				                    	<p class="uk-text-meta"><time datetime="${post.createdAt}">${post.createdAt}</time></p>
+				                    </div>
+				                    <div>				                        
+				                        <a href="#" class="uk-icon-button uk-icon-thumbs-up uk-no-toggle uk-animation-spin"><i class="bi bi-star-fill"></i></a>
+				                    </div>
+				                </div>
+				                <div class="uk-flex uk-flex-top">
+				                <a href="/post/${post.id}" class="uk-button uk-button-text uk-align-left uk-text-capitalize">Ver Más</a>
+				                </div>
+				            </div>
+				        </div>
+				    </c:forEach>
+				</div>               
             </div>
 
             <div class="vertical-divider"></div>
@@ -427,7 +513,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h5>INFORMACIï¿½N</h5>
+                <h5>INFORMACIÓN</h5>
                 <ul>
                     <li><a href="#">Sobre nosotros</a></li>
                     <li><a href="#">Oportunidades de empleo</a></li>
