@@ -39,7 +39,7 @@
         }
         .uk-width-logo {
             height: 50px;
-            width: 50px;
+            width: 110px;
         }
         
         /*Barra de busqueda*/
@@ -285,7 +285,7 @@
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
-                        <a href="#">
+                        <a href="/">
                             <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
                         </a>
                     </div>
