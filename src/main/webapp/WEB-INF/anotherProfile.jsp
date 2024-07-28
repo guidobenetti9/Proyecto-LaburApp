@@ -270,33 +270,41 @@
                     </a>
                 </div>          
                 <ul class="uk-navbar-nav">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/help">Ayuda</a></li>
+                    <li><a href="/contact">Contacto</a></li>
                 </ul>
             </div>
-            <div class="uk-navbar-right">
-                <div class="uk-navbar-right">
-                    <ul class="uk-navbar-nav">
-                        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
-                        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
-                        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
-                    </ul>
-                </div>          
-            </div>
+			
+          <c:if test="${userInSession != null}">
+                     <div class="uk-navbar-right">
+	            <div class="uk-navbar-right">
+				    <ul class="uk-navbar-nav">
+				        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
+				        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
+				        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+				    </ul>
+				</div>          
+        	</div>
+          </c:if> 
+                    
         </nav>         
         <div class="profile-container">          
             <!-- Información del Usuario -->
             <div class="profile-header">
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
-                    <h1>Nombre del Usuario</h2>
+                    <h1>${user.firstName} ${user.lastName}</h2>
                     <p>Profesión o Especialidad</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Ubicación</p>
+                    <c:forEach items="${posts}" var="post">
+                    	<p>${post.jobsInPost.jobName}</p>
+                    </c:forEach>
+                    <p><i class="fas fa-map-marker-alt"></i>${user.city}, ${user.province}</p>
                     <div class="uk-flex">
-                        <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
-                        <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>
-                        <a href="#" class="uk-icon-button" uk-icon="linkedin"></a>
+                        <a href="${user.twitter}" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
+                        <a href="${user.facebook}" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>
+                        <a href="${user.instagram}" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>
+                        <a href="${user.linkedin}" class="uk-icon-button" uk-icon="linkedin"></a>
                     </div>
                 </div>
                 <a href="/message" class="uk-button uk-button-primary">Enviar Mensaje</a>
@@ -310,11 +318,12 @@
                         <h3 class="uk-card-title center-title">Información de Contacto</h3>
                         <div class="divider"></div>
                         <ul class="uk-list uk-list-divider">
-                            <li><span uk-icon="icon: receiver; ratio: 1"></span> +54 123 456 789</li>
-                            <li><span uk-icon="icon: mail; ratio: 1"></span> AdrianCastro@xd.com</li>                            
-                            <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>Kanevick</li>
-                            <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>Kanevick</li>
-                            <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>Adrian</li>
+                            <li><span uk-icon="icon: receiver; ratio: 1"></span>${user.phone}</li>
+                            <li><span uk-icon="icon: mail; ratio: 1"></span>${user.email}</li>                            
+                            <li><a href="${user.twitter}" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>Twitter</li>
+                            <li><a href="${user.facebook}" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>Facebook</li>
+                            <li><a href="${user.instagram}" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>Instagram</li>
+                            <li><a href="${user.linkedin}" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>Linkedin</li>
                         </ul>
                     </div>
                     <!-- Nueva Sección: Descripción Detallada -->
@@ -373,17 +382,18 @@
                     <div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Servicios Publicados</h3>
                         <div class="divider"></div>
-                        <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>                                                      
-                            <div class="service-card">
+                        <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>  
+                        <c:forEach items="${posts}" var="post">
+                       		<div class="service-card">
                                 <div class="uk-card uk-card-default uk-card-hover">
                                     <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
+                                        <h3 class="uk-card-title">${post.postTittle}</h3>
                                         <div class="uk-flex uk-flex-between">
                                             <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+                                                <p class="description-text">${post.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <p class="uk-text-meta">Fecha: ${post.createdAt}</p>
+                                                <a href="/post/${post.id}" class="uk-button uk-button-text">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">
@@ -401,68 +411,34 @@
                                                 <span class="uk-text-meta">(4.0)</span>
                                             </div>
                                             <div>
-                                                <a href="#" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
+                                                <a href="/favoritePost/add/${post.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
                                         </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
+                                        <a href="/post/${post.id}" class="uk-button uk-button-text">Ver Opiniones</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Repetir para otros servicios -->
-                            <div class="service-card">
-                                <div class="uk-card uk-card-default uk-card-hover">
-                                    <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
-                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
-                                            </div>
-                                            <div class="service-image">
-                                                <img src="https://via.placeholder.com/1200" alt="Servicio">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-card-footer">
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-muted"></span>
-                                                <span class="uk-text-meta">(4.0)</span>
-                                            </div>
-                                            <div>
-                                                <a href="#" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
-                                            </div>
-                                        </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Repetir para otros servicios -->
+                        
+                        </c:forEach>                                                    
                             
                             
                         </div>
                     </div>
-                    <!-- Nuevas Solicitudes de Servicios -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
+                    <c:forEach items="${postsRequests}" var="postRequest">
+                    	<div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
                         <div class="divider"></div>
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>
                             <div class="service-card">
                                 <div class="uk-card uk-card-default uk-card-hover">
                                     <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
+                                        <h3 class="uk-card-title">${postRequest.postTittle}</h3>
                                         <div class="uk-flex uk-flex-between">
                                             <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+                                                <p class="description-text">${postRequest.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
+                                                <a href="/request/${post.id}" class="uk-button uk-button-text">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">
@@ -480,49 +456,14 @@
                                                 <span class="uk-text-meta">(4.0)</span>
                                             </div>
                                             <div>
-                                                <a href="#" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
+                                                <a href="/favoritePost/add/${postRequest.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
                                         </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
+                                        
                                     </div>
                                 </div>
                             </div>
-                            <!-- Repetir para otros servicios -->
-                            <div class="service-card">
-                                <div class="uk-card uk-card-default uk-card-hover">
-                                    <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
-                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
-                                            </div>
-                                            <div class="service-image">
-                                                <img src="https://via.placeholder.com/1200" alt="Servicio">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-card-footer">
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-muted"></span>
-                                                <span class="uk-text-meta">(4.0)</span>
-                                            </div>
-                                            <div>
-                                                <a href="#" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
-                                            </div>
-                                        </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Repetir para otros servicios -->                                                       
+                    </c:forEach>                                                      
                         </div>
                     </div>
                     <!-- Reseñas -->
@@ -530,51 +471,57 @@
                         <h3 class="uk-card-title center-title">Reseñas de otros usuarios</h3>
                         <div class="divider"></div>
                         <div class="uk-comment-list">
-                            <div class="uk-margin">
+                        <c:forEach items="${reviews}" var="review">
+                        <c:if test="${review.postReview.creatorPost.id == post.creatorPost.id}">
+                        	 <div class="uk-margin">
                                 <article class="uk-comment">
                                     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
                                         <div class="uk-width-expand">
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Usuario 1</a></h4>
+                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="/userProfile/${senderReview.id}">${senderReview.firstName} ${senderReview.lastName}</a></h4>
                                             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                                                 <li class="stars">
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                </li>
-                                                <li>Hace 2 días</li>
+	                                                <c:choose>
+												        <c:when test="${review.stars == 1}">
+												            <span uk-icon="star"></span>
+												        </c:when>
+														<c:when test="${review.stars == 2}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+														<c:when test="${review.stars == 3}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+												        <c:when test="${review.stars == 4}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+												         <c:when test="${review.stars == 5}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+												        <c:otherwise>
+												            <p>Sin puntuaciones</p>
+												        </c:otherwise>
+												      </c:choose>
+                          						</li>
+                                                <li>${review.createdAt}</li>
                                             </ul>
                                         </div>
                                     </header>
                                     <div class="uk-comment-body">
-                                        <p>Excelente servicio, muy profesional y puntual. ¡Lo recomiendo totalmente!</p>
+                                        <p>${review.comment}</p>
                                     </div>
                                 </article>
                             </div>
-                            <div class="uk-margin">
-                                <article class="uk-comment">
-                                    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
-                                        <div class="uk-width-expand">
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Usuario 2</a></h4>
-                                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                                <li class="stars">
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-muted"></span>
-                                                </li>
-                                                <li>Hace 1 semana</li>
-                                            </ul>
-                                        </div>
-                                    </header>
-                                    <div class="uk-comment-body">
-                                        <p>El servicio fue bueno, pero podría mejorar en la puntualidad.</p>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
+                        </c:if>
+                        </c:forEach>
                         <div class="uk-flex uk-flex-center uk-margin-large-top">
                             <button class="uk-button uk-button-primary">Ver Más Reseñas</button>
                         </div>
@@ -633,8 +580,8 @@
         <div class="footer-column">
             <h5>SOPORTE</h5>
             <ul>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Ayuda</a></li>
+                <li><a href="/contact">Contacto</a></li>
+                <li><a href="/help">Ayuda</a></li>
             </ul>
         </div>
         <div class="footer-column1">

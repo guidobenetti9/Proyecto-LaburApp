@@ -34,7 +34,7 @@ public class Post {
 	private String postTittle;
 	
 	@NotEmpty(message="se necesita una descripción")
-	@Size(min=2, message="la descripción debe tener al menos 2 caracteres")
+	@Size(min=2, message="la descripción debe tener al menos 10 caracteres")
 	private String postDescription;
 	
 	@NotEmpty(message="debes ingresar tus dias disponibles")
