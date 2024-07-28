@@ -50,7 +50,7 @@
 						<td>${post.id}</td>
 						<td>${post.postTittle}</td>
 						<td>${post.province}</td>
-						<td>${post.city}</td>
+						<td>${post.localidad} ${post.municipio}</td>
 						<td>${post.creatorPost.firstName}</td>
 						<td>
 							<form action="/post/delete/${post.id}" method="post">
