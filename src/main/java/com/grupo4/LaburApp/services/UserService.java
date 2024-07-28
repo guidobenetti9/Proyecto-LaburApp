@@ -28,6 +28,70 @@ public class UserService {
 		return userRepo.save(user);
 	}
 	
+	public User saveOrUpdate(User user, BindingResult result) {
+	    // Verificar si es una actualización o un nuevo registro
+	    boolean isUpdating = user.getId() != null;
+
+	    if (!isUpdating) {
+	        // Comparar las contraseñas solo si es un nuevo registro
+	        String password = user.getPassword();
+	        String confirm = user.getConfirm();
+	        if (confirm == null || !password.equals(confirm)) {
+	            result.rejectValue("confirm", "Matches", "Password and confirmation don't match");
+	        }
+
+	        // Revisar que el email no esté registrado solo si es un nuevo registro
+	        String email = user.getEmail();
+	        User userExist = userRepo.findByEmail(email); // Objeto de User o null
+	        if (userExist != null) {
+	            result.rejectValue("email", "Unique", "E-mail already exists");
+	        }
+	    } else {
+	        // Para actualización, si el email ha cambiado, verificar que no esté registrado
+	        User existingUser = userRepo.findById(user.getId()).orElse(null);
+	        if (existingUser != null && !existingUser.getEmail().equals(user.getEmail())) {
+	            User userExist = userRepo.findByEmail(user.getEmail());
+	            if (userExist != null) {
+	                result.rejectValue("email", "Unique", "E-mail already exists");
+	            }
+	        }
+
+	        // Si no estamos actualizando la contraseña, conservamos la contraseña existente
+	        if (existingUser != null) {
+	            if (user.getPassword() == null || user.getPassword().isEmpty()) {
+	                user.setPassword(existingUser.getPassword());
+	            } else {
+	                // Comparar las contraseñas si se proporciona una nueva contraseña
+	                String password = user.getPassword();
+	                String confirm = user.getConfirm();
+	                if (confirm == null || !password.equals(confirm)) {
+	                    result.rejectValue("confirm", "Matches", "Password and confirmation don't match");
+	                } else {
+	                    // Hashear nueva contraseña
+	                    String passHash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+	                    user.setPassword(passHash); // Establecemos el password hasheado
+	                }
+	            }
+	        }
+	    }
+
+	    // Si existe error, regreso null
+	    if (result.hasErrors()) {
+	        return null;
+	    } else {
+	        // NO HAY ERRORES
+	        // Si no es actualización, hashear contraseña
+	        if (!isUpdating) {
+	            String passHash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+	            user.setPassword(passHash); // Establecemos el password hasheado
+	        }
+	        return userRepo.save(user);
+	        }
+	    }
+
+
+	
+	
 	// Metodo que devuelve una lista de usuarios de acuerdo a su nombre (si hay coincidencias)
 	public List<User> usersContaining(String username){
 		return userRepo.findByKeywordContaining(username);

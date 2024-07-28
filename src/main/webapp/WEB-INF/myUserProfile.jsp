@@ -25,7 +25,7 @@
 
         .uk-width-logo {
             height: 50px;
-            width: 110px;
+            width: 50px;
         }
 
         /* Estilo para el icono de cofiguracion */
@@ -268,7 +268,7 @@
             <div class="uk-navbar-left">
                 <div class="uk-width-logo">
                     <a href="/">
-                        <img src="logo1.png" class="uk-width-1-1 uk-margin-small-left">
+                        <img src="/static/logo.png" class="uk-width-1-1 uk-margin-small-left">
                     </a>
                 </div>          
                 <ul class="uk-navbar-nav">
@@ -320,7 +320,7 @@
                             <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
                             <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
                             <div class="uk-text-center uk-margin-small-bottom">
-                                <a href="/add-service" class="uk-button uk-button-primary">Editar Perfil</a>
+                                <a href="/user/edit/${userInSession.id}" class="uk-button uk-button-primary">Editar Perfil</a>
                             </div>
                         </ul>
                     </div>
