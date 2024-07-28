@@ -478,7 +478,9 @@
 	                <li class="uk-nav-divider"></li>
 	                <li><a href="/filterDataDateDesc">Mas recientes</a></li>
 	            </ul>
+	          
 	        </div>
+	         <a href="/" class="uk-button uk-button-primary">Refrescar Pagina</a>
 	                
         </div>
         <div class="divider"></div>
@@ -492,7 +494,7 @@
 				    <c:forEach items="${allOffered}" var="post">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
+				                <h3 class="uk-card-title"><a href="/userProfile/${post.creatorPost.id}">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</a></h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${post.postDescription}</p>
@@ -542,7 +544,7 @@
 				    <c:forEach items="${allRequests}" var="request">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</h3>
+				                <h3 class="uk-card-title"><a href="/userProfile/${request.creatorPost.id}">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</a></h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${post.postDescription}</p>
