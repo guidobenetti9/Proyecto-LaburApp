@@ -283,6 +283,9 @@
     	/*Estilo de listas*/
     	.uk-card{
     		border:1px solid #dfb550 ;
+    		 width: 80%;
+            margin-left: auto;
+            margin-right: auto;
     	}
     	
         .uk-card-title {
@@ -290,14 +293,14 @@
         }
         
         .service-description {
-            width: 400px;
+            width:390px ;
         }
 
         .description-text {
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 6;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
         }
 
@@ -332,12 +335,12 @@
 		}
 		
 		@keyframes spin {
-		    0% {
-		        transform: rotate(0deg);
-		    }
-		    100% {
-		        transform: rotate(360deg);
-		    }
+	    0% {
+	        transform: rotate(0deg);
+	    }
+	    100% {
+	        transform: rotate(360deg);
+	    }
 		}
                   
     </style>
@@ -350,7 +353,7 @@
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
                         <a href="/">
-                            <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
+                            <img src="logo1.png" class="uk-width-1-1 uk-margin-small-left">
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">   
