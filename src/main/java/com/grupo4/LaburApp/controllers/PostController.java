@@ -189,7 +189,7 @@ public class PostController {
 		
 		 User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
 	        if(userTemp == null) {
-	            return "redirect:/";
+	            return "redirect:/login";
 	        }
 	      if(result.hasErrors()) {
 	    	  List <Jobs> jobs = js.allJobs();

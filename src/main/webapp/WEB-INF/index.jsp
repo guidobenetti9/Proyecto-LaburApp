@@ -411,7 +411,6 @@
                         <div class="uk-navbar-right">
 				            <div class="uk-navbar-right">
 							    <ul class="uk-navbar-nav">
-
 							        <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
 							        <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
 							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
@@ -508,9 +507,6 @@
 						                        <span uk-icon="star" class="uk-text-muted"></span>
 						                        <span class="uk-text-meta">(4.0)</span>
 								            </div>
-						                    <div>
-						                        <a href="/service/1" class="uk-button uk-button-text uk-margin-small-left uk-text-capitalize">Opiniones</a>
-						                    </div>
 					                	</div>                     
 				                    </div>
 				                    <div class="service-image">
@@ -560,9 +556,6 @@
 				                                <span uk-icon="star" class="uk-text-warning"></span>
 				                                <span uk-icon="star" class="uk-text-muted"></span>
 				                                <span class="uk-text-meta">(4.0)</span>
-				                            </div>
-				                            <div>
-				                                <a href="/service/1" class="uk-button uk-button-text uk-margin-small-left uk-text-capitalize">Opiniones</a>
 				                            </div>
 				                        </div>                     
 				                    </div>

@@ -365,14 +365,14 @@
                                     </div>
                                     <div class="uk-card-footer">
                                         <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
+                                            <!--  <div class="rating">
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-muted"></span>
                                                 <span class="uk-text-meta">(4.0)</span>
-                                            </div>
+                                            </div>-->
                                             <div>
                                                 <a href="/favoritePost/add/${post.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
@@ -411,14 +411,14 @@
                                     </div>
                                     <div class="uk-card-footer">
                                         <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
+                                           <!-- <div class="rating">
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-muted"></span>
                                                 <span class="uk-text-meta">(4.0)</span>
-                                            </div>
+                                            </div> -->
                                             <div>
                                                 <a href="/favoritePost/add/${postRequest.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
