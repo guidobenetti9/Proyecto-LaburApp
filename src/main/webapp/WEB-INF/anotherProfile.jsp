@@ -294,18 +294,13 @@
             <div class="profile-header">
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
-                    <h1>${user.firstName} ${user.lastName}</h2>
-                    <p>Profesión o Especialidad</p>
+                    <h2>${user.firstName} ${user.lastName}</h2>
+                    <h3>@${user.username}</h3>
+                    <p>Profesión/es y/o especialidad/es</p>
                     <c:forEach items="${posts}" var="post">
                     	<p>${post.jobsInPost.jobName}</p>
                     </c:forEach>
                     <p><i class="fas fa-map-marker-alt"></i>${user.city}, ${user.province}</p>
-                    <div class="uk-flex">
-                        <a href="${user.twitter}" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
-                        <a href="${user.facebook}" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>
-                        <a href="${user.instagram}" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>
-                        <a href="${user.linkedin}" class="uk-icon-button" uk-icon="linkedin"></a>
-                    </div>
                 </div>
                 <a href="/message" class="uk-button uk-button-primary">Enviar Mensaje</a>
             </div> 
@@ -336,43 +331,11 @@
                             mi enfoque está en proporcionar soluciones efectivas que ayuden a las empresas a alcanzar sus objetivos en línea. Tengo una sólida comprensión de las últimas tecnologías y tendencias, lo que me permite ofrecer servicios de alta calidad adaptados a las necesidades específicas de cada cliente.
                         </p>
                     </div>
-                     <!-- Certificaciones -->
-                     <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Certificaciones</h3>
-                        <div class="divider"></div>
-                        <div class="certifications">
-                            <div class="certification-item">
-                                <p>Certificación en Desarrollo Web - Instituto XYZ</p>
-                            </div>
-                            <div class="certification-item">
-                                <p>Certificación en Marketing Digital - Universidad ABC</p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Trabajos o Solicitudes completadas</h3>
                         <div class="divider"></div>
                         <div class="Historial">
                             
-                        </div>
-                    </div>
-                    <!-- Galería de Imágenes-->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Galería de Imágenes</h3>
-                        <div class="divider"></div>
-                        <div class="gallery">
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 1" class="thumbnail">
-                            </a>
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 2" class="thumbnail">
-                            </a>
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 3" class="thumbnail">
-                            </a>
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 4" class="thumbnail">
-                            </a>                           
                         </div>
                     </div>
                 </div>
@@ -424,10 +387,11 @@
                             
                         </div>
                     </div>
-                    <c:forEach items="${postsRequests}" var="postRequest">
+                    
                     	<div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
                         <div class="divider"></div>
+                        <c:forEach items="${postsRequests}" var="postRequest">
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>
                             <div class="service-card">
                                 <div class="uk-card uk-card-default uk-card-hover">
@@ -524,32 +488,6 @@
                         </c:forEach>
                         <div class="uk-flex uk-flex-center uk-margin-large-top">
                             <button class="uk-button uk-button-primary">Ver Más Reseñas</button>
-                        </div>
-                    </div>
-                    <!-- Actividad Reciente -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Actividad Reciente</h3>
-                        <div class="divider"></div>
-                        <div class="activity-feed">
-                            <div class="activity-item">
-                                <p>Adrian ha actualizado su perfil.</p>
-                            </div>
-                            <div class="activity-item">
-                                <p>Adrian ha publicado un nuevo servicio.</p>
-                            </div>
-                        </div>
-                    </div>                   
-                    <!-- Recomendaciones -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Recomendaciones</h3>
-                        <div class="divider"></div>
-                        <div class="recommendations">
-                            <div class="recommendation-item">
-                                <p>Recomendación de Esteban: "Excelente profesional con gran experiencia."</p>
-                            </div>
-                            <div class="recommendation-item">
-                                <p>Recomendación de Guido: "Muy confiable y competente en su área."</p>
-                            </div>
                         </div>
                     </div>
                 </div>
