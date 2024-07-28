@@ -2,6 +2,7 @@ package com.grupo4.LaburApp.controllers;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grupo4.LaburApp.models.Jobs;
 import com.grupo4.LaburApp.models.Post;
-import com.grupo4.LaburApp.models.Review;
 import com.grupo4.LaburApp.models.User;
 import com.grupo4.LaburApp.services.JobsService;
 import com.grupo4.LaburApp.services.PostService;
@@ -54,7 +54,7 @@ public class UserController {
 	public String userProfile(Model model, HttpSession session) {
 		User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
 		if(userTemp == null) {
-			return "redirect:/login";
+			return "redirect:/";
 		}
 		model.addAttribute("userInSession",userTemp);
 		return "userProfileLogin.jsp";
@@ -63,14 +63,8 @@ public class UserController {
 	@GetMapping("/userProfile/{id}")
 	public String userProfileNotLogin(Model model, @PathVariable("id") Long id) {
 		User user = serv.user(id);
-		List<Post> posts = ps.allPostsFilterTypeAndCreator("Ofrecido",id);
-		List<Post> postsRequests = ps.allPostsFilterTypeAndCreator("Solicitado",id);
-		List<Review> reviews = rs.allReviewsDateDesc();
 		model.addAttribute("user",user);
-		model.addAttribute("posts",posts);
-		model.addAttribute("postsRequests",postsRequests);
-		model.addAttribute("reviews",reviews);
-		return "anotherProfile.jsp";
+		return "userProfile.jsp";
 	}
 	
 	@GetMapping("/login")

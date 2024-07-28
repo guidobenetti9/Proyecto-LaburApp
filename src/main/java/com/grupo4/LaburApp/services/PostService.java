@@ -79,9 +79,4 @@ public class PostService {
 	}
 	
 	
-	// Devuelve todos los posts de acuerdo a su tipo y creador ordenados de forma ascendente 
-	public List <Post> allPostsFilterTypeAndCreator(String typePost,Long creatorId){
-		return postRepo.findAllByTypePostAndCreatorPostIdOrderByCreatedAtAsc(typePost,creatorId);
-	}
-	
-}//
+}

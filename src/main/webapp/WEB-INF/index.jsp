@@ -42,7 +42,7 @@
         }
         .uk-width-logo {
             height: 50px;
-            width: 110px;
+            width: 50px;
         }
         
         /*Barra de busqueda*/
@@ -283,6 +283,9 @@
     	/*Estilo de listas*/
     	.uk-card{
     		border:1px solid #dfb550 ;
+    		 width: 80%;
+            margin-left: auto;
+            margin-right: auto;
     	}
     	
         .uk-card-title {
@@ -290,14 +293,14 @@
         }
         
         .service-description {
-            width: 400px;
+            width:390px ;
         }
 
         .description-text {
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 6;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
         }
 
@@ -332,12 +335,12 @@
 		}
 		
 		@keyframes spin {
-		    0% {
-		        transform: rotate(0deg);
-		    }
-		    100% {
-		        transform: rotate(360deg);
-		    }
+	    0% {
+	        transform: rotate(0deg);
+	    }
+	    100% {
+	        transform: rotate(360deg);
+	    }
 		}
                   
     </style>
@@ -437,7 +440,7 @@
 				                <h3 class="uk-card-title">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
-				                        <p class="description-text uk-text-left">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+				                        <p class="description-text uk-text-left">${post.postDescription}</p>
 				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
 				                        <p class="uk-text-left">${post.municipio}, ${post.localidad} (${post.province})</p>                       
 				                         <div class="uk-flex uk-flex-between uk-align-left">
