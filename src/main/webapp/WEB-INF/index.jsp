@@ -42,7 +42,7 @@
         }
         .uk-width-logo {
             height: 50px;
-            width: 110px;
+            width: 50px;
         }
         
         /*Barra de busqueda*/
@@ -353,7 +353,7 @@
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
                         <a href="/">
-                            <img src="logo1.png" class="uk-width-1-1 uk-margin-small-left">
+                            <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">   
@@ -440,7 +440,7 @@
 				                <h3 class="uk-card-title">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
-				                        <p class="description-text uk-text-left">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+				                        <p class="description-text uk-text-left">${post.postDescription}</p>
 				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
 				                        <p class="uk-text-left">${post.municipio}, ${post.localidad} (${post.province})</p>                       
 				                         <div class="uk-flex uk-flex-between uk-align-left">
