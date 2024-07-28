@@ -117,18 +117,33 @@
 		
 		.icon-logout:hover i {
 		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ï¿½cono de cerrar sesiï¿½n */
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%); /* Color al pasar el cursor sobre el ï¿½cono de cerrar sesiï¿½n */
 		    transform: scale(1.5); /* Agrandar el ï¿½cono de cerrar sesiï¿½n */
 		}
 	    
         .main-title {
             text-align: center;
             margin-top: 20px;
+            width:100%; 
+            margin:auto;                              
+            background: rgb(33,33,33) !important;
+			background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
+        }
+        
+        h1{
+        	color:#dfb550;
         }
         .description {
             text-align: center;
-            margin-bottom: 20px;
+            font-size:11px;        
         }
+        
+        .slogan{
+        	background-color:#393939;
+        	height:17px;
+        	color: #dfb550;
+        }
+        
         .button-container {
             display: flex;
             justify-content: space-around;
@@ -159,6 +174,11 @@
         }
         .button-container {
             position: relative;
+        }
+        
+        .uk-card-2{
+        	padding-top:20px;
+        	padding-bottom:40px;        	
         }
         
         /* Estilo para la tarjeta de post */
@@ -335,13 +355,24 @@
 		}
 		
 		@keyframes spin {
-	    0% {
+	    	0% {
 	        transform: rotate(0deg);
-	    }
-	    100% {
-	        transform: rotate(360deg);
-	    }
+	    	}
+	    	100% {
+	        	transform: rotate(360deg);
+	    	}
 		}
+		.carousel-container {
+            width: 100%;
+            max-height: 400px;
+            overflow: hidden;
+        }
+        .carousel-container img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+        }
                   
     </style>
 </head>
@@ -380,6 +411,7 @@
                         <div class="uk-navbar-right">
 				            <div class="uk-navbar-right">
 							    <ul class="uk-navbar-nav">
+
 							        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
 							        <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
 							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
@@ -390,13 +422,37 @@
                 </div>      
             </nav>
         </header>
+        <div class="slogan">
+        	<p class="description uk-text-uppercase">Encuentra y publica servicios facilmente. Conectate con profesionales y clientes en un solo lugar.</p>
+        </div>
+        <div class="uk-position-relative uk-visible-toggle uk-light carousel-container" tabindex="-1" uk-slideshow="ratio: 7:3; animation: push; autoplay: true; autoplay-interval: 4000">
+		
+		    <ul class="uk-slideshow-items">
+		        <li>
+		            <img src="https://img.freepik.com/fotos-premium/montana-reflejada-lago-fondo-cielo_771703-13802.jpg" alt="" uk-cover>
+		        </li>
+		        <li>
+		            <img src="https://fotografias.lasexta.com/clipping/cmsimages01/2020/05/08/E3BC9A26-F5D7-4B1D-9497-72A52CE9CB79/98.jpg?crop=1300,731,x0,y19&width=1900&height=1069&optimize=high&format=webply" alt="" uk-cover>
+		        </li>
+		        <li>
+		            <img src="https://static.vecteezy.com/system/resources/previews/007/761/180/non_2x/wood-pier-with-sea-and-mountain-at-sunrise-with-beautiful-golden-sky-in-the-morning-and-copy-space-use-as-background-to-display-goods-and-product-free-photo.jpg" alt="" uk-cover>
+		        </li>
+		    </ul>
+		
+		    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+		    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+		
+		</div>
         
         <div class="main-title">
             <h1>LaburApp</h1>
-            <p class="description">Encuentra y publica servicios facilmente. Conectate con profesionales y clientes en un solo lugar.</p>
+            <p>
+            	Bienvenido a LaburApp, tu destino integral para el intercambio de servicios en todos los rubros. Ya sea que estés buscando un experto para completar un trabajo específico o desees ofrecer tus habilidades y servicios a una audiencia más amplia, nuestra plataforma es el lugar perfecto para conectar, colaborar y crecer.
+            </p>
+            
         </div>
-
-        <div class="divider"></div>
+		
+        <div class="uk-card-2 uk-card-default ">
         <div class="filter-container">            
 	        <button class="uk-button uk-button-default" type="button">Rubro</button>
 	        <div uk-dropdown="animation: reveal-left; animate-out: true; duration: 700">
@@ -429,11 +485,11 @@
         <div class="divider"></div>
 
         <div class="button-container">
-            <div>
+            <div class="uk-card-2 uk-card-default">
                 <h3>Publicar un nuevo servicio</h3>
                 <p>Publica tu servicio para que otros puedan encontrarlo y contratarte.</p>
                 <a href="/newPost" class="uk-button uk-button-secondary">Publicar servicio</a>               
-                <div class="service-card ">
+                <div class="service-card">
 				    <c:forEach items="${allOffered}" var="post">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
@@ -442,7 +498,7 @@
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${post.postDescription}</p>
 				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
-				                        <p class="uk-text-left">${post.municipio}, ${post.localidad} (${post.province})</p>                       
+				                        <p class="uk-text-left">${post.municipio}, ${post.localidad}, ${post.province}</p>                       
 				                         <div class="uk-flex uk-flex-between uk-align-left">
 					                    	<div class="rating">
 						                        <span uk-icon="star" class="uk-text-warning"></span>
@@ -482,34 +538,57 @@
 
             <div class="vertical-divider"></div>
 
-            <div>
+            <div class="uk-card-2 uk-card-default">
                 <h3>Crear solicitud de servicio</h3>
                 <p>Solicita un servicio y encuentra a los mejores profesionales que puedan ayudarte.</p>
                 <a href="/newRequest" class="uk-button uk-button-primary">Crear solicitud</a>
-                <div class="uk-width-1-1">
-                    <c:forEach items="${allRequests}" var="request">
-                        <div class="uk-card uk-card-default uk-card-hover">
-                            <div class="uk-card-header">
-                                <p class="uk-text-meta uk-margin-remove-bottom"><time datetime="${request.createdAt}">${request.createdAt}</time></p>
-                                <h3 class="uk-card-title uk-margin-remove-top">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</h3>
-                            </div>
-                            <div class="uk-card-body">
-                                <p>${request.municipio}, ${request.localidad} (${request.province})</p>
-                            </div>
-                            <div class="uk-card-footer">
-                                <div class="uk-flex-inline">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                </div>
-                                <a href="/request/${request.id}" class="uk-button uk-button-text">Ver</a>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
+				<div class="service-card">
+				    <c:forEach items="${allRequests}" var="request">
+				        <div class="uk-card uk-card-default uk-card-hover">
+				            <div class="uk-card-body">
+				                <h3 class="uk-card-title">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</h3>
+				                <div class="uk-flex uk-flex-between">
+				                    <div class="service-description">
+				                        <p class="description-text uk-text-left">${post.postDescription}</p>
+				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
+				                        <p class="uk-text-left">${request.municipio}, ${request.localidad}, ${request.province}</p>                       
+				                         <div class="uk-flex uk-flex-between uk-align-left">
+				                            <div class="rating">
+				                                <span uk-icon="star" class="uk-text-warning"></span>
+				                                <span uk-icon="star" class="uk-text-warning"></span>
+				                                <span uk-icon="star" class="uk-text-warning"></span>
+				                                <span uk-icon="star" class="uk-text-warning"></span>
+				                                <span uk-icon="star" class="uk-text-muted"></span>
+				                                <span class="uk-text-meta">(4.0)</span>
+				                            </div>
+				                            <div>
+				                                <a href="/service/1" class="uk-button uk-button-text uk-margin-small-left uk-text-capitalize">Opiniones</a>
+				                            </div>
+				                        </div>                     
+				                    </div>
+				                    <div class="service-image">
+				                        <img src="https://via.placeholder.com/1200" alt="Servicio">
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="uk-card-footer">
+				                <div class="uk-flex uk-flex-between">
+				                    <div>
+				                        <p class="uk-text-meta"><time datetime="${request.createdAt}">${request.createdAt}</time></p>
+				                    </div>
+				                    <div>				                        
+				                        <a href="#" class="uk-icon-button uk-icon-thumbs-up uk-no-toggle uk-animation-spin"><i class="bi bi-star-fill"></i></a>
+				                    </div>
+				                </div>
+				                <div class="uk-flex uk-flex-top">
+				                <a href="/request/${request.id}" class="uk-button uk-button-text uk-align-left uk-text-capitalize">Ver Más</a>
+				                </div>
+				            </div>
+				        </div>
+				    </c:forEach>
+				</div>
             </div>
+        </div>
         </div>
     </div>
     
@@ -565,5 +644,6 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
+    
 </body>
 </html>

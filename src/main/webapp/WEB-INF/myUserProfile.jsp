@@ -320,7 +320,7 @@
                             <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
                             <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
                             <div class="uk-text-center uk-margin-small-bottom">
-                                <a href="/add-service" class="uk-button uk-button-primary">Editar Perfil</a>
+                                <a href="/user/edit/${userInSession.id}" class="uk-button uk-button-primary">Editar Perfil</a>
                             </div>
                         </ul>
                     </div>

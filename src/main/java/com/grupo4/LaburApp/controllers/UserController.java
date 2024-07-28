@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -86,6 +87,7 @@ public class UserController {
             return "redirect:/";
         }
         
+        model.addAttribute("confirm", userTemp.getConfirm());
         User userToEdit = serv.user(id);
         model.addAttribute("user", userToEdit);
         
@@ -105,9 +107,13 @@ public class UserController {
 	            return "redirect:/";
 	        }
 	      if(result.hasErrors()) {
-	          return "editProfile.jsp";
-	      }else {
-	    	  serv.register(newUser, result);
+	    	  for (FieldError error : result.getFieldErrors()) {
+	              System.out.println("Error en el campo: " + error.getField() + ", Mensaje: " + error.getDefaultMessage());
+	          
+	    	  }
+	    	  return "editProfile.jsp";
+	    	  }else { 
+	    	  serv.saveUser(newUser);
 	    	  return "redirect:/userProfile";
 	      }
 		

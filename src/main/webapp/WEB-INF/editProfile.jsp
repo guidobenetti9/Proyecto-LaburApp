@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,9 +57,9 @@
 			<div class="cont_titulo">
             	<h2>Edita tu perfil</h2>
 			</div>
-				<form:form action="/editProfile" method="PUT" modelAttribute="newUser">
+				<form:form action="/editProfile" method="post" modelAttribute="newUser">
 					<div class="cajita">
-						<form:label path="firstName" >Nombre:</form:label>
+						<form:label path="firstName" >Nombre: ${user.firstName}</form:label>
 						<form:input path="firstName"/>
 						<form:errors path="firstName"/>
 					</div>
@@ -77,7 +78,7 @@
 						<form:input path="email"/>
 						<form:errors path="email"/>
 					</div>
-					<div class="cajita">
+					 <!-- <div class="cajita">
 						<form:label path="password" >Contraseña:</form:label>
 						<form:password path="password"/>
 						<form:errors path="password"/>
@@ -86,7 +87,7 @@
 						<form:label path="confirm" >Conf. Contraseña:</form:label>
 						<form:password path="confirm"/>
 						<form:errors path="confirm"/>
-					</div>
+					</div> -->
                     <div class="cajita">
 						<form:label path="birthDate" >Fecha de nacimiento:</form:label>
 						<form:input type="date" path="birthDate"/>
@@ -137,8 +138,10 @@
 						<form:input path="linkedin"/>
 						<form:errors path="linkedin"/>
 					</div>
-                    <form:hidden path="esAdmin" value="0"/>
+                    
                     <form:hidden path="id" value="${userInSession.id}"/>
+                    <form:hidden path="password" value="${user.password}"/>
+                    <form:hidden path="confirm" value="${confirm}"/>
                     <input type="hidden" value="put" name="_method">
 					<div class="cont_boton">
 						<input type="submit" value="Editar" class="boton">
