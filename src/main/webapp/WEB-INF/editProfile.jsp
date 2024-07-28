@@ -78,7 +78,7 @@
 						<form:input path="email"/>
 						<form:errors path="email"/>
 					</div>
-					 <!-- <div class="cajita">
+					<div class="cajita">
 						<form:label path="password" >Contraseña:</form:label>
 						<form:password path="password"/>
 						<form:errors path="password"/>
@@ -87,7 +87,7 @@
 						<form:label path="confirm" >Conf. Contraseña:</form:label>
 						<form:password path="confirm"/>
 						<form:errors path="confirm"/>
-					</div> -->
+					</div>
                     <div class="cajita">
 						<form:label path="birthDate" >Fecha de nacimiento:</form:label>
 						<form:input type="date" path="birthDate"/>
@@ -140,8 +140,8 @@
 					</div>
                     
                     <form:hidden path="id" value="${userInSession.id}"/>
-                    <form:hidden path="password" value="${user.password}"/>
-                    <form:hidden path="confirm" value="${confirm}"/>
+                    <!--<form:hidden path="password" value="${user.password}"/>
+                    <form:hidden path="confirm" value="${confirm}"/>-->
                     <input type="hidden" value="put" name="_method">
 					<div class="cont_boton">
 						<input type="submit" value="Editar" class="boton">

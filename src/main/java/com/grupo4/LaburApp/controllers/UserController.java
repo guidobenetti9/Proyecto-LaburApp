@@ -113,7 +113,7 @@ public class UserController {
 	    	  }
 	    	  return "editProfile.jsp";
 	    	  }else { 
-	    	  serv.saveUser(newUser);
+	    	  serv.saveOrUpdate(newUser, result);
 	    	  return "redirect:/userProfile";
 	      }
 		
