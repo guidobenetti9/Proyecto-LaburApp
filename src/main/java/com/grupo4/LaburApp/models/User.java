@@ -27,89 +27,74 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name="users")
 public class User {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@NotEmpty(message="First name is required.")
-	@Size(min=2, message="Fist name needs at least 2 chars")
-	private String firstName;
-	
-	@NotEmpty(message="last name is required.")
-	@Size(min=2, message="last name needs at least 2 chars")
-	private String lastName;
-	
-	@NotEmpty(message="username is required.")
-	@Column(unique = true)
-	@Size(min=2, message="username needs at least 2 chars")
-	private String username;
-	
-	@NotEmpty(message="Email is required.")
-	@Column(unique = true)
-	@Email(message="Email  needs at least 2 chars")
-	private String email;
-	
-	@NotEmpty(message="Password is required.")
-	@Size(min=8, message="Password needs at least 8 chars")
-	private String password;
-	
-	@Transient//no se guarda en la db
-	@NotEmpty(message="Confirmation is required.")
-	@Size(min=8, message="Confirmation needs at least 6 chars")
-	private String confirm;
-	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date birthDate;
-	
-	//@NotEmpty
-	private String nationality;
-	
-	private Boolean esAdmin;
-	
-	//@NotEmpty
-	private String province;
-	
-	//@NotEmpty
-	private String city;
-	
-	//@NotEmpty
-	private String profilePicture;
-	
-	//@NotEmpty
-	private String phone;
-	//@NotEmpty
-	private String alternativePhone;
-	
-	private String facebook;
-	
-	private String twitter;
-	
-	private String instagram;
-	
-	private String linkedin;
-	@Column(updatable=false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @NotEmpty(message="First name is required.")
+    @Size(min=2, message="First name needs at least 2 chars")
+    private String firstName;
+    
+    @NotEmpty(message="Last name is required.")
+    @Size(min=2, message="Last name needs at least 2 chars")
+    private String lastName;
+    
+    @NotEmpty(message="Username is required.")
+    @Column(unique = true)
+    @Size(min=2, message="Username needs at least 2 chars")
+    private String username;
+    
+    @NotEmpty(message="Email is required.")
+    @Column(unique = true)
+    @Email(message="Email must be valid")
+    private String email;
+    
+    @NotEmpty(message="Password is required.")
+    @Size(min=8, message="Password needs at least 8 chars")
+    private String password;
+    
+    @Transient
+    private String confirm;
+    
     @DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date createdAt;
-	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date updatedAt;
+    private Date birthDate;
+    
+    private String nationality;
+    private Boolean esAdmin;
+    private String province;
+    private String city;
+    private String profilePicture;
+    private String phone;
+    private String alternativePhone;
+    private String facebook;
+    private String twitter;
+    private String instagram;
+    private String linkedin;
 
-	public User() {
-	}
-	
-	@OneToMany(mappedBy = "senderMessage", fetch = FetchType.LAZY)
-	private List<Message> sentMessages;	
-	
-	@OneToMany(mappedBy = "creatorPost",fetch = FetchType.LAZY)
-	private List<Post> listPost;
-	
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-			name="user_has_favorite_post",
-			joinColumns=@JoinColumn(name="user_id"),
-			inverseJoinColumns=@JoinColumn(name="post_id")
-			)
-	private List<Post> favoritePosts;
+    @Column(updatable=false)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date createdAt;
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date updatedAt;
+
+    public User() {}
+
+    @OneToMany(mappedBy = "senderMessage", fetch = FetchType.LAZY)
+    private List<Message> sentMessages;
+
+    @OneToMany(mappedBy = "creatorPost", fetch = FetchType.LAZY)
+    private List<Post> listPost;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "user_has_favorite_post",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
+    
+    private List<Post> favoritePosts;
 
 	public Long getId() {
 		return id;
@@ -279,13 +264,7 @@ public class User {
 		this.sentMessages = sentMessages;
 	}
 
-	public List<Post> getFavoritePosts() {
-		return favoritePosts;
-	}
-
-	public void setFavoritePosts(List<Post> favoritePosts) {
-		this.favoritePosts = favoritePosts;
-	}
+	
 
 	public Boolean getEsAdmin() {
 		return esAdmin;
@@ -303,6 +282,15 @@ public class User {
 		this.listPost = listPost;
 	}
 	
+	
+	public List<Post> getFavoritePosts() {
+		return favoritePosts;
+	}
+
+	public void setFavoritePosts(List<Post> favoritePosts) {
+		this.favoritePosts = favoritePosts;
+	}
+
 	//automatization
 	@PrePersist //Before creating a user
 		protected void onCreate() {

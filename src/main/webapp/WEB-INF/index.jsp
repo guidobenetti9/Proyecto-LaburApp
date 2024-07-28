@@ -411,8 +411,9 @@
                         <div class="uk-navbar-right">
 				            <div class="uk-navbar-right">
 							    <ul class="uk-navbar-nav">
-							        <li><a href="/anotherProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
-							        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
+
+							        <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
+							        <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
 							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
 							    </ul>
 							</div>          

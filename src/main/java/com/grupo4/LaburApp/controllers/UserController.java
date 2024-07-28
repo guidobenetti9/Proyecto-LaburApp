@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -57,7 +59,7 @@ public class UserController {
 			return "redirect:/login";
 		}
 		model.addAttribute("userInSession",userTemp);
-		return "userProfileLogin.jsp";
+		return "myUserProfile.jsp";
 	}
 	
 	@GetMapping("/userProfile/{id}")
@@ -71,6 +73,50 @@ public class UserController {
 		model.addAttribute("postsRequests",postsRequests);
 		model.addAttribute("reviews",reviews);
 		return "anotherProfile.jsp";
+	}
+	
+	@GetMapping("/user/edit/{id}")
+	public String editProfile(@PathVariable("id")Long id,
+			               		HttpSession session,
+			               		@ModelAttribute("newUser") User newUser,
+			               		Model model) {
+		
+		//Validación de que el usuario inició sesión
+        User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+        if(userTemp == null) {
+            return "redirect:/";
+        }
+        
+        model.addAttribute("confirm", userTemp.getConfirm());
+        User userToEdit = serv.user(id);
+        model.addAttribute("user", userToEdit);
+        
+        
+        return "editProfile.jsp";
+		
+	}
+	
+	@PutMapping("/editProfile")
+	public String updateProfile(HttpSession session,
+			                 	@Valid @ModelAttribute("newUser") User newUser,
+			                 	BindingResult result,
+			                 	Model model) {
+		
+		 User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
+	        if(userTemp == null) {
+	            return "redirect:/";
+	        }
+	      if(result.hasErrors()) {
+	    	  for (FieldError error : result.getFieldErrors()) {
+	              System.out.println("Error en el campo: " + error.getField() + ", Mensaje: " + error.getDefaultMessage());
+	          
+	    	  }
+	    	  return "editProfile.jsp";
+	    	  }else { 
+	    	  serv.saveOrUpdate(newUser, result);
+	    	  return "redirect:/userProfile";
+	      }
+		
 	}
 	
 	@GetMapping("/login")
