@@ -84,4 +84,4 @@ public class PostService {
 		return postRepo.findAllByTypePostAndCreatorPostIdOrderByCreatedAtAsc(typePost,creatorId);
 	}
 	
-}
+}//
