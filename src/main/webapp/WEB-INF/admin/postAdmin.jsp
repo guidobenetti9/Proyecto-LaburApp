@@ -51,6 +51,7 @@
 						<td>${post.id}</td>
 						<td>${post.postTittle}</td>
 						<td>${post.province}</td>
+						<td>${post.localidad} ${post.municipio}</td>
 						<td>${post.municipio}</td>
 						<td>${post.localidad}</td>
 						<td>${post.creatorPost.firstName}</td>

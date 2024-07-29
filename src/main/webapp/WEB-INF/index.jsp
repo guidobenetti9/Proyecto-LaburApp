@@ -128,6 +128,7 @@
             margin:auto;                              
             background: rgb(33,33,33) !important;
 			background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
+			color:#ffffff;			
         }
         
         h1{
@@ -445,9 +446,8 @@
         
         <div class="main-title">
             <h1>LaburApp</h1>
-            <p>
-            	Bienvenido a LaburApp, tu destino integral para el intercambio de servicios en todos los rubros. Ya sea que estés buscando un experto para completar un trabajo específico o desees ofrecer tus habilidades y servicios a una audiencia más amplia, nuestra plataforma es el lugar perfecto para conectar, colaborar y crecer.
-            </p>
+            
+	            <p class="uk-width-60 uk-text-center uk-margin-auto">Bienvenido a LaburApp, tu destino integral para el intercambio de servicios en todos los rubros. Ya sea que estés buscando un experto para completar un trabajo específico o desees ofrecer tus habilidades y servicios a una audiencia más amplia, nuestra plataforma es el lugar perfecto para conectar, colaborar y crecer.</p>
             
         </div>
 		
@@ -480,7 +480,7 @@
 	            </ul>
 	          
 	        </div>
-	         <a href="/" class="uk-button uk-button-primary">Refrescar Pagina</a>
+	         <a href="/" class="uk-button uk-button-default">quitar</a>
 	                
         </div>
         <div class="divider"></div>
@@ -638,7 +638,6 @@
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/js/uikit-icons.min.js"></script>   
 </body>
 </html>
