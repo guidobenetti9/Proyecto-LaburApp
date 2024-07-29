@@ -78,7 +78,7 @@
                 <div class="uk-navbar-left">
                     <div class="uk-width-logo">
                         <a href="#">
-                            <img src="logonuevo.png" class="uk-width-1-1 uk-margin-left">
+                            <img src="logo.png" class="uk-width-1-1 uk-margin-left">
                         </a>
                     </div>
                     <ul class="uk-navbar-nav">

@@ -59,7 +59,7 @@
 			</div>
 				<form:form action="/editProfile" method="post" modelAttribute="newUser">
 					<div class="cajita">
-						<form:label path="firstName" >Nombre: ${user.firstName}</form:label>
+						<form:label path="firstName" >Nombre:</form:label>
 						<form:input path="firstName"/>
 						<form:errors path="firstName"/>
 					</div>
