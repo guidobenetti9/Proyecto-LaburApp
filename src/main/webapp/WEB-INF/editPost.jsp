@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@
     <header>
         <div class="cont_header">
             <div class="cont_loguito">
-                <a href="/"><img src="logonuevo.png"></a>
+                <a href="/"><img src="logo.png"></a>
             </div>
             <div>
                 <h2 class="uk-h2">laburApp</h2>
@@ -45,7 +46,7 @@
                 <h3 class="uk-h3">Edita una publicación</h3>
             </div>
             <div>
-                <form:form action="/editPost" method="post" modelAttribute="newPost">
+                <form:form action="/editPost" method="put" modelAttribute="newPost">
 					<div class="cajita">
                         <form:label path="postTittle" >Titulo:</form:label>
                         <form:input path="postTittle" class="uk-input"/>
@@ -92,11 +93,12 @@
 					        </select>
 					  </div>>
                     <div class="cont_botones">
+                    	<form:hidden path="typePost" value="Ofrecido"/>
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>
                         <form:hidden path="id" value="${post.id}"/>
                         <input type="hidden" value="put" name="_method">
                         <form:input type="hidden" path="latitud" id="latitud"/>
-        |				<form:input type="hidden" path="longitud" id="longitud"/>
+        				<form:input type="hidden" path="longitud" id="longitud"/>
         				<input type="hidden" name="nombreLocalidad" id="nombreLocalidad"/>
         				<input type="hidden" name="nombreMunicipio" id="nombreMunicipio"/>
                         <a href="/" class="uk-button uk-button-danger uk-margin-right">Cancelar</a>

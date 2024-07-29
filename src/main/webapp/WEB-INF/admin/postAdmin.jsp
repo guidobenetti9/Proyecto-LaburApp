@@ -39,7 +39,8 @@
 					<th>ID</th>
 					<th>Title</th>
 					<th>Province</th>
-					<th>City</th>
+					<th>Municipio</th>
+					<th>Localidad</th>
 					<th>Creator</th>
 					<th>Actions</th>
 				</tr>
@@ -51,6 +52,8 @@
 						<td>${post.postTittle}</td>
 						<td>${post.province}</td>
 						<td>${post.localidad} ${post.municipio}</td>
+						<td>${post.municipio}</td>
+						<td>${post.localidad}</td>
 						<td>${post.creatorPost.firstName}</td>
 						<td>
 							<form action="/post/delete/${post.id}" method="post">

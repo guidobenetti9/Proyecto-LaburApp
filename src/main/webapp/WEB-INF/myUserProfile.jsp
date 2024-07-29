@@ -229,12 +229,20 @@
         }
 
         /*Estilo de listas*/
+        
+        .uk-card{
+    		border:1px solid #dfb550 ;
+    		 width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+    	}
+    	
         .uk-card-title {
             width: 100%;
         }
 
         .service-description {
-            width: 400px;
+            ;
         }
 
         .description-text {
@@ -243,6 +251,7 @@
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
+            width: 200px
         }
 
         .service-image img {
@@ -268,7 +277,7 @@
             <div class="uk-navbar-left">
                 <div class="uk-width-logo">
                     <a href="/">
-                        <img src="/static/logo.png" class="uk-width-1-1 uk-margin-small-left">
+                        <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
                     </a>
                 </div>          
                 <ul class="uk-navbar-nav">
@@ -314,7 +323,7 @@
                
                 <div class="uk-width-1-3@m">
                     
-                    <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+                    <div class="uk-card-1 uk-card-default uk-card-body uk-margin-top">
                         <h3 class="uk-card-title center-title">Información de Contacto</h3>
                         <div class="divider"></div>
                         <ul class="uk-list uk-list-divider">
@@ -326,7 +335,7 @@
                         </ul>
                     </div>
                     <!-- Nueva Sección: Descripción Detallada -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
+                    <div class="uk-card-1 uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Descripción Detallada</h3>
                         <div class="divider"></div>
                         <p>
@@ -339,7 +348,7 @@
                 <!-- Contenido Principal -->
                 <div class="uk-width-2-3@m">
                     <!-- Servicios Publicados -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
+                    <div class="uk-card-1 uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Servicios Publicados</h3>
                         <div class="uk-text-center uk-margin-small-bottom">
                             <a href="/newPost" class="uk-button uk-button-primary">Agregar un Servicio</a>
@@ -386,7 +395,7 @@
                         </div>
                     </div>
                    
-                    <div class="uk-card uk-card-default uk-card-body section-container">
+                    <div class="uk-card-1 uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
                         <div class="uk-text-center uk-margin-small-bottom">
                             <a href="/newRequest" class="uk-button uk-button-primary">Agregar una solicitud</a>
@@ -401,7 +410,7 @@
                                         <h3 class="uk-card-title">${postRequest.postTittle}</h3>
                                         <div class="uk-flex uk-flex-between">
                                             <div class="service-description">
-                                                <p class="description-text">${postRequest.postDescription}</p>
+                                                <p class="description-text uk-text-left">${postRequest.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
                                                 <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
@@ -412,7 +421,7 @@
                                         </div>
                                     </div>
                                     <div class="uk-card-footer">
-                                        <div class="uk-flex uk-flex-between">
+                                        <div class="uk-flex uk-flex-between uk-text-left">
                                             <div class="rating">
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
