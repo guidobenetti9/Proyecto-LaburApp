@@ -77,8 +77,14 @@
             flex: 1;
             margin-left: 20px;
         }
-        .profile-header .info h2 {
+		.profile-header .info h2{
             margin: 0;
+            color: white;
+        }
+        
+        .profile-header .info h3{
+            margin: 0;
+            color: white;
         }
         .profile-header .info p {
             margin: 5px 0;
