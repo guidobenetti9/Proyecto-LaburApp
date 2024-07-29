@@ -292,9 +292,13 @@
             <div class="profile-header">
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
-                    <h1>Nombre del Usuario</h2>
-                    <p>Profesión o Especialidad</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Ubicación</p>
+                    <h2>${userInSession.firstName} ${userInSession.lastName}</h2>
+                    <h3>@${userInSession.username}</h3>
+					<p>Profesión/es y/o especialidad/es</p>
+                    <c:forEach items="${posts}" var="post">
+                    	<p>${post.jobsInPost.jobName}</p>
+                    </c:forEach>
+                    <p><i class="fas fa-map-marker-alt"></i>${user.city}, ${user.province}</p>
                     <div class="uk-flex">
                         <div class="social-icons uk-margin-small-top">
                             <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -314,11 +318,8 @@
                         <h3 class="uk-card-title center-title">Información de Contacto</h3>
                         <div class="divider"></div>
                         <ul class="uk-list uk-list-divider">
-                            <li><span uk-icon="icon: receiver; ratio: 1"></span> +54 123 456 789</li>
-                            <li><span uk-icon="icon: mail; ratio: 1"></span> AdrianCastro@xd.com</li>                            
-                            <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
-                            <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
-                            <li><a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>ESPACIO PARA MAPA DE UBICACIÓN</li>
+                            <li><span uk-icon="icon: receiver; ratio: 1"></span>${userInSession.phone}</li>
+                            <li><span uk-icon="icon: mail; ratio: 1"></span>${userInSession.email}</li>                            
                             <div class="uk-text-center uk-margin-small-bottom">
                                 <a href="/user/edit/${userInSession.id}" class="uk-button uk-button-primary">Editar Perfil</a>
                             </div>
@@ -334,45 +335,6 @@
                             mi enfoque está en proporcionar soluciones efectivas que ayuden a las empresas a alcanzar sus objetivos en línea. Tengo una sólida comprensión de las últimas tecnologías y tendencias, lo que me permite ofrecer servicios de alta calidad adaptados a las necesidades específicas de cada cliente.
                         </p>
                     </div>
-                     <!-- Certificaciones -->
-                     <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Certificaciones</h3>
-                        <div class="divider"></div>
-                        <div class="certifications">
-                            <div class="certification-item">
-                                <p>Certificación en Desarrollo Web - Instituto XYZ</p>
-                            </div>
-                            <div class="certification-item">
-                                <p>Certificación en Marketing Digital - Universidad ABC</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Trabajos o Solicitudes completadas</h3>
-                        <div class="divider"></div>
-                        <div class="Historial">
-                            
-                        </div>
-                    </div>
-                    <!-- Galería de Imágenes-->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Galería de Imágenes</h3>
-                        <div class="divider"></div>
-                        <div class="gallery">
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 1" class="thumbnail">
-                            </a>
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 2" class="thumbnail">
-                            </a>
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 3" class="thumbnail">
-                            </a>
-                            <a href="https://via.placeholder.com/1200" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Imagen 4" class="thumbnail">
-                            </a>                           
-                        </div>
-                    </div>
                 </div>
                 <!-- Contenido Principal -->
                 <div class="uk-width-2-3@m">
@@ -380,20 +342,22 @@
                     <div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Servicios Publicados</h3>
                         <div class="uk-text-center uk-margin-small-bottom">
-                            <a href="/add-service" class="uk-button uk-button-primary">Agregar un Servicio</a>
+                            <a href="/newPost" class="uk-button uk-button-primary">Agregar un Servicio</a>
                         </div>
                         <div class="divider"></div>
-                        <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>                                                      
+                        <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid> 
+                        
+                        <c:forEach items="${posts}" var="post">                                                     
                             <div class="service-card">
                                 <div class="uk-card uk-card-default uk-card-hover">
                                     <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
+                                        <h3 class="uk-card-title">${post.postTittle}</h3>
                                         <div class="uk-flex uk-flex-between">
                                             <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+                                                <p class="description-text">${post.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <p class="uk-text-meta">Fecha: ${post.createdAt}</p>
+                                                <a href="/post/${post.id}" class="uk-button uk-button-text">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">
@@ -411,70 +375,35 @@
                                                 <span class="uk-text-meta">(4.0)</span>
                                             </div>
                                             <div>
-                                                <a href="#" uk-icon="icon: pencil" class="uk-icon-button uk-button-primary" title="Editar"></a>
-                                                <a href="#" uk-icon="icon: trash" class="uk-icon-button uk-button-danger" title="Eliminar"></a>
+                                                <a href="/post/edit/${post.id}" uk-icon="icon: pencil" class="uk-icon-button uk-button-primary" title="Editar"></a>
+                                                <a href="/post/delete/${post.id}" uk-icon="icon: trash" class="uk-icon-button uk-button-danger" title="Eliminar"></a>
                                             </div>
                                         </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Repetir para otros servicios -->
-                            <div class="service-card">
-                                <div class="uk-card uk-card-default uk-card-hover">
-                                    <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
-                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
-                                            </div>
-                                            <div class="service-image">
-                                                <img src="https://via.placeholder.com/1200" alt="Servicio">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-card-footer">
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-muted"></span>
-                                                <span class="uk-text-meta">(4.0)</span>
-                                            </div>
-                                            <div>
-                                                <a href="#" uk-icon="icon: pencil" class="uk-icon-button uk-button-primary" title="Editar"></a>
-                                                <a href="#" uk-icon="icon: trash" class="uk-icon-button uk-button-danger" title="Eliminar"></a>
-                                            </div>
-                                        </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Repetir para otros servicios -->                                                       
+                         </c:forEach>                                                     
                         </div>
                     </div>
-                    <!-- Nuevas Solicitudes de Servicios -->
+                   
                     <div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
                         <div class="uk-text-center uk-margin-small-bottom">
-                            <a href="/add-service" class="uk-button uk-button-primary">Agregar una solicitud</a>
+                            <a href="/newRequest" class="uk-button uk-button-primary">Agregar una solicitud</a>
                         </div>
                         <div class="divider"></div>
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>
+                        
+                        	<c:forEach items="${postsRequests}" var="postRequest">
                             <div class="service-card">
                                 <div class="uk-card uk-card-default uk-card-hover">
                                     <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
+                                        <h3 class="uk-card-title">${postRequest.postTittle}</h3>
                                         <div class="uk-flex uk-flex-between">
                                             <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
+                                                <p class="description-text">${postRequest.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
+                                                <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
                                                 <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
@@ -493,51 +422,14 @@
                                                 <span class="uk-text-meta">(4.0)</span>
                                             </div>
                                             <div>
-                                                <a href="#" uk-icon="icon: pencil" class="uk-icon-button uk-button-primary" title="Editar"></a>
-                                                <a href="#" uk-icon="icon: trash" class="uk-icon-button uk-button-danger" title="Eliminar"></a>
+                                                <a href="/request/edit/${postRequest.id}" uk-icon="icon: pencil" class="uk-icon-button uk-button-primary" title="Editar"></a>
+                                                <a href="/post/edit/${postRequest.id}" uk-icon="icon: trash" class="uk-icon-button uk-button-danger" title="Eliminar"></a>
                                             </div>
                                         </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Repetir para otros servicios -->
-                            <div class="service-card">
-                                <div class="uk-card uk-card-default uk-card-hover">
-                                    <div class="uk-card-body">
-                                        <h3 class="uk-card-title">Personal Trainer</h3>
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="service-description">
-                                                <p class="description-text">Realizo entrenamientos personalizados que se adapten a los gustos, necesidades y objetivos de las personas que acuden a mi.</p>
-                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: 25/07/2024</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
-                                            </div>
-                                            <div class="service-image">
-                                                <img src="https://via.placeholder.com/1200" alt="Servicio">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-card-footer">
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-muted"></span>
-                                                <span class="uk-text-meta">(4.0)</span>
-                                            </div>
-                                            <div>
-                                                <a href="#" uk-icon="icon: pencil" class="uk-icon-button uk-button-primary" title="Editar"></a>
-                                                <a href="#" uk-icon="icon: trash" class="uk-icon-button uk-button-danger" title="Eliminar"></a>
-                                            </div>
-                                        </div>
-                                        <a href="/service/1" class="uk-button uk-button-text">Ver Opiniones</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Repetir para otros servicios -->                                                      
+                            </c:forEach>                                                     
                         </div>
                     </div>
                     <!-- Reseñas -->
@@ -545,6 +437,8 @@
                         <h3 class="uk-card-title center-title">Reseñas de otros usuarios</h3>
                         <div class="divider"></div>
                         <div class="uk-comment-list">
+                        <c:forEach items="${reviews}" var="review">
+                        <c:if test="${review.postReview.creatorPost.id == post.creatorPost.id}">
                             <div class="uk-margin">
                                 <article class="uk-comment">
                                     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
@@ -552,74 +446,50 @@
                                             <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Usuario 1</a></h4>
                                             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                                                 <li class="stars">
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
+                                                    <c:choose>
+												        <c:when test="${review.stars == 1}">
+												            <span uk-icon="star"></span>
+												        </c:when>
+														<c:when test="${review.stars == 2}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+														<c:when test="${review.stars == 3}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+												        <c:when test="${review.stars == 4}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+												         <c:when test="${review.stars == 5}">
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												            <span uk-icon="star"></span>
+												        </c:when>
+												        <c:otherwise>
+												            <p>Sin puntuaciones</p>
+												        </c:otherwise>
+												      </c:choose>
                                                 </li>
-                                                <li>Hace 2 días</li>
+                                                <li>${review.createdAt}</li>
                                             </ul>
                                         </div>
                                     </header>
                                     <div class="uk-comment-body">
-                                        <p>Excelente servicio, muy profesional y puntual. ¡Lo recomiendo totalmente!</p>
+                                        <p>${review.comment}</p>
                                     </div>
                                 </article>
                             </div>
-                            <div class="uk-margin">
-                                <article class="uk-comment">
-                                    <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
-                                        <div class="uk-width-expand">
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Usuario 2</a></h4>
-                                            <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-                                                <li class="stars">
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-warning"></span>
-                                                    <span uk-icon="star" class="uk-text-muted"></span>
-                                                </li>
-                                                <li>Hace 1 semana</li>
-                                            </ul>
-                                        </div>
-                                    </header>
-                                    <div class="uk-comment-body">
-                                        <p>El servicio fue bueno, pero podría mejorar en la puntualidad.</p>
-                                    </div>
-                                </article>
-                            </div>
+                            </c:if>
+                        </c:forEach>
                         </div>
-                        <div class="uk-flex uk-flex-center uk-margin-large-top">
-                            <button class="uk-button uk-button-primary">Ver Más Reseñas</button>
-                        </div>
-                    </div>
-                    <!-- Actividad Reciente -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Actividad Reciente</h3>
-                        <div class="divider"></div>
-                        <div class="activity-feed">
-                            <div class="activity-item">
-                                <p>Adrian ha actualizado su perfil.</p>
-                            </div>
-                            <div class="activity-item">
-                                <p>Adrian ha publicado un nuevo servicio.</p>
-                            </div>
-                        </div>
-                    </div>                   
-                    <!-- Recomendaciones -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Recomendaciones</h3>
-                        <div class="divider"></div>
-                        <div class="recommendations">
-                            <div class="recommendation-item">
-                                <p>Recomendación de Esteban: "Excelente profesional con gran experiencia."</p>
-                            </div>
-                            <div class="recommendation-item">
-                                <p>Recomendación de Guido: "Muy confiable y competente en su área."</p>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                 
                 </div>
             </div>
             <div id="search-results" class="search-results"></div>
@@ -648,8 +518,8 @@
         <div class="footer-column">
             <h5>SOPORTE</h5>
             <ul>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Ayuda</a></li>
+                <li><a href="/contact">Contacto</a></li>
+                <li><a href="/help">Ayuda</a></li>
             </ul>
         </div>
         <div class="footer-column1">
