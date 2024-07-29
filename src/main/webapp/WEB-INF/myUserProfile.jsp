@@ -78,8 +78,14 @@
             margin-left: 20px;
             color: white !important;
         }
-        .profile-header .info h2 {
+        .profile-header .info h2{
             margin: 0;
+            color: white;
+        }
+        
+        .profile-header .info h3{
+            margin: 0;
+            color: white;
         }
         .profile-header .info p {
             margin: 5px 0;
@@ -269,9 +275,6 @@
             align-items: center;
         }
         
-        .uk-h2 uk-h3{
-        	color: white;
-        }
         
 
     </style>
