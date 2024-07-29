@@ -268,7 +268,7 @@
             <div class="uk-navbar-left">
                 <div class="uk-width-logo">
                     <a href="/">
-                        <img src="/static/logo.png" class="uk-width-1-1 uk-margin-small-left">
+                        <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
                     </a>
                 </div>          
                 <ul class="uk-navbar-nav">
