@@ -76,6 +76,7 @@
         .profile-header .info {
             flex: 1;
             margin-left: 20px;
+            color: white !important;
         }
         .profile-header .info h2 {
             margin: 0;
@@ -259,6 +260,10 @@
             align-items: center;
         }
         
+        .uk-h2 uk-h3{
+        	color: white;
+        }
+        
 
     </style>
     </head>
@@ -272,9 +277,9 @@
                     </a>
                 </div>          
                 <ul class="uk-navbar-nav">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/help">Ayuda</a></li>
+                    <li><a href="/contact">Contacto</a></li>
                 </ul>
             </div>
             <div class="uk-navbar-right">
@@ -292,13 +297,13 @@
             <div class="profile-header">
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
-                    <h2>${userInSession.firstName} ${userInSession.lastName}</h2>
-                    <h3>@${userInSession.username}</h3>
+                    <h2 class="uk-h2">${userInSession.firstName} ${userInSession.lastName}</h2>
+                    <h3 class="uk-h3">@${userInSession.username}</h3>
 					<p>Profesión/es y/o especialidad/es</p>
                     <c:forEach items="${posts}" var="post">
                     	<p>${post.jobsInPost.jobName}</p>
                     </c:forEach>
-                    <p><i class="fas fa-map-marker-alt"></i>${user.city}, ${user.province}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ${userInSession.province}, ${userInSession.city}</p>
                     <div class="uk-flex">
                         <div class="social-icons uk-margin-small-top">
                             <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
