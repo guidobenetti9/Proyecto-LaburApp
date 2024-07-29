@@ -457,7 +457,7 @@
                                 <article class="uk-comment">
                                     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
                                         <div class="uk-width-expand">
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Usuario 1</a></h4>
+                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="/userProfile/${review.senderReview.id}">@${review.senderReview.username}</a></h4>
                                             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                                                 <li class="stars">
                                                     <c:choose>
@@ -502,6 +502,9 @@
                             </div>
                             </c:if>
                         </c:forEach>
+                        </div>
+                        <div class="uk-flex uk-flex-center uk-margin-large-top">
+                            <button class="uk-button uk-button-primary">Ver Más Reseñas</button>
                         </div>
                     </div>                 
                 </div>

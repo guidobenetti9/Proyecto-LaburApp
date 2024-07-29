@@ -480,7 +480,7 @@
 	            </ul>
 	          
 	        </div>
-	         <a href="/" class="uk-button uk-button-default">quitar</a>
+	         <a href="/" class="uk-button uk-button-default">Refrescar</a>
 	                
         </div>
         <div class="divider"></div>
@@ -547,7 +547,7 @@
 				                <h3 class="uk-card-title"><a href="/userProfile/${request.creatorPost.id}">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</a></h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
-				                        <p class="description-text uk-text-left">${post.postDescription}</p>
+				                        <p class="description-text uk-text-left">${request.postDescription}</p>
 				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
 				                        <p class="uk-text-left">${request.municipio}, ${request.localidad}, ${request.province}</p>                       
 				                         <div class="uk-flex uk-flex-between uk-align-left">
