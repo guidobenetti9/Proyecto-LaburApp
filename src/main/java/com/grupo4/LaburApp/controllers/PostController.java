@@ -163,7 +163,7 @@ public class PostController {
 		//Validación de que el usuario inició sesión
         User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
         if(userTemp == null) {
-            return "redirect:/";
+            return "redirect:/login";
         }
         
         Post postToEdit = ps.post(id);
@@ -189,7 +189,7 @@ public class PostController {
 		
 		 User userTemp = (User) session.getAttribute("userInSession"); //Obj User o null
 	        if(userTemp == null) {
-	            return "redirect:/";
+	            return "redirect:/login";
 	        }
 	      if(result.hasErrors()) {
 	    	  List <Jobs> jobs = js.allJobs();
@@ -212,7 +212,7 @@ public class PostController {
 		}
 				
 		ps.deletePost(id);
-		return "redirect:/adminposts";
+		return "redirect:/";
 	}
 	
     @GetMapping("/favoritePosts/{id}")

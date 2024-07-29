@@ -45,6 +45,8 @@ public class User {
     @Size(min=2, message="Username needs at least 2 chars")
     private String username;
     
+    private String userDescription;
+    
     @NotEmpty(message="Email is required.")
     @Column(unique = true)
     @Email(message="Email must be valid")
@@ -289,6 +291,15 @@ public class User {
 
 	public void setFavoritePosts(List<Post> favoritePosts) {
 		this.favoritePosts = favoritePosts;
+	}
+	
+
+	public String getUserDescription() {
+		return userDescription;
+	}
+
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
 	}
 
 	//automatization

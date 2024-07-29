@@ -411,7 +411,6 @@
                         <div class="uk-navbar-right">
 				            <div class="uk-navbar-right">
 							    <ul class="uk-navbar-nav">
-
 							        <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
 							        <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
 							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
@@ -479,7 +478,9 @@
 	                <li class="uk-nav-divider"></li>
 	                <li><a href="/filterDataDateDesc">Mas recientes</a></li>
 	            </ul>
+	          
 	        </div>
+	         <a href="/" class="uk-button uk-button-primary">Refrescar Pagina</a>
 	                
         </div>
         <div class="divider"></div>
@@ -493,7 +494,7 @@
 				    <c:forEach items="${allOffered}" var="post">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</h3>
+				                <h3 class="uk-card-title"><a href="/userProfile/${post.creatorPost.id}">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</a></h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${post.postDescription}</p>
@@ -508,9 +509,6 @@
 						                        <span uk-icon="star" class="uk-text-muted"></span>
 						                        <span class="uk-text-meta">(4.0)</span>
 								            </div>
-						                    <div>
-						                        <a href="/service/1" class="uk-button uk-button-text uk-margin-small-left uk-text-capitalize">Opiniones</a>
-						                    </div>
 					                	</div>                     
 				                    </div>
 				                    <div class="service-image">
@@ -546,7 +544,7 @@
 				    <c:forEach items="${allRequests}" var="request">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</h3>
+				                <h3 class="uk-card-title"><a href="/userProfile/${request.creatorPost.id}">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</a></h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${post.postDescription}</p>
@@ -560,9 +558,6 @@
 				                                <span uk-icon="star" class="uk-text-warning"></span>
 				                                <span uk-icon="star" class="uk-text-muted"></span>
 				                                <span class="uk-text-meta">(4.0)</span>
-				                            </div>
-				                            <div>
-				                                <a href="/service/1" class="uk-button uk-button-text uk-margin-small-left uk-text-capitalize">Opiniones</a>
 				                            </div>
 				                        </div>                     
 				                    </div>

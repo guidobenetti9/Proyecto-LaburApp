@@ -331,13 +331,6 @@
                             mi enfoque está en proporcionar soluciones efectivas que ayuden a las empresas a alcanzar sus objetivos en línea. Tengo una sólida comprensión de las últimas tecnologías y tendencias, lo que me permite ofrecer servicios de alta calidad adaptados a las necesidades específicas de cada cliente.
                         </p>
                     </div>
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Trabajos o Solicitudes completadas</h3>
-                        <div class="divider"></div>
-                        <div class="Historial">
-                            
-                        </div>
-                    </div>
                 </div>
                 <!-- Contenido Principal -->
                 <div class="uk-width-2-3@m">
@@ -365,14 +358,14 @@
                                     </div>
                                     <div class="uk-card-footer">
                                         <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
+                                            <!--  <div class="rating">
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-muted"></span>
                                                 <span class="uk-text-meta">(4.0)</span>
-                                            </div>
+                                            </div>-->
                                             <div>
                                                 <a href="/favoritePost/add/${post.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
@@ -391,6 +384,8 @@
                     	<div class="uk-card uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
                         <div class="divider"></div>
+                        
+                        
                         <c:forEach items="${postsRequests}" var="postRequest">
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>
                             <div class="service-card">
@@ -411,14 +406,14 @@
                                     </div>
                                     <div class="uk-card-footer">
                                         <div class="uk-flex uk-flex-between">
-                                            <div class="rating">
+                                           <!-- <div class="rating">
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-muted"></span>
                                                 <span class="uk-text-meta">(4.0)</span>
-                                            </div>
+                                            </div> -->
                                             <div>
                                                 <a href="/favoritePost/add/${postRequest.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
@@ -486,9 +481,6 @@
                             </div>
                         </c:if>
                         </c:forEach>
-                        <div class="uk-flex uk-flex-center uk-margin-large-top">
-                            <button class="uk-button uk-button-primary">Ver Más Reseñas</button>
-                        </div>
                     </div>
                 </div>
             </div>
