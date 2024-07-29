@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -192,8 +193,13 @@ public class PostController {
 	            return "redirect:/login";
 	        }
 	      if(result.hasErrors()) {
+	    	  for (FieldError error : result.getFieldErrors()) {
+	              System.out.println("Error en el campo: " + error.getField() + ", Mensaje: " + error.getDefaultMessage());}
+	    	  
 	    	  List <Jobs> jobs = js.allJobs();
 	          model.addAttribute("allJobs", jobs);
+	          model.addAttribute("days", Arrays.asList("Lunes", "Martes", "Miercoles","Jueves","Viernes","Sabado","Domingo"));
+	          
 	          return "editPost.jsp";
 	      }else {
 	    	  ps.newPost(newPost);
@@ -311,3 +317,4 @@ public class PostController {
 		
 	}
 }
+
