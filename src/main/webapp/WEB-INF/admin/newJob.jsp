@@ -27,7 +27,7 @@
 			<form:form action="/createNewJob" method="post" modelAttribute="job">
 				<h1>Nuevo oficio</h1>
 				<div>
-					<form:label path="jobName">Job Name:</form:label>
+					<form:label path="jobName">Nombre del oficio:</form:label>
 					<form:input path="jobName" class="uk-input"/>
 					<form:errors path="jobName" />
 				</div>
