@@ -293,11 +293,11 @@ public class UserController {
     	List<User> users = serv.usersContaining(username);
     	model.addAttribute("users", users);
 
-		String url2 = "https://dolarapi.com/v1/dolares";
+		/*String url2 = "https://dolarapi.com/v1/dolares";
 		RestTemplate restTemplate2 = new RestTemplate();
 		Object dolares = restTemplate2.getForObject(url2, Object.class);
 		
-		model.addAttribute("dolares", dolares);
+		model.addAttribute("dolares", dolares);*/
 		List <Jobs> jobs = js.allJobs();
         model.addAttribute("allJobs", jobs);
 		model.addAttribute("allPosts", ps.allPosts());
