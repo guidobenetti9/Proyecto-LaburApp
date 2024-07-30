@@ -168,7 +168,7 @@ public class PostController {
         }
         
         Post postToEdit = ps.post(id);
-        model.addAttribute("post", postToEdit);
+        model.addAttribute("newPost", postToEdit);
         if(userTemp.getId() != postToEdit.getCreatorPost().getId()) {
         	return "redirect:/";
         }

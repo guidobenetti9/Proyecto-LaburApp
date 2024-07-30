@@ -98,7 +98,7 @@ public class UserController {
         
         model.addAttribute("confirm", userTemp.getConfirm());
         User userToEdit = serv.user(id);
-        model.addAttribute("user", userToEdit);
+        model.addAttribute("newUser", userToEdit);
         
         
         return "editProfile.jsp";
