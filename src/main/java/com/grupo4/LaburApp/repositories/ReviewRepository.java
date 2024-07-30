@@ -1,7 +1,6 @@
 package com.grupo4.LaburApp.repositories;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -32,4 +31,5 @@ public interface ReviewRepository extends CrudRepository<Review, Long>{
     
     @Query(value = "SELECT post_id, AVG(stars) AS average_rating FROM reviews GROUP BY post_id", nativeQuery = true)
     List<Object[]> findAverageRatingByPost();
+    
 }

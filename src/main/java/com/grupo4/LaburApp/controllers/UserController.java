@@ -181,7 +181,8 @@ public class UserController {
             "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", 
             "Santiago del Estero", "Tierra del Fuego", "Tucumán"
         );
-}
+	}
+	
 	
 	@GetMapping("/")
 	public String index(Model model,HttpSession session) {
@@ -190,6 +191,7 @@ public class UserController {
         model.addAttribute("allJobs", jobs);
         //Map<Long, Double> reviews = rs.getAverageRatingByPost();;
         //model.addAttribute("allReviews",reviews);
+        
 		model.addAttribute("allPosts", ps.allPosts());
 		model.addAttribute("allOffered", ps.allPostsFilterType("Ofrecido"));
 		model.addAttribute("allRequests", ps.allPostsFilterType("Solicitado"));

@@ -86,4 +86,5 @@ public class ReviewService {
 
         return averageRatings;
     }
+    
 }
