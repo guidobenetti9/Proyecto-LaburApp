@@ -62,6 +62,9 @@ public class UserController {
 		List<Post> posts = ps.allPostsFilterTypeAndCreator("Ofrecido",userTemp.getId());
 		List<Post> postsRequests = ps.allPostsFilterTypeAndCreator("Solicitado",userTemp.getId());
 		List<Review> reviews = rs.allReviewsDateDesc();
+        for (Review review : reviews) {
+            System.out.println(review.getComment());
+        }
 		model.addAttribute("posts",posts);
 		model.addAttribute("postsRequests",postsRequests);
 		model.addAttribute("reviews",reviews);

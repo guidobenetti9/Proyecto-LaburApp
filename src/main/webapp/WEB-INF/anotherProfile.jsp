@@ -403,7 +403,7 @@
                                                 <p class="description-text">${postRequest.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
-                                                <a href="/request/${post.id}" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">

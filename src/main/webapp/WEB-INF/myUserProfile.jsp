@@ -421,7 +421,7 @@
                                                 <p class="description-text uk-text-left">${postRequest.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
-                                                <a href="/service/1" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">
@@ -455,7 +455,8 @@
                         <div class="divider"></div>
                         <div class="uk-comment-list">
                         <c:forEach items="${reviews}" var="review">
-                        <c:if test="${review.postReview.creatorPost.id == post.creatorPost.id}">
+                        <!--<c:if test="${review.postReview.creatorPost.id == post.creatorPost.id}">-->
+                            
                             <div class="uk-margin">
                                 <article class="uk-comment">
                                     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
@@ -503,7 +504,7 @@
                                     </div>
                                 </article>
                             </div>
-                            </c:if>
+                           <!--   </c:if>-->
                         </c:forEach>
                         </div>
                         <div class="uk-flex uk-flex-center uk-margin-large-top">
