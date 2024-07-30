@@ -43,3 +43,110 @@ main{
     justify-content: end;
     padding: 15px;
 }
+
+	footer {
+            background: rgb(33,33,33);
+			background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%);
+            padding: 20px 0;
+            margin-top: 70px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+        
+        .footer-column1 {
+            align-items: center;
+        }
+
+        h5 {
+            margin-bottom: 10px;
+            color: #dfb550;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+            display: list-item;
+            unicode-bidi: isolate;
+            font-size: small;
+        }
+
+        .footer-column ul li a {
+            color: rgb(119, 119, 119);
+            text-decoration: none;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            background: #181818;
+            color: #e0e0e0;
+            padding: 10px 20px; /* Ajustar padding para incluir espacio */
+            font-size: 14px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .footer-bottom button{
+            color: white !important;
+        }
+
+        .separator {
+            width: 80%;
+            margin: 10px auto;
+            border-top: 1px solid #fff;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #dfb550;
+        }
+
+        .footer-container > .footer-column {
+            padding: 0 40px;
+        }
+
+        .footer-container + .separator {
+            display: block;
+        }
+        .uk-button-default {
+	        border: 2px solid #ffffff; /* Color del borde*/
+	        color: #000000; /* Color del texto*/
+	        transition: background-color 0.3s, color 0.3s;
+    	}
+
+    	.uk-button-default:hover {
+	    	border: 2px solid #000000;
+	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+	        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
+	        font-weight: bold; /* Texto en negrita*/
+    	}

@@ -155,7 +155,7 @@
                                 <h3 class="uk-card-title uk-margin-remove-top"> ${favPost.postTittle}</h3>
                             </div>
                             <div class="uk-card-body">
-                                <p>${favPost.city}, ${favPost.province}</p>
+                                <p>${favPost.municipio} ${favPost.localidad} (${favPost.province}) </p>
                             </div>
                             <div class="uk-card-footer">
                                 <div class="uk-flex-inline">
