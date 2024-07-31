@@ -435,13 +435,13 @@
 		
 		    <ul class="uk-slideshow-items">
 		        <li>
-		            <img src="https://img.freepik.com/fotos-premium/montana-reflejada-lago-fondo-cielo_771703-13802.jpg" alt="" uk-cover>
+		            <img src="/img/img15.jpg" alt="" uk-cover>
 		        </li>
 		        <li>
-		            <img src="https://fotografias.lasexta.com/clipping/cmsimages01/2020/05/08/E3BC9A26-F5D7-4B1D-9497-72A52CE9CB79/98.jpg?crop=1300,731,x0,y19&width=1900&height=1069&optimize=high&format=webply" alt="" uk-cover>
+		            <img src="/img/img3.jpg" alt="" uk-cover>
 		        </li>
 		        <li>
-		            <img src="https://static.vecteezy.com/system/resources/previews/007/761/180/non_2x/wood-pier-with-sea-and-mountain-at-sunrise-with-beautiful-golden-sky-in-the-morning-and-copy-space-use-as-background-to-display-goods-and-product-free-photo.jpg" alt="" uk-cover>
+		            <img src="/img/img11.jpg" alt="" uk-cover>
 		        </li>
 		    </ul>
 		

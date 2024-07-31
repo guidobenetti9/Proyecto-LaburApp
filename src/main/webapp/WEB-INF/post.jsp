@@ -15,7 +15,7 @@
     
     <style>
         body {
-            background-image: url("https://fotografias.lasexta.com/clipping/cmsimages01/2020/05/08/E3BC9A26-F5D7-4B1D-9497-72A52CE9CB79/98.jpg?crop=1300,731,x0,y19&width=1900&height=1069&optimize=high&format=webply");
+            background-image: url("/img/img5.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

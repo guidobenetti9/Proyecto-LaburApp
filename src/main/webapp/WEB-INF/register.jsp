@@ -239,35 +239,24 @@
         <div uk-slideshow="animation: push; autoplay: true; autoplay-interval: 3000">
             <ul class="uk-slideshow-items">
                 <li>
-                    <img src="https://fotografias.lasexta.com/clipping/cmsimages01/2020/05/08/E3BC9A26-F5D7-4B1D-9497-72A52CE9CB79/98.jpg?crop=1300,731,x0,y19&width=1900&height=1069&optimize=high&format=webply" alt="Imagen 1" uk-cover>
+                    <img src="/img/imgch.jpg" uk-cover>
                 </li>
                 <li>
-                    <img src="https://static.vecteezy.com/system/resources/previews/007/761/180/non_2x/wood-pier-with-sea-and-mountain-at-sunrise-with-beautiful-golden-sky-in-the-morning-and-copy-space-use-as-background-to-display-goods-and-product-free-photo.jpg" alt="Imagen 2" uk-cover>
+                    <img src="/img/imgce.jpg" alt="Imagen 2" uk-cover>
                 </li>
                 <li>
-                    <img src="https://t3.ftcdn.net/jpg/00/58/86/86/360_F_58868638_dbs4Y60CJ9JaDapGIDhKGj307D0F02kU.jpg" alt="Imagen 3" uk-cover>
+                    <img src="/img/img17.jpg" alt="Imagen 3" uk-cover>
                 </li>
                 <li>
-                    <img src="https://img.freepik.com/foto-gratis/pintura-lago-montana-montana-al-fondo_188544-9126.jpg" alt="Imagen 4" uk-cover>
+                    <img src="/img/img5.jpg" alt="Imagen 4" uk-cover>
                 </li>
                 <li>
-                    <img src="https://img.freepik.com/fotos-premium/montana-reflejada-lago-fondo-cielo_771703-13802.jpg" alt="Imagen 5" uk-cover>
+                    <img src="/img/imgmec.jpg" alt="Imagen 5" uk-cover>
                 </li>
                 <li>
-                    <img src="https://i.pinimg.com/originals/28/e6/c6/28e6c686522a710e0e3a3c5e17ec5a31.jpg" alt="Imagen 6" uk-cover>
+                    <img src="/img/imgmu.jpg" alt="Imagen 6" uk-cover>
                 </li>
-                <li>
-                    <img src="https://c.wallhere.com/photos/80/c0/landscape_4K_stream_field_trees_fall_Arrowtown_New_Zealand-2166697.jpg!d" alt="Imagen 7" uk-cover>
-                </li>
-                <li>
-                    <img src="https://www.todofondos.net/wp-content/uploads/1920x1080-Paisaje-de-Canada-Naturaleza-HD-Fondo-de-Pantalla-4K-Imagen-Fondo.jpg" alt="Imagen 8" uk-cover>
-                </li>
-                <li>
-                    <img src="https://www.ultraimagehub.com/wallpapers/tr:flp-false,gx-0.4,gy-0.5,q-75,rh-3264,rw-5824,th-1080,tw-1920/1235967060966637628.jpeg" alt="Imagen 9" uk-cover>
-                </li>
-                <li>
-                    <img src="https://i.ytimg.com/vi/NMoLFiIAI6w/maxresdefault.jpg" alt="Imagen 10" uk-cover>
-                </li>
+               
             </ul>
         </div>
         
