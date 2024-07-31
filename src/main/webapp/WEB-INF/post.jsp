@@ -393,7 +393,9 @@
                         </a>
                     </h1>
                     <p>${post.municipio}, ${post.localidad}, ${post.province}</p>
-                    <a href="/favoritePost/add/${post.id}" class="uk-button uk-button-primary">Agregar a favoritos</a>
+                    <c:if test="${userInSession.id != post.creatorPost.id }">
+                    	<a href="/favoritePost/add/${post.id}" class="uk-button uk-button-primary">Agregar a favoritos</a>
+                    </c:if>
                 </div>
 
                 <div class="uk-card uk-card-body uk-margin-top">
