@@ -25,7 +25,7 @@
 
         .uk-width-logo {
             height: 50px;
-            width: 110px;
+            width: 50px;
         }
 
         /* Estilo para el icono de cofiguracion */
@@ -76,8 +76,9 @@
         .profile-header .info {
             flex: 1;
             margin-left: 20px;
+            color: white !important;
         }
-		.profile-header .info h2{
+        .profile-header .info h2{
             margin: 0;
             color: white;
         }
@@ -89,7 +90,7 @@
         .profile-header .info p {
             margin: 5px 0;
         }
-            
+             
         .center-title {
             text-align: center;
             margin-bottom: 20px;
@@ -168,6 +169,7 @@
             width: 80%;
             margin: 10px auto;
             border-top: 1px solid #fff;
+            
         }
         .footer-bottom {
             background: #181818;
@@ -192,6 +194,7 @@
         .social-icons {
             display: flex;
             justify-content: center;
+            
         }
         .social-icons a {
             color: #fff;
@@ -233,20 +236,29 @@
         }
 
         /*Estilo de listas*/
+        
+        .uk-card{
+    		border:1px solid #dfb550 ;
+    		 width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+    	}
+    	
         .uk-card-title {
             width: 100%;
         }
 
         .service-description {
-            width: 400px;
+            ;
         }
 
         .description-text {
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 6;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
+            width: 200px
         }
 
         .service-image img {
@@ -262,6 +274,7 @@
             display: flex;
             align-items: center;
         }
+        
         
 
     </style>
@@ -281,9 +294,8 @@
                     <li><a href="/contact">Contacto</a></li>
                 </ul>
             </div>
-			
-          <c:if test="${userInSession != null}">
-                     <div class="uk-navbar-right">
+            <c:if test="${userInSession != null}">
+            <div class="uk-navbar-right">
 	            <div class="uk-navbar-right">
 				    <ul class="uk-navbar-nav">
 				        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
@@ -292,8 +304,7 @@
 				    </ul>
 				</div>          
         	</div>
-          </c:if> 
-                    
+          </c:if>
         </nav>         
         <div class="profile-container">          
             <!-- Información del Usuario -->
@@ -307,15 +318,22 @@
                     	<p>${post.jobsInPost.jobName}</p>
                     </c:forEach>
                     <p><i class="fas fa-map-marker-alt"></i>${user.city}, ${user.province}</p>
-                </div>
-                <a href="/message" class="uk-button uk-button-primary">Enviar Mensaje</a>
+                    <div class="uk-flex">
+                        <div class="social-icons uk-margin-small-top">
+                            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>                                       
             </div> 
                                        
             <div class="uk-grid-large uk-grid-divider" uk-grid>
                
                 <div class="uk-width-1-3@m">
                     
-                    <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+                    <div class="uk-card-1 uk-card-default uk-card-body uk-margin-top">
                         <h3 class="uk-card-title center-title">Información de Contacto</h3>
                         <div class="divider"></div>
                         <ul class="uk-list uk-list-divider">
@@ -325,14 +343,17 @@
                             <li><a href="${user.facebook}" class="uk-icon-button uk-margin-small-right" uk-icon="facebook"></a>Facebook</li>
                             <li><a href="${user.instagram}" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>Instagram</li>
                             <li><a href="${user.linkedin}" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>Linkedin</li>
+                            <div class="uk-text-center uk-margin-small-bottom">
+                                <a href="/message" class="uk-button uk-button-primary">Enviar Mensaje</a>
+                            </div>
                         </ul>
                     </div>
                     <!-- Nueva Sección: Descripción Detallada -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
+                    <div class="uk-card-1 uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Descripción Detallada</h3>
                         <div class="divider"></div>
                         <p>
-                            Soy un profesional altamente capacitado en el área de desarrollo web, con más de 5 años de experiencia en el campo. Me especializo en la creación de sitios web personalizados, optimización SEO y desarrollo de aplicaciones móviles. 
+                        	Soy un profesional altamente capacitado en el área de desarrollo web, con más de 5 años de experiencia en el campo. Me especializo en la creación de sitios web personalizados, optimización SEO y desarrollo de aplicaciones móviles. 
                             <br><br>
                             mi enfoque está en proporcionar soluciones efectivas que ayuden a las empresas a alcanzar sus objetivos en línea. Tengo una sólida comprensión de las últimas tecnologías y tendencias, lo que me permite ofrecer servicios de alta calidad adaptados a las necesidades específicas de cada cliente.
                         </p>
@@ -341,12 +362,13 @@
                 <!-- Contenido Principal -->
                 <div class="uk-width-2-3@m">
                     <!-- Servicios Publicados -->
-                    <div class="uk-card uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Servicios Publicados</h3>
+                    <div class="uk-card-1 uk-card-default uk-card-body section-container">
+                        <h3 class="uk-card-title center-title">Servicios Publicados</h3>                   
                         <div class="divider"></div>
-                        <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>  
-                        <c:forEach items="${posts}" var="post">
-                       		<div class="service-card">
+                        <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid> 
+                        
+                        <c:forEach items="${posts}" var="post">                                                     
+                            <div class="service-card">
                                 <div class="uk-card uk-card-default uk-card-hover">
                                     <div class="uk-card-body">
                                         <h3 class="uk-card-title">${post.postTittle}</h3>
@@ -355,7 +377,7 @@
                                                 <p class="description-text">${post.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${post.createdAt}</p>
-                                                <a href="/post/${post.id}" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <a href="/post/${post.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">
@@ -364,71 +386,68 @@
                                     </div>
                                     <div class="uk-card-footer">
                                         <div class="uk-flex uk-flex-between">
-                                            <!--  <div class="rating">
+                                            <div class="rating">
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-warning"></span>
                                                 <span uk-icon="star" class="uk-text-muted"></span>
                                                 <span class="uk-text-meta">(4.0)</span>
-                                            </div>-->
+                                            </div>
                                             <div>
                                                 <a href="/favoritePost/add/${post.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
                                             </div>
                                         </div>
-                                        <a href="/post/${post.id}" class="uk-button uk-button-text">Ver Opiniones</a>
+                                        <a href="/post/${post.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Opiniones</a>
                                     </div>
                                 </div>
                             </div>
-                        
-                        </c:forEach>                                                    
-                            
-                            
+                         </c:forEach>                                                     
                         </div>
                     </div>
-                    
-                    	<div class="uk-card uk-card-default uk-card-body section-container">
+                   
+                    <div class="uk-card-1 uk-card-default uk-card-body section-container">
                         <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
+                        
                         <div class="divider"></div>
-                        
-                        
-                        <c:forEach items="${postsRequests}" var="postRequest">
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>
-                            <div class="service-card">
-                                <div class="uk-card uk-card-default uk-card-hover">
-                                    <div class="uk-card-body">
-                                        <h3 class="uk-card-title">${postRequest.postTittle}</h3>
-                                        <div class="uk-flex uk-flex-between">
-                                            <div class="service-description">
-                                                <p class="description-text">${postRequest.postDescription}</p>
-                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
-                                                <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
-                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text">Ver Detalles</a>
-                                            </div>
-                                            <div class="service-image">
-                                                <img src="https://via.placeholder.com/1200" alt="Servicio">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-card-footer">
-                                        <div class="uk-flex uk-flex-between">
-                                           <!-- <div class="rating">
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-warning"></span>
-                                                <span uk-icon="star" class="uk-text-muted"></span>
-                                                <span class="uk-text-meta">(4.0)</span>
-                                            </div> -->
-                                            <div>
-                                                <a href="/favoritePost/add/${postRequest.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                    </c:forEach>                                                      
+                        
+                        	<c:forEach items="${postsRequests}" var="postRequest">
+	                            <div class="service-card">
+	                                <div class="uk-card uk-card-default uk-card-hover">
+	                                    <div class="uk-card-body">
+	                                        <h3 class="uk-card-title">${postRequest.postTittle}</h3>
+	                                        <div class="uk-flex uk-flex-between">
+	                                            <div class="service-description">
+	                                                <p class="description-text uk-text-left">${postRequest.postDescription}</p>
+	                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
+	                                                <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
+	                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Detalles</a>
+	                                            </div>
+	                                            <div class="service-image">
+	                                                <img src="https://via.placeholder.com/1200" alt="Servicio">
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                    <div class="uk-card-footer">
+	                                        <div class="uk-flex uk-flex-between uk-text-left">
+	                                            <div class="rating">
+	                                                <span uk-icon="star" class="uk-text-warning"></span>
+	                                                <span uk-icon="star" class="uk-text-warning"></span>
+	                                                <span uk-icon="star" class="uk-text-warning"></span>
+	                                                <span uk-icon="star" class="uk-text-warning"></span>
+	                                                <span uk-icon="star" class="uk-text-muted"></span>
+	                                                <span class="uk-text-meta">(4.0)</span>
+	                                            </div>
+	                                            <div>
+	                                                <a href="/favoritePost/add/${postRequest.id}" uk-icon="icon: heart" class="uk-icon-button uk-button-primary" title="Agregar a favoritos"></a>
+	                                            </div>
+	                                        </div>
+	                                        <a href="/post/${post.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Opiniones</a>
+	                                    </div>
+	                                </div>
+	                            </div>
+                            </c:forEach>                                                     
                         </div>
                     </div>
                     <!-- Reseñas -->
@@ -437,15 +456,16 @@
                         <div class="divider"></div>
                         <div class="uk-comment-list">
                         <c:forEach items="${reviews}" var="review">
-                        <c:if test="${review.postReview.creatorPost.id == post.creatorPost.id}">
-                        	 <div class="uk-margin">
+                        <!--<c:if test="${review.postReview.creatorPost.id == post.creatorPost.id}">-->
+                            
+                            <div class="uk-margin">
                                 <article class="uk-comment">
                                     <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
                                         <div class="uk-width-expand">
-                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="/userProfile/${senderReview.id}">${senderReview.firstName} ${senderReview.lastName}</a></h4>
+                                            <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="/userProfile/${review.senderReview.id}">@${review.senderReview.username}</a></h4>
                                             <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                                                 <li class="stars">
-	                                                <c:choose>
+                                                    <c:choose>
 												        <c:when test="${review.stars == 1}">
 												            <span uk-icon="star"></span>
 												        </c:when>
@@ -475,7 +495,7 @@
 												            <p>Sin puntuaciones</p>
 												        </c:otherwise>
 												      </c:choose>
-                          						</li>
+                                                </li>
                                                 <li>${review.createdAt}</li>
                                             </ul>
                                         </div>
@@ -485,9 +505,13 @@
                                     </div>
                                 </article>
                             </div>
-                        </c:if>
+                           <!--   </c:if>-->
                         </c:forEach>
-                    </div>
+                        </div>
+                        <div class="uk-flex uk-flex-center uk-margin-large-top">
+                            <button class="uk-button uk-button-primary">Ver Más Reseñas</button>
+                        </div>
+                    </div>                 
                 </div>
             </div>
             <div id="search-results" class="search-results"></div>
