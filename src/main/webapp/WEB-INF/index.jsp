@@ -494,7 +494,25 @@
 				    <c:forEach items="${allOffered}" var="post">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title"><a href="/userProfile/${post.creatorPost.id}">${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}</a></h3>
+				                  <h3 class="uk-card-title">
+							        <c:choose>
+							            <c:when test="${userInSession != null && post.creatorPost.id == userInSession.id}">
+							                <a href="/userProfile">
+							                    ${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}
+							                </a>
+							            </c:when>
+							            <c:when test="${userInSession != null}">
+							                <a href="/userProfile/${post.creatorPost.id}">
+							                    ${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}
+							                </a>
+							            </c:when>
+							            <c:otherwise>
+							                <a href="/login" onclick="alert('Debes iniciar sesión para ver el perfil.'); return false;">
+							                    ${post.creatorPost.firstName} ${post.creatorPost.lastName} - ${post.jobsInPost.jobName}
+							                </a>
+							            </c:otherwise>
+							        </c:choose>
+							    </h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${post.postDescription}</p>
@@ -544,7 +562,25 @@
 				    <c:forEach items="${allRequests}" var="request">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title"><a href="/userProfile/${request.creatorPost.id}">${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}</a></h3>
+				                <h3 class="uk-card-title">
+							        <c:choose>
+							            <c:when test="${userInSession != null && request.creatorPost.id == userInSession.id}">
+							                <a href="/userProfile">
+							                    ${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}
+							                </a>
+							            </c:when>
+							            <c:when test="${userInSession != null}">
+							                <a href="/userProfile/${request.creatorPost.id}">
+							                    ${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}
+							                </a>
+							            </c:when>
+							            <c:otherwise>
+							                <a href="/login" onclick="alert('Debes iniciar sesión para ver el perfil.'); return false;">
+							                    ${request.creatorPost.firstName} ${request.creatorPost.lastName} - ${request.jobsInPost.jobName}
+							                </a>
+							            </c:otherwise>
+							        </c:choose>
+							    </h3>
 				                <div class="uk-flex uk-flex-between">
 				                    <div class="service-description">
 				                        <p class="description-text uk-text-left">${request.postDescription}</p>
