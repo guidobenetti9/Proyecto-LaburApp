@@ -310,11 +310,10 @@
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
                     <h2 class="uk-h2">${userInSession.firstName} ${userInSession.lastName}</h2>
-                    <h3 class="uk-h3">@${userInSession.username}</h3>
-					<p>Profesión/es y/o especialidad/es</p>
+                    <h3 class="uk-h3">@${userInSession.username}</h3>                  					
                     <c:forEach items="${posts}" var="post">
-                    	<p>${post.jobsInPost.jobName}</p>
-                    </c:forEach>
+                    	<p>Categorias: ${post.jobsInPost.jobName}</p>
+                    </c:forEach>                    
                     <p><i class="fas fa-map-marker-alt"></i> ${userInSession.province}, ${userInSession.city}</p>
                     <div class="uk-flex">
                         <div class="social-icons uk-margin-small-top">
@@ -351,13 +350,16 @@
                             <br><br>
                             mi enfoque está en proporcionar soluciones efectivas que ayuden a las empresas a alcanzar sus objetivos en línea. Tengo una sólida comprensión de las últimas tecnologías y tendencias, lo que me permite ofrecer servicios de alta calidad adaptados a las necesidades específicas de cada cliente.
                         </p>
+                        <div class="uk-text-center uk-margin-small-bottom">
+                           <a href="" class="uk-button uk-button-primary">Editar</a>
+                       </div>
                     </div>
                 </div>
                 <!-- Contenido Principal -->
                 <div class="uk-width-2-3@m">
                     <!-- Servicios Publicados -->
                     <div class="uk-card-1 uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Servicios Publicados</h3>
+                        <h3 class="uk-card-title center-title">Mis Servicios Publicados</h3>
                         <div class="uk-text-center uk-margin-small-bottom">
                             <a href="/newPost" class="uk-button uk-button-primary">Agregar un Servicio</a>
                         </div>
@@ -374,7 +376,8 @@
                                                 <p class="description-text">${post.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${post.createdAt}</p>
-                                                <a href="/post/${post.id}" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <p class="uk-text-left">${post.municipio}, ${post.localidad}, ${post.province}</p>
+                                                <a href="/post/${post.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">
@@ -404,7 +407,7 @@
                     </div>
                    
                     <div class="uk-card-1 uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
+                        <h3 class="uk-card-title center-title">Mis Solicitudes</h3>
                         <div class="uk-text-center uk-margin-small-bottom">
                             <a href="/newRequest" class="uk-button uk-button-primary">Agregar una solicitud</a>
                         </div>
@@ -421,7 +424,8 @@
                                                 <p class="description-text uk-text-left">${postRequest.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
-                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text">Ver Detalles</a>
+                                                <p class="uk-text-left">${postRequest.municipio}, ${postRequest.localidad}, ${postRequest.province}</p>
+                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
                                                 <img src="https://via.placeholder.com/1200" alt="Servicio">

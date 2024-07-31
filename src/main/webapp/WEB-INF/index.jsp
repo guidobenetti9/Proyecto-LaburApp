@@ -296,7 +296,8 @@
 
     	.uk-button-default:hover {
 	    	border: 2px solid #000000;
-	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+	        background: rgb(213,193,57);
+            background: linear-gradient(0deg, rgba(213,193,57,1) 0%, rgba(230,210,76,1) 20%, rgba(247,222,88,1) 40%, rgba(246,227,102,1) 60%, rgba(230,210,76,1) 80%, rgba(213,193,57,1) 100%); /* Color de fondo cuando el cursor pasa sobre el boton */
 	        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
 	        font-weight: bold; /* Texto en negrita*/
     	}
@@ -316,6 +317,11 @@
         .service-description {
             width:390px ;
         }
+        
+        .service-details {
+    display: flex;
+    flex-direction: column;
+}
 
         .description-text {
             overflow: hidden;
@@ -494,7 +500,7 @@
 				    <c:forEach items="${allOffered}" var="post">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                  <h3 class="uk-card-title">
+							    <h3 class="uk-card-title">
 							        <c:choose>
 							            <c:when test="${userInSession != null && post.creatorPost.id == userInSession.id}">
 							                <a href="/userProfile">
@@ -513,27 +519,27 @@
 							            </c:otherwise>
 							        </c:choose>
 							    </h3>
-				                <div class="uk-flex uk-flex-between">
-				                    <div class="service-description">
-				                        <p class="description-text uk-text-left">${post.postDescription}</p>
-				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
-				                        <p class="uk-text-left">${post.municipio}, ${post.localidad}, ${post.province}</p>                       
-				                         <div class="uk-flex uk-flex-between uk-align-left">
-					                    	<div class="rating">
-						                        <span uk-icon="star" class="uk-text-warning"></span>
-						                        <span uk-icon="star" class="uk-text-warning"></span>
-						                        <span uk-icon="star" class="uk-text-warning"></span>
-						                        <span uk-icon="star" class="uk-text-warning"></span>
-						                        <span uk-icon="star" class="uk-text-muted"></span>
-						                        <span class="uk-text-meta">(4.0)</span>
-								            </div>
-					                	</div>                     
-				                    </div>
-				                    <div class="service-image">
-				                        <img src="https://via.placeholder.com/1200" alt="Servicio">
-				                    </div>
-				                </div>
-				            </div>
+							    <div class="uk-flex uk-flex-between">
+							        <div class="service-description">
+							            <p class="description-text uk-text-left">${post.postDescription}</p>
+							            <div class="service-details">
+							                <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>
+							                <p class="uk-text-left">${post.municipio}, ${post.localidad}, ${post.province}</p>
+							                <div class="rating uk-text-left">
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-muted"></span>
+							                    <span class="uk-text-meta">(4.0)</span>
+							                </div>
+							            </div>
+							        </div>
+							        <div class="service-image">
+							            <img src="https://via.placeholder.com/1200" alt="Servicio">
+							        </div>
+							    </div>
+							</div>
 				            <div class="uk-card-footer">
 				                <div class="uk-flex uk-flex-between">
 				                    <div>
@@ -562,7 +568,7 @@
 				    <c:forEach items="${allRequests}" var="request">
 				        <div class="uk-card uk-card-default uk-card-hover">
 				            <div class="uk-card-body">
-				                <h3 class="uk-card-title">
+							    <h3 class="uk-card-title">
 							        <c:choose>
 							            <c:when test="${userInSession != null && request.creatorPost.id == userInSession.id}">
 							                <a href="/userProfile">
@@ -581,27 +587,27 @@
 							            </c:otherwise>
 							        </c:choose>
 							    </h3>
-				                <div class="uk-flex uk-flex-between">
-				                    <div class="service-description">
-				                        <p class="description-text uk-text-left">${request.postDescription}</p>
-				                        <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>				                        
-				                        <p class="uk-text-left">${request.municipio}, ${request.localidad}, ${request.province}</p>                       
-				                         <div class="uk-flex uk-flex-between uk-align-left">
-				                            <div class="rating">
-				                                <span uk-icon="star" class="uk-text-warning"></span>
-				                                <span uk-icon="star" class="uk-text-warning"></span>
-				                                <span uk-icon="star" class="uk-text-warning"></span>
-				                                <span uk-icon="star" class="uk-text-warning"></span>
-				                                <span uk-icon="star" class="uk-text-muted"></span>
-				                                <span class="uk-text-meta">(4.0)</span>
-				                            </div>
-				                        </div>                     
-				                    </div>
-				                    <div class="service-image">
-				                        <img src="https://via.placeholder.com/1200" alt="Servicio">
-				                    </div>
-				                </div>
-				            </div>
+							    <div class="uk-flex uk-flex-between">
+							        <div class="service-description">
+							            <p class="description-text uk-text-left">${request.postDescription}</p>
+							            <div class="service-details">
+							                <p class="uk-align-left">Estado: <span class="uk-label uk-label-success uk-text-capitalize">Disponible</span></p>
+							                <p class="uk-text-left">${request.municipio}, ${request.localidad}, ${request.province}</p>
+							                <div class="rating uk-text-left">
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-warning"></span>
+							                    <span uk-icon="star" class="uk-text-muted"></span>
+							                    <span class="uk-text-meta">(4.0)</span>
+							                </div>
+							            </div>
+							        </div>
+							        <div class="service-image">
+							            <img src="https://via.placeholder.com/1200" alt="Servicio">
+							        </div>
+							    </div>
+							</div>
 				            <div class="uk-card-footer">
 				                <div class="uk-flex uk-flex-between">
 				                    <div>
