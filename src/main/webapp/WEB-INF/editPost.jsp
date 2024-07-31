@@ -251,7 +251,7 @@
 					        <label for="localidad">Localidad:</label>
 					        <select id="selectLocalidades" name="localidad" class="uk-select">
 					        </select>
-					  </div>>
+					  </div>
                     <div class="cont_botones">
                     	<form:hidden path="typePost" value="Ofrecido"/>
                         <form:hidden path="creatorPost" value="${userInSession.id}"/>

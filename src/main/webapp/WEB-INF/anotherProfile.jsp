@@ -312,12 +312,11 @@
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
                     <h2>${user.firstName} ${user.lastName}</h2>
-                    <h3>@${user.username}</h3>
-                    <p>Profesión/es y/o especialidad/es</p>
+                    <h3>@${user.username}</h3>                  
                     <c:forEach items="${posts}" var="post">
-                    	<p>${post.jobsInPost.jobName}</p>
+                    	<p>Categorias: ${post.jobsInPost.jobName}</p>
                     </c:forEach>
-                    <p><i class="fas fa-map-marker-alt"></i>${user.city}, ${user.province}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ${user.city}, ${user.province}</p>
                     <div class="uk-flex">
                         <div class="social-icons uk-margin-small-top">
                             <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -363,7 +362,7 @@
                 <div class="uk-width-2-3@m">
                     <!-- Servicios Publicados -->
                     <div class="uk-card-1 uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Servicios Publicados</h3>                   
+                        <h3 class="uk-card-title center-title uk-text-capitalize">Servicios Publicados de ${user.firstName} ${user.lastName}</h3>                   
                         <div class="divider"></div>
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid> 
                         
@@ -377,6 +376,7 @@
                                                 <p class="description-text">${post.postDescription}</p>
                                                 <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
                                                 <p class="uk-text-meta">Fecha: ${post.createdAt}</p>
+                                                <p class="uk-text-left">${post.municipio}, ${post.localidad}, ${post.province}</p>
                                                 <a href="/post/${post.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Detalles</a>
                                             </div>
                                             <div class="service-image">
@@ -407,7 +407,7 @@
                     </div>
                    
                     <div class="uk-card-1 uk-card-default uk-card-body section-container">
-                        <h3 class="uk-card-title center-title">Solicitudes de Servicios</h3>
+                        <h3 class="uk-card-title center-title uk-text-capitalize">Solicitudes publicadas por ${user.firstName} ${user.lastName}</h3>
                         
                         <div class="divider"></div>
                         <div class="uk-grid uk-grid-match uk-child-width-1-2@m" uk-grid>
@@ -422,6 +422,7 @@
 	                                                <p class="description-text uk-text-left">${postRequest.postDescription}</p>
 	                                                <p>Estado: <span class="uk-label uk-label-success">Disponible</span></p>
 	                                                <p class="uk-text-meta">Fecha: ${postRequest.createdAt}</p>
+	                                                <p class="uk-text-left">${postRequest.municipio}, ${postRequest.localidad}, ${postRequest.province}</p>
 	                                                <a href="/request/${postRequest.id}" class="uk-button uk-button-text uk-text-capitalize">Ver Detalles</a>
 	                                            </div>
 	                                            <div class="service-image">
