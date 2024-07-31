@@ -296,7 +296,8 @@
 
     	.uk-button-default:hover {
 	    	border: 2px solid #000000;
-	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
+	        background: rgb(213,193,57);
+            background: linear-gradient(0deg, rgba(213,193,57,1) 0%, rgba(230,210,76,1) 20%, rgba(247,222,88,1) 40%, rgba(246,227,102,1) 60%, rgba(230,210,76,1) 80%, rgba(213,193,57,1) 100%); /* Color de fondo cuando el cursor pasa sobre el boton */
 	        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
 	        font-weight: bold; /* Texto en negrita*/
     	}
