@@ -25,118 +25,226 @@
             display: flex;
             flex-direction: column;
         }
-        .content {
-            flex: 1;
+        header {
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
         }
+
+        /* Navegador */
         .uk-navbar-container {
-            background: rgb(33,33,33) !important;
-			background: linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important; /* Gradiente */			
+            background: linear-gradient(0deg, rgba(33,33,33,0.9) 0%, rgba(28,28,28,0.9) 18%, rgba(19,19,19,0.93) 45%, rgba(15,15,15,0.95) 63%, rgba(4,4,4,1) 100%) !important;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            width: 50%;
         }
-        .uk-navbar-nav> li > a {
-            color: #fff !important; /* Color de texto blanco */
+
+        .logo-box {
+            width: 108px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            border-radius: 0 0 50% 50%;
+            background: linear-gradient(0deg, rgba(33,33,33,0.6) 0%, rgba(28,28,28,0.8) 18%, rgba(19,19,19,0.85) 45%, rgba(15,15,15,0.85) 63%, rgba(4,4,4,9) 100%) !important;
+            border:1px solid #dfb550;
         }
-        .uk-navbar-nav> li > a:hover {
-            color: #ffcc00 !important; /* Color de texto al pasar el mouse */
-        }
-        .uk-width-logo {
-            height: 50px;
-            width: 50px;
-        }
-        
-        /*Barra de busqueda*/
-        .uk-navbar-center {
+
+        .logo-container {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: rgb(213,193,57);
+            background: linear-gradient(0deg, rgba(213,193,57,1) 0%, rgba(230,210,76,1) 20%, rgba(247,222,88,1) 40%, rgba(246,227,102,1) 60%, rgba(230,210,76,1) 80%, rgba(213,193,57,1) 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
         }
-        .uk-search {
-            position: relative;
+
+        .logo-inner {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: #ddd;
             display: flex;
-            width: 400px; /* Ancho del contenedor de busqueda */
-            transition: all 0.3s ease;
-        }           
-		.uk-search:hover {
-		    width: 600px; /* Ajusta este valor segï¿½n sea necesario */
-		}
-		
-        .uk-search-input {
-            background-color: #fff !important; /* Fondo blanco */
-            width: 700px; /* Ancho del campo de bï¿½squeda */
-            padding-right: 40px; /* Espacio para el icono de la lupa */
-            color: #000 !important; /* Color del texto */
+            justify-content: center;
+            align-items: center;
         }
+
+        .logo-inner img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .uk-navbar-left,
+        .uk-navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .uk-navbar-right {
+            margin-right: 80px;
+        }
+
+        .uk-navbar-left {
+            margin-left: 80px;
+        }
+
+        .uk-navbar-nav>li {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .uk-navbar-nav>li>a {
+            color: white;
+            transition: color 0.3s ease, transform 0.4s ease !important;
+        }
+
+        .uk-navbar-nav>li>a:hover {
+            color: #ffcc00 !important;
+            transform: scale(1.3);
+        }
+
+        .register-button {
+            list-style-type: none;
+        }
+
+        .btn-registrarse {
+            border: 2px solid #dfb550;
+            color: #dfb550;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            box-sizing: border-box;
+            min-width: 150px;
+            line-height: 1.5;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-registrarse:hover {
+            background-color: #dfb550;
+            color: #000000 !important;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .icon-config {
+            transition: color 0.3s ease, transform 0.3s ease !important;
+        }
+
+        .icon-config:hover {
+            transform: scale(1.3);
+        }
+
+        .icon-logout i {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-logout:hover i {
+            color: rgb(255, 122, 122);
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);
+            transform: scale(1.5);
+        }
+
+        
+
+        /* Barra de busqueda */
+       
+        .search-bar {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+
+        .uk-search {
+            margin-top: 60px;
+            margin-bottom: 50px;
+            display: flex;
+            width: 230px; /* Ancho del contenedor de busqueda */
+            transition: all 0.7s ease;
+        }
+
+        .uk-search:hover {
+            width: 600px;
+            
+        }
+
+        .uk-search-input {
+            background-color: #fff !important;/* Fondo blanco */
+            width: 100%;/* Ancho del campo de búsqueda */
+            padding-right: 40px;/* Espacio para el icono de la lupa */
+            color: #000 !important;/* Color del texto */
+            border-color: #000 !important;
+        }
+
         .uk-search-icon-flip {
             position: absolute;
             right: 10px;
             top: 50%;
             color: #000 !important; /* Color del icono */
         }
-        .uk-search-input:focus {
-            border-color: #ffcc00 !important; /* Color del borde al hacer clic */
-        }
-          	
-    	.register-button{  	
-    		list-style-type: none;  	
-    	}
-	    .btn-registrarse {
-	        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
-	        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
-	        text-decoration: none;/* Elimina el subrayado */
-	        border-radius: 4px; /* Bordes redondeados*/
-	        display: inline-block;
-	        box-sizing: border-box;
-	        min-width: 150px; /* Establece un ancho mï¿½nimo para el botï¿½n*/        
-	        line-height: 1.5; /* Ajusta la altura de lï¿½nea para centrar el texto verticalmente */
-	        text-align: center; /* Centra el texto horizontalmente */
-	        transition: background-color 0.3s, color 0.3s; /* Aï¿½ade transiciï¿½n suave para hover */
-    	}
-	
-	    .btn-registrarse:hover {
-	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
-	        color: #000000 !important; /* Color del texto cuando el ursor pasa sobre el boton */
-	        text-decoration: none;
-	        font-weight: bold; /* Texto en negrita*/
-	    }
-	    
-	     /* Estilo para el icono de cofiguracion */
-		.icon-config {	    
-		    transition: color 0.3s ease, transform 0.3s ease !important;
-		}
-        
-        .icon-config:hover {
-		    transform: scale(1.3);
-		}
 
-		/* Estilo para el ï¿½cono de cerrar sesiï¿½n */
-		.icon-logout i {
-			transition: color 0.3s ease, transform 0.3s ease;
-		}		
-		
-		.icon-logout:hover i {
-		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%); /* Color al pasar el cursor sobre el ï¿½cono de cerrar sesiï¿½n */
-		    transform: scale(1.5); /* Agrandar el ï¿½cono de cerrar sesiï¿½n */
-		}
-	    
-        .main-title {
-            text-align: center;
-            margin-top: 20px;
-            width:100%; 
-            margin:auto;                              
-            background: rgb(33,33,33) !important;
-			background: linear-gradient(180deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
-			color:#ffffff;			
+        .uk-search-input:focus {
+            border-color: #ffcc00 !important;/* Color del borde al hacer clic */
+        }
+
+        /*Bara de busqueda*/
+
+        /*Carousel*/
+        .carousel-container {
+            width: 100%;
+            height: 600px; /* Ajustar la altura del carrusel */
+            margin-top: 0;
+            position: relative;
         }
         
-        h1{
-        	color:#dfb550;
+        .carousel-container .uk-slideshow-items li {
+            height: 600px; /* Asegurarse de que los elementos de la lista ocupen toda la altura del carrusel */
         }
+        
+        .carousel-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Asegurarse de que las imágenes cubran completamente el carrusel sin distorsionarse */
+        }
+        
+        /*Titulo*/
+        .h1-container {
+            position: absolute;
+            bottom: 0 !important; /* Para ubicarlo en el margen inferior del carrusel */
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            width: 100%;
+            height: 150px;
+            background: rgb(33,33,33);
+            background: linear-gradient(180deg, rgba(33,33,33,0.9) 0%, rgba(28,28,28,0.9) 18%, rgba(19,19,19,0.95) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
+            z-index: 5; /* Ajustar z-index para asegurarse de que los botones de navegación estén por encima */        
+        }
+
+        .main-title {                                                             
+            color: #ffffff; 
+            width: 50%;
+            margin: auto;
+            text-align: center; 
+        }
+        
+        .main-title h1 {
+            color: #dfb550;
+        }
+        
         .description {
             text-align: center;
-            font-size:11px;        
+            font-size: 11px;        
         }
         
         .slogan{
@@ -156,6 +264,9 @@
         .filter-container {
             text-align: center;
             margin-bottom: 20px;
+            position: relative;
+        	z-index: 10;
+            
         }
         .uk-card {
             margin-top: 20px;
@@ -178,8 +289,10 @@
         }
         
         .uk-card-2{
+        
         	padding-top:20px;
-        	padding-bottom:40px;        	
+        	padding-bottom:40px; 
+        	       	
         }
         
         /* Estilo para la tarjeta de post */
@@ -319,9 +432,9 @@
         }
         
         .service-details {
-    display: flex;
-    flex-direction: column;
-}
+		    display: flex;
+		    flex-direction: column;
+		}
 
         .description-text {
             overflow: hidden;
@@ -348,13 +461,8 @@
         
 		.uk-icon-button.uk-icon-thumbs-up.uk-no-toggle:hover {
 		    background: rgb(115,115,115);
-		background: radial-gradient(circle, rgba(115,115,115,1) 0%, rgba(87,87,87,1) 30%, rgba(69,69,69,1) 50%, rgba(57,57,57,1) 70%, rgba(34,34,34,1) 100%);
+			background: radial-gradient(circle, rgba(115,115,115,1) 0%, rgba(87,87,87,1) 30%, rgba(69,69,69,1) 50%, rgba(57,57,57,1) 70%, rgba(34,34,34,1) 100%);
 		    color: #dfb550;
-		}
-		
-		.uk-icon-button.uk-icon-thumbs-up.uk-no-toggle:active {
-		    	background-color: ; /* Verde oscuro */
-		     	 /* Azul claro */
 		}
 		
 		.uk-animation-spin:active {
@@ -369,92 +477,95 @@
 	        	transform: rotate(360deg);
 	    	}
 		}
-		.carousel-container {
-            width: 100%;
-            max-height: 400px;
-            overflow: hidden;
-        }
-        .carousel-container img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-        }
+		
                   
     </style>
 </head>
 <body>
     <div class="content">
         <header>              
-            <!-- Barra de Navegaciï¿½n -->
-            <nav class="uk-navbar-container" uk-navbar>
-                <div class="uk-navbar-left">
-                    <div class="uk-width-logo">
-                        <a href="/">
-                            <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
-                        </a>
-                    </div>
-                    <ul class="uk-navbar-nav">   
-                        <li><a href="/contact">Contacto</a></li>                    
-                        <li><a href="/help">Ayuda</a></li>                      
+            <!-- Barra de Navegación -->
+            <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav">
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/help">Ayuda</a></li>
+                        <li><a href="/contact">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="uk-navbar-center">
-                    <form class="uk-search uk-search-default" action="/findUsers" method="get">
-                        <input class="uk-search-input" type="search" placeholder="Buscar Usuarios" name="search">
-                        <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
-                    </form>
+            </nav>
+            <div class="logo-box">
+                <div class="logo-container">
+                    <div class="logo-inner">
+                        <a href="/"><img src="/logo.png"></a>
+                    </div>
                 </div>
-                <div class="uk-navbar-right uk-margin-medium-right">
-                    <c:if test="${userInSession == null}">
-                        <ul class="uk-navbar-nav">
-                            <li><a href="/login">Iniciar Sesión</a></li>                                                      
-                        </ul>
-                        <ul class="register-button">
-                        	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
-                        </ul>
-                    </c:if>
-                    <c:if test="${userInSession != null}">
-                        <div class="uk-navbar-right">
-				            <div class="uk-navbar-right">
-							    <ul class="uk-navbar-nav">
-							        <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
-							        <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
-							        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
-							    </ul>
-							</div>          
-			        	</div>
-                    </c:if>                  
-                </div>      
+            </div>          
+            <nav class="uk-navbar-container uk-navbar-transparent">
+            	<c:if test="${userInSession == null}">
+	                <div class="uk-navbar-left">
+	                    <ul class="uk-navbar-nav">
+	                        <li><a href="/login">Iniciar Sesión</a></li>                                                      
+	                    </ul>
+	                    <ul class="register-button">
+	                        <li><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
+	                    </ul>
+	                </div>
+	        	 </c:if>
+	        	 <c:if test="${userInSession != null}">
+	                <div class="uk-navbar-left">
+	                    
+	                        <ul class="uk-navbar-nav">
+	                            <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
+	                            <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
+	                            <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+	                        </ul>
+	                              
+	                </div>
+	            </c:if>              
             </nav>
         </header>
+        
+        <div class="uk-position-relative uk-visible-toggle uk-light carousel-container" tabindex="-1" uk-slideshow="animation: push; autoplay: true; autoplay-interval: 4000">
+            <ul class="uk-slideshow-items">
+                <li>
+                    <img src="/img/img15.jpg" alt="imagen15" uk-cover>
+                </li>
+                <li>
+                    <img src="/img/img3.jpg" alt="imagen3" uk-cover>
+                </li>
+                <li>
+                    <img src="/img/img11.jpg" alt="imagen11" uk-cover>
+                </li>
+            </ul>
+        
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+            
+            <div class="h1-container">
+                <div class="main-title">
+                    <h1>LaburApp</h1>           
+                    <p>Bienvenido a LaburApp, tu destino integral para el intercambio de servicios en todos los rubros. Ya sea que estés buscando un experto para completar un trabajo específico o desees ofrecer tus habilidades y servicios a una audiencia más amplia, nuestra plataforma es el lugar perfecto para conectar, colaborar y crecer. ¡Empezá ahora!</p>       
+                </div>
+            </div>
+        </div>
+    
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <form class="uk-search uk-search-default" action="/findUsers" method="get">
+                <input class="uk-search-input" type="search" placeholder="Buscar..." name="search">
+                <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
+            </form>
+        </div>
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <form class="uk-search uk-search-default" action="/findUsers" method="get">
+                <input class="uk-search-input" type="search" placeholder="Buscar..." name="search">
+                <button class="uk-search-icon-flip" uk-search-icon type="submit"></button>
+            </form>
+        </div>      	
         <div class="slogan">
         	<p class="description uk-text-uppercase">Encuentra y publica servicios facilmente. Conectate con profesionales y clientes en un solo lugar.</p>
-        </div>
-        <div class="uk-position-relative uk-visible-toggle uk-light carousel-container" tabindex="-1" uk-slideshow="ratio: 7:3; animation: push; autoplay: true; autoplay-interval: 4000">
-		
-		    <ul class="uk-slideshow-items">
-		        <li>
-		            <img src="/img/img15.jpg" alt="" uk-cover>
-		        </li>
-		        <li>
-		            <img src="/img/img3.jpg" alt="" uk-cover>
-		        </li>
-		        <li>
-		            <img src="/img/img11.jpg" alt="" uk-cover>
-		        </li>
-		    </ul>
-		
-		    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-		    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-		
-		</div>
-        
-        <div class="main-title">
-            <h1>LaburApp</h1>
-            
-	            <p class="uk-width-60 uk-text-center uk-margin-auto">Bienvenido a LaburApp, tu destino integral para el intercambio de servicios en todos los rubros. Ya sea que estés buscando un experto para completar un trabajo específico o desees ofrecer tus habilidades y servicios a una audiencia más amplia, nuestra plataforma es el lugar perfecto para conectar, colaborar y crecer.</p>
-            
         </div>
 		
         <div class="uk-card-2 uk-card-default ">
@@ -486,7 +597,7 @@
 	            </ul>
 	          
 	        </div>
-	         <a href="/" class="uk-button uk-button-default">Refrescar</a>
+	         <a href="/" class="uk-button uk-button-default">Remover</a>
 	                
         </div>
         <div class="divider"></div>
