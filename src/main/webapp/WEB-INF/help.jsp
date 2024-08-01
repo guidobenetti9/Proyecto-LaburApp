@@ -11,72 +11,143 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.6.22/css/uikit.min.css" />
     <style>
         
-        /*Navegador*/
-        .uk-navbar-container {      
-            background: rgb(33,33,33) !important;
-			background: linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
+        header {
+            display: flex;
+            align-items: flex-start;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
         }
-        .uk-navbar-nav > li > a {
-            color: white;
-        }
-        .uk-navbar-nav > li > a:hover {
-            color: #ffcc00 !important; /* Color de texto al pasar el mouse */
-        }
-        
-        .uk-width-logo {
-            height: 50px;
-            width: 50px;
-        }
-        /* Estilo para el icono de cofiguracion */
-		.icon-config {	    
-		    transition: color 0.3s ease, transform 0.3s ease !important;
-		}	
-		.icon-config:hover {
-		    transform: scale(1.3);
-		}
 
-		/* Estilo para el ícono de cerrar sesión */
-		.icon-logout i {
-			transition: color 0.3s ease, transform 0.3s ease;
-		}		
-		
-		.icon-logout:hover i {
-		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);; /* Color al pasar el cursor sobre el ícono de cerrar sesión */
-		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
-		}
+        /* Navegador */
+        .uk-navbar-container {
+            background: linear-gradient(0deg, rgba(33,33,33,0.9) 0%, rgba(28,28,28,0.9) 18%, rgba(19,19,19,0.93) 45%, rgba(15,15,15,0.95) 63%, rgba(4,4,4,1) 100%) !important;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            width: 50%;
+        }
+
+        .logo-box {
+            width: 108px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            border-radius: 0 0 50% 50%;
+            background: linear-gradient(0deg, rgba(33,33,33,0.6) 0%, rgba(28,28,28,0.8) 18%, rgba(19,19,19,0.85) 45%, rgba(15,15,15,0.85) 63%, rgba(4,4,4,9) 100%) !important;
+            border:1px solid #dfb550;
+        }
+
+        .logo-container {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: rgb(213,193,57);
+            background: linear-gradient(0deg, rgba(213,193,57,1) 0%, rgba(230,210,76,1) 20%, rgba(247,222,88,1) 40%, rgba(246,227,102,1) 60%, rgba(230,210,76,1) 80%, rgba(213,193,57,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .logo-inner {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-inner img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .uk-navbar-left,
+        .uk-navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .uk-navbar-right {
+            margin-right: 80px;
+        }
+
+        .uk-navbar-left {
+            margin-left: 80px;
+        }
+
+        .uk-navbar-nav>li {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .uk-navbar-nav>li>a {
+            color: white;
+            transition: color 0.3s ease, transform 0.4s ease !important;
+        }
+
+        .uk-navbar-nav>li>a:hover {
+            color: #ffcc00 !important;
+            transform: scale(1.3);
+        }
+
+        .register-button {
+            list-style-type: none;
+        }
+
+        .btn-registrarse {
+            border: 2px solid #dfb550;
+            color: #dfb550;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            box-sizing: border-box;
+            min-width: 150px;
+            line-height: 1.5;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-registrarse:hover {
+            background-color: #dfb550;
+            color: #000000 !important;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .icon-config {
+            transition: color 0.3s ease, transform 0.3s ease !important;
+        }
+
+        .icon-config:hover {
+            transform: scale(1.3);
+        }
+
+        .icon-logout i {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .icon-logout:hover i {
+            color: rgb(255, 122, 122);
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%);
+            transform: scale(1.5);
+        }
         .uk-section-default {
             background-color: #ffffff;
+            padding-top:130px;
         }
         .uk-section-muted {
             background-color: #f8f8f8;
         }
         .uk-card {
             background-color: #ffffff;
-        }
-        
-        .register-button{  	
-    		list-style-type: none;  	
-    	}
-	    .btn-registrarse {
-	        border: 2px solid #dfb550; /* Color del borde igual al color del h5 en el footer */
-	        color: #dfb550; /* Color del texto igual al color del h5 en el footer */       
-	        text-decoration: none;/* Elimina el subrayado */
-	        border-radius: 4px; /* Bordes redondeados*/
-	        display: inline-block;
-	        box-sizing: border-box;
-	        min-width: 150px; /* Establece un ancho mínimo para el botón*/        
-	        line-height: 1.5; /* Ajusta la altura de línea para centrar el texto verticalmente */
-	        text-align: center; /* Centra el texto horizontalmente */
-	        transition: background-color 0.3s, color 0.3s; /* Añade transición suave para hover */
-    	}
-	
-	    .btn-registrarse:hover {
-	        background-color: #dfb550; /* Color de fondo cuando el cursor pasa sobre el boton */
-	        color: #000000 !important; /* Color del texto cuando el ursor pasa sobre el boton */
-	        text-decoration: none;
-	        font-weight: bold; /* Texto en negrita*/
-	    }
+        }      
         
          /*AQUI COMIENZA EL FOOTER*/
         footer {
@@ -188,40 +259,46 @@
 </head>
 <body>
 	<!-- Barra de Navegaciï¿½n -->
-    <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-left">
-        	<div class="uk-width-logo">
-                <a href="/">
-                    <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
-                </a>
+    <header>              
+        <!-- Barra de Navegación -->
+        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/help">Ayuda</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                </ul>
             </div>
-            <ul class="uk-navbar-nav uk-margin-small-left">   
-                <li><a href="/">Inicio</a></li>                    
-                <li><a href="/contact">Contacto</a></li>                      
-            </ul>
-        </div>        
-         <div class="uk-navbar-right uk-margin-medium-right">
-             <c:if test="${userInSession == null}">
+        </nav>
+        <div class="logo-box">
+            <div class="logo-container">
+                <div class="logo-inner">
+                    <a href="/"><img src="/logo.png"></a>
+                </div>
+            </div>
+        </div>          
+        <nav class="uk-navbar-container uk-navbar-transparent">
+        	<c:if test="${userInSession == null}">
+             <div class="uk-navbar-left">
                  <ul class="uk-navbar-nav">
                      <li><a href="/login">Iniciar Sesión</a></li>                                                      
                  </ul>
                  <ul class="register-button">
-                 	<li ><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
+                     <li><a href="/register" class="btn-registrarse">REGISTRARSE</a></li>
                  </ul>
-             </c:if>
-             <c:if test="${userInSession != null}">
-                 <div class="uk-navbar-right">
-			         <div class="uk-navbar-right">
-					    <ul class="uk-navbar-nav">
-					        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
-					        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
-					        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
-					    </ul>
-					</div>          
-		    	</div>
-             </c:if>                  
- 		</div>                       
-    </nav>
+             </div>
+     	 </c:if>
+     	 <c:if test="${userInSession != null}">
+             <div class="uk-navbar-left">                    
+                    <ul class="uk-navbar-nav">
+                        <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
+                        <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
+                        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+                    </ul>	                              
+             </div>
+         </c:if>              
+        </nav>
+    </header>
     <!-- Sección "Cómo Funciona" -->
     <div class="uk-section uk-section-default">
         <div class="uk-container">

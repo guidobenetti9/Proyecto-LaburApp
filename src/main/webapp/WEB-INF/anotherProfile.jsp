@@ -11,60 +11,110 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     
     <style>
+        header {
+            display: flex;
+            align-items: flex-start;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Navegador */
         .uk-navbar-container {
-            background: rgb(33,33,33) !important;
-            background: linear-gradient(0deg, rgba(33,33,33,1) 0%, rgba(28,28,28,1) 18%, rgba(19,19,19,1) 45%, rgba(15,15,15,1) 63%, rgba(4,4,4,1) 100%) !important;
-            border-bottom: 1px solid #dfb550;
+            background: linear-gradient(0deg, rgba(33,33,33,0.9) 0%, rgba(28,28,28,0.9) 18%, rgba(19,19,19,0.93) 45%, rgba(15,15,15,0.95) 63%, rgba(4,4,4,1) 100%) !important;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            width: 50%;
         }
-        .uk-navbar-nav > li > a {
+
+        .logo-box {
+            width: 108px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            border-radius: 0 0 50% 50%;
+            background: linear-gradient(0deg, rgba(33,33,33,0.6) 0%, rgba(28,28,28,0.8) 18%, rgba(19,19,19,0.85) 45%, rgba(15,15,15,0.85) 63%, rgba(4,4,4,9) 100%) !important;
+            border:1px solid #dfb550;
+        }
+
+        .logo-container {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: rgb(213,193,57);
+            background: linear-gradient(0deg, rgba(213,193,57,1) 0%, rgba(230,210,76,1) 20%, rgba(247,222,88,1) 40%, rgba(246,227,102,1) 60%, rgba(230,210,76,1) 80%, rgba(213,193,57,1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .logo-inner {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-inner img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .uk-navbar-left,
+        .uk-navbar-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .uk-navbar-right {
+            margin-right: 80px;
+        }
+
+        .uk-navbar-left {
+            margin-left: 80px;
+        }
+
+        .uk-navbar-nav>li {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .uk-navbar-nav>li>a {
             color: white;
+            transition: color 0.3s ease, transform 0.4s ease !important;
         }
-        .uk-navbar-nav > li > a:hover {
+
+        .uk-navbar-nav>li>a:hover {
             color: #ffcc00 !important;
+            transform: scale(1.3);
         }
-
-        .uk-width-logo {
-            height: 50px;
-            width: 50px;
-        }
-
-        /* Estilo para el icono de cofiguracion */
-		.icon-config {	    
-		    transition: color 0.3s ease, transform 0.3s ease !important;
-		}	
-		.icon-config:hover {
-		    transform: scale(1.3);
-		}
-
-		/* Estilo para el ícono de cerrar sesión */
-		.icon-logout i {
-			transition: color 0.3s ease, transform 0.3s ease;
-		}		
-		
-		.icon-logout:hover i {
-		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%); /* Color al pasar el cursor sobre el ícono de cerrar sesión */
-		    transform: scale(1.5); /* Agrandar el ícono de cerrar sesión */
-		}
         
         /*Perfil de Usuario*/
 
-        .profile-container{
-
-            padding: 10px 60px;
-        }
+        
         .profile-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 20px;
-            background: rgb(115,115,115);
-            background: radial-gradient(circle, rgba(115,115,115,1) 0%, rgba(87,87,87,1) 30%, rgba(69,69,69,1) 50%, rgba(57,57,57,1) 70%, rgba(34,34,34,1) 100%);
+            padding-top:90px;
+            
             border-bottom: 1px solid #dfb550;
             color: white;   
-            width: 80%;
+            width: 98%;
             margin: auto;
-            margin-bottom: 20px;
+            margin-bottom: 20px; 
+            background-image: url("https://t3.ftcdn.net/jpg/00/58/86/86/360_F_58868638_dbs4Y60CJ9JaDapGIDhKGj307D0F02kU.jpg");
+            background-size: cover;
+            box-shadow:0 20px 20px rgba(0,0,0,0.3);    
         }
 
         h1{
@@ -281,31 +331,34 @@
     </head>
     <body>
         <!-- Barra de Navegación -->
-        <nav class="uk-navbar-container" uk-navbar>
-            <div class="uk-navbar-left">
-                <div class="uk-width-logo">
-                    <a href="/">
-                        <img src="logo.png" class="uk-width-1-1 uk-margin-small-left">
-                    </a>
-                </div>          
-                <ul class="uk-navbar-nav">
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="/help">Ayuda</a></li>
-                    <li><a href="/contact">Contacto</a></li>
-                </ul>
-            </div>
-            <c:if test="${userInSession != null}">
-            <div class="uk-navbar-right">
+        <header>              
+	        <!-- Barra de Navegación -->
+	        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
 	            <div class="uk-navbar-right">
-				    <ul class="uk-navbar-nav">
-				        <li><a href="/">${userInSession.firstName} ${userInSession.lastName}</a></li>
-				        <li><a href="/" class="icon-config" uk-icon="icon: cog"></a></li>
-				        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
-				    </ul>
-				</div>          
-        	</div>
-          </c:if>
-        </nav>         
+	                <ul class="uk-navbar-nav"> 
+	                	<li><a href="/">Inicio</a></li> 
+	                    <li><a href="/help">Ayuda</a></li>
+	                    <li><a href="/contact">Contacto</a></li>
+	                </ul>
+	            </div>
+	        </nav>
+	        <div class="logo-box">
+	            <div class="logo-container">
+	                <div class="logo-inner">
+	                    <a href="/"><img src="/logo.png"></a>
+	                </div>
+	            </div>
+	        </div>          
+	        <nav class="uk-navbar-container uk-navbar-transparent">       	
+	             <div class="uk-navbar-left">
+	                 <ul class="uk-navbar-nav">
+	                    <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
+                        <li><a href="//user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
+                        <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+	                 </ul>
+	             </div>	 	              
+	        </nav>
+    	</header>         
         <div class="profile-container">          
             <!-- Información del Usuario -->
             <div class="profile-header">

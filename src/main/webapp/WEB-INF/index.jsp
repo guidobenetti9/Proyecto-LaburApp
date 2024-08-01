@@ -513,14 +513,12 @@
 	                </div>
 	        	 </c:if>
 	        	 <c:if test="${userInSession != null}">
-	                <div class="uk-navbar-left">
-	                    
-	                        <ul class="uk-navbar-nav">
-	                            <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
-	                            <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
-	                            <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
-	                        </ul>
-	                              
+	                <div class="uk-navbar-left">                    
+                        <ul class="uk-navbar-nav">
+                            <li><a href="/userProfile">${userInSession.firstName} ${userInSession.lastName}</a></li>
+                            <li><a href="/user/edit/${userInSession.id}" class="icon-config" uk-icon="icon: cog"></a></li>
+                            <li><a href="/logout" class="icon-logout"><i class="fa fa-sign-out-alt"></i></a></li>
+                        </ul>	                              
 	                </div>
 	            </c:if>              
             </nav>
@@ -762,8 +760,8 @@
             <div class="footer-column">
                 <h5>SOPORTE</h5>
                 <ul>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                    <li><a href="/help">Ayuda</a></li>
                 </ul>
             </div>
             <div class="footer-column1">

@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicación de Servicio</title>
+    <title>Detalles de Servicio</title>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -447,7 +447,7 @@
                 <ul class="uk-navbar-nav">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/help">Ayuda</a></li>
-                    <li><a href="#">Noticias</a></li>
+                    <li><a href="/contact">Contacto</a></li>
                 </ul>
             </div>
         </nav>
@@ -642,8 +642,8 @@
             <div class="footer-column">
                 <h5>SOPORTE</h5>
                 <ul>
-                    <li><a href="#">Contacto</a></li>
-                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="/contact">Contacto</a></li>
+                    <li><a href="/help">Ayuda</a></li>
                 </ul>
             </div>
             <div class="footer-column1">
