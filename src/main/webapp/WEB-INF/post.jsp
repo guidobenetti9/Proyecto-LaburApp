@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicaci髇 de Servicio</title>
+    <title>Publicaci贸n de Servicio</title>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.22/dist/css/uikit.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -121,18 +121,18 @@
 		    transform: scale(1.3);
 		}
 
-		/* Estilo para el 韈ono de cerrar sesi髇 */
+		/* Estilo para el 铆cono de cerrar sesi贸n */
 		.icon-logout i {
 			transition: color 0.3s ease, transform 0.3s ease;
 		}		
 		
 		.icon-logout:hover i {
 		    color: rgb(255,122,122);
-            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%); /* Color al pasar el cursor sobre el 韈ono de cerrar sesi髇 */
-		    transform: scale(1.5); /* Agrandar el 韈ono de cerrar sesi髇 */
+            color: linear-gradient(90deg, rgba(255,122,122,1) 0%, rgba(255,89,89,1) 26%, rgba(255,70,70,1) 57%, rgba(255,0,0,1) 100%); /* Color al pasar el cursor sobre el 铆cono de cerrar sesi贸n */
+		    transform: scale(1.5); /* Agrandar el 铆cono de cerrar sesi贸n */
 		}
 
-
+		/*Contenido principal*/
         .custom-container {
             background-color: rgba(0, 0, 0, 0.7);
             border: 1px solid #dfb550;
@@ -197,14 +197,14 @@
 
         .uk-search:hover {
             width: 600px;
-            /* Ajusta este valor seg鷑 sea necesario */
+            /* Ajusta este valor seg煤n sea necesario */
         }
 
         .uk-search-input {
             background-color: #fff !important;
             /* Fondo blanco */
             width: 700px;
-            /* Ancho del campo de b鷖queda */
+            /* Ancho del campo de b煤squeda */
             padding-right: 40px;
             /* Espacio para el icono de la lupa */
             color: #000 !important;
@@ -333,14 +333,104 @@
 	        color: #000000 !important; /* Color del texto cuando el cursor pasa sobre el boton */
 	        font-weight: bold; /* Texto en negrita*/
     	}
+    	
+    	/*Mapa de ubicaci贸n*/
     	.map-ubication{
 	    	height:200px;
 	    	widht:200px;
-    	}
-    	
+    	}   	
     	#map {
             height: 100%;
             width: 100%;
+        }
+        
+        /*Crear review*/
+ 		.cajita {
+            margin-bottom: 20px;
+            color:#ffffff;
+        }    
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            flex-direction: row-reverse;
+            margin-top:20px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            color: #ffffff;
+            cursor: pointer;           
+            display: inline-block;
+            width: 5rem; /* Tama帽o de cada estrella */
+            text-align: center;          
+        }
+
+        .star-rating input:checked ~ label {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .cont_boton {
+            text-align: center;
+        }
+        
+        
+        /*Espacio para comentarios*/
+        
+        .comment-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            color: white;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:0;
+        }
+
+        .comment-body {
+            margin-top: 10px;
+        }
+
+        .comment-footer {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 10px;
+            color: #ccc;
+            position: absolute;
+            bottom: 3px;
+            right: 10px;
+            
+        }
+
+        .star-rating-2 {
+            display: flex;
+            font-size: 1.2rem;
+        }
+
+        .star-rating-2 span {
+            color: gold;
+            margin-left: 5px;
+        }
+
+        .comment-author {
+            color: gold;
+            text-decoration: none;
         }
         
     </style>
@@ -379,7 +469,7 @@
         </nav>
     </header>
 
-    <!-- Barra de b鷖queda -->
+    <!-- Barra de b煤squeda -->
     <div class="uk-center">
         <form class="uk-search uk-search-default" action="/findUsers" method="get">
             <input class="uk-search-input" type="search" placeholder="Buscar Usuarios" name="search">
@@ -391,7 +481,7 @@
     <div class="uk-container custom-container">
         <!-- Layout Principal -->
         <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
-            <!-- Columna Izquierda: Informaci髇 del Servicio -->
+            <!-- Columna Izquierda: Informaci贸n del Servicio -->
             <div>
                 <div class="uk-card uk-card-body">
                     <h1 class="uk-heading-divider uk-text-capitalize">
@@ -407,12 +497,12 @@
 
                 <div class="uk-card uk-card-body uk-margin-top">
                     <h3 class="uk-heading-divider">${post.jobsInPost.jobName}</h3>
-                    <p>Descripci髇: ${post.postDescription}</p>
+                    <p>Descripci贸n: ${post.postDescription}</p>
                 </div>
 
                 <div class="uk-card uk-card-body uk-margin-top">
                     <h3 class="uk-heading-divider">Contacto</h3>
-                    <p>Tel閒ono: ${post.creatorPost.phone}</p>
+                    <p>Tel茅fono: ${post.creatorPost.phone}</p>
                     <p>Email: ${post.creatorPost.email}</p>
                 </div>
 
@@ -420,100 +510,108 @@
                     <h3 class="uk-heading-divider">Disponibilidad</h3>
                     <p>${post.availableDays} - ${post.availableHours}</p>                   
                 </div>
-                <div class="uk-card uk-card-body uk-margin-top">
-                    <c:if test="${userInSession.id == post.creatorPost.id}">
-                        <div class="uk-flex-inline">
-                            <a href="/post/edit/${post.id}" class="uk-button uk-button-danger">Editar Post</a>
-                            <form action="/post/delete/${post.id}" method="post">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="submit" value="Borrar Post" class="uk-button uk-button-default uk-margin-left">
-                            </form>
-                        </div>
-                    </c:if>                    
-                </div>
+                
+                 <c:if test="${userInSession.id == post.creatorPost.id}">
+                     <div class="uk-flex-inline">
+                         <a href="/post/edit/${post.id}" class="uk-button uk-button-primary uk-margin-small-top">Editar Post</a>
+                         <form action="/post/delete/${post.id}" method="post">
+                             <input type="hidden" name="_method" value="DELETE">
+                             <input type="submit" value="Borrar Post" class="uk-button uk-button-danger uk-margin-left uk-margin-small-top">
+                         </form>
+                     </div>
+              	</c:if>                    
+                
             </div>
 
             <!-- Columna Derecha: Mapa y Comentarios -->
             <div class="uk-width-1-3@s">
                 <div class="uk-card uk-card-body">
-                    <h3 class="uk-heading-divider">Mapa de Ubicaci髇</h3>
+                    <h3 class="uk-heading-divider">Mapa de Ubicaci贸n</h3>
     				<div class="map-ubication">
     					<div id="map"></div>
     				</div>           
                 </div>
-                <!-- Secci髇 de Comentarios -->
-                <div class="uk-card uk-card-body uk-margin-top">
-                    <h3 class="uk-heading-divider">Comentarios y Rese馻s</h3>
+                <!-- Secci贸n de Comentarios -->
+                <div class="uk-card-2 uk-card-body uk-margin-top">
+                    <h3 class="uk-heading-divider">Comentarios y Rese帽as</h3>
                     <c:forEach items="${reviews}" var="review">
-                        <div class="uk-card uk-card-body uk-margin-top">
-                            <div class="uk-card-header">
-                                <p>${review.senderReview.firstName} ${review.senderReview.lastName}</p>
-                                
-                                <p>${review.createdAt}</p>
-                            </div>
-                            <div class="uk-card-body">
-                                <p>${review.comment}</p>
-                            </div>
-                            <div class="uk-card-footer">
-                            <c:choose>
-                                <c:when test="${review.stars == 1}">
-                                    <span uk-icon="star"></span>
-                                </c:when>
-                                <c:when test="${review.stars == 2}">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                </c:when>
-                                <c:when test="${review.stars == 3}">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                </c:when>
-                                <c:when test="${review.stars == 4}">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                </c:when>
-                                <c:when test="${review.stars == 5}">
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                    <span uk-icon="star"></span>
-                                </c:when>
-                                <c:otherwise>
-                                    <p>Sin puntuaciones</p>
-                                </c:otherwise>
-                            </c:choose>
-                            </div>
-                        </div>
+                        <div class="uk-card uk-card-body-2 uk-margin-top comment-container">
+					        <div class="uk-card-header comment-header">
+					            <c:choose>
+								    <c:when test="${userInSession.id == review.senderReview.id}">
+								        <a href="/userProfile" class="comment-author">${review.senderReview.firstName} ${review.senderReview.lastName}</a>
+								    </c:when>
+								    <c:otherwise>
+								        <a href="/userProfile/${review.senderReview.id}" class="comment-author">${review.senderReview.firstName} ${review.senderReview.lastName}</a>
+								    </c:otherwise>
+								</c:choose>
+					            <div class="star-rating-2">
+					                <c:choose>
+					                    <c:when test="${review.stars == 1}">
+					                        <span uk-icon="star"></span>
+					                    </c:when>
+					                    <c:when test="${review.stars == 2}">
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                    </c:when>
+					                    <c:when test="${review.stars == 3}">
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                    </c:when>
+					                    <c:when test="${review.stars == 4}">
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                    </c:when>
+					                    <c:when test="${review.stars == 5}">
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                        <span uk-icon="star"></span>
+					                    </c:when>
+					                    <c:otherwise>
+					                        <p>Sin puntuaciones</p>
+					                    </c:otherwise>
+					                </c:choose>
+					            </div>
+					        </div>
+					        <div class="uk-card-body-2 comment-body">
+					            <p>${review.comment}</p>
+					        </div>
+					        <div class="uk-card-footer comment-footer">
+					            <p>${review.createdAt}</p>
+					        </div>
+					    </div>
                     </c:forEach>
                 </div>
                 <div class="cont_creareview">
                     <form:form action="/review/create/${post.id}" method="POST" modelAttribute="newReview" >
                         <div class="cajita">
-                            <form:textarea path="comment" class="uk-textarea" placeholder="Deja tu rese馻"/>
+                            <form:textarea path="comment" class="uk-textarea" placeholder="Deja tu rese帽a"/>
                         </div>
-                        <div class="cajita">
+                        <div class="cajita uk-margin-small-top">
                             <form:label path="stars" >Estrellas:</form:label>
                             <div class="star-rating">
-                              <input type="radio" id="5-stars" name="stars" value="1"/>
-                              <label for="5-stars" uk-icon="icon: star">1</label>
-                              <input type="radio" id="4-stars" name="stars" value="2"/>
-                              <label for="4-stars" uk-icon="icon: star">2</label>
-                              <input type="radio" id="3-stars" name="stars" value="3"/>
-                              <label for="3-stars" uk-icon="icon: star">3</label>
+                              <input type="radio" id="1-stars" name="stars" value="5"/>
+                              <label for="1-stars" uk-icon="icon: star"></label>
                               <input type="radio" id="2-stars" name="stars" value="4"/>
-                              <label for="2-stars" uk-icon="icon: star">4</label>
-                              <input type="radio" id="1-star" name="stars" value="5"/>
-                              <label for="1-star" uk-icon="icon: star">5</label>
+                              <label for="2-stars" uk-icon="icon: star"></label>
+                              <input type="radio" id="3-stars" name="stars" value="3"/>
+                              <label for="3-stars" uk-icon="icon: star"></label>
+                              <input type="radio" id="4-stars" name="stars" value="2"/>
+                              <label for="4-stars" uk-icon="icon: star"></label>
+                              <input type="radio" id="5-star" name="stars" value="1"/>
+                              <label for="5-star" uk-icon="icon: star"></label>
                             </div>           
                         </div>
                   
                         <div class="cont_boton">
                             <form:hidden path="postReview" value="${post.id}" />
                             <form:hidden path="senderReview" value="${userInSession.id}" />
-                            <input type="submit" class="uk-button uk-button-secondary" value="Enviar" >
+                            <input type="submit" class="uk-button uk-button-primary uk-margin-medium-top" value="Enviar" >
                         </div>
                     </form:form>
                 </div>
@@ -525,7 +623,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h5>INFORMACI覰</h5>
+                <h5>INFORMACI脫N</h5>
                 <ul>
                     <li><a href="#">Sobre nosotros</a></li>
                     <li><a href="#">Oportunidades de empleo</a></li>
@@ -593,10 +691,10 @@
 
         // Opcional: Agrega un marcador
         L.marker([latitud, longitud]).addTo(map)
-            .bindPopup('Ubicaci髇 seleccionada')
+            .bindPopup('Ubicaci贸n seleccionada')
             .openPopup();
     } else {
-        console.error("Error: Coordenadas no v醠idas.");
+        console.error("Error: Coordenadas no v谩lidas.");
     }
     </script>
     
