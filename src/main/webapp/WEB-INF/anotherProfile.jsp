@@ -365,9 +365,10 @@
                 <img src="https://via.placeholder.com/100" alt="Foto de Perfil" width="100">
                 <div class="info">
                     <h2>${user.firstName} ${user.lastName}</h2>
-                    <h3>@${user.username}</h3>                  
+                    <h3>@${user.username}</h3>
+                    <p>Categorías:</p>                  
                     <c:forEach items="${posts}" var="post">
-                    	<p>Categorias: ${post.jobsInPost.jobName}</p>
+                    	<p> ${post.jobsInPost.jobName}</p>
                     </c:forEach>
                     <p><i class="fas fa-map-marker-alt"></i> ${user.city}, ${user.province}</p>
                     <div class="uk-flex">
